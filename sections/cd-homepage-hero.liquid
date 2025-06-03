@@ -1,0 +1,335 @@
+{% schema %}
+{
+  "name": "Homepage Hero",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Hero Content"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Hero Title",
+      "default": "Love Mondays"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Hero Subtitle",
+      "default": "Get back on course"
+    },
+    {
+      "type": "header",
+      "content": "Search Settings"
+    },
+    {
+      "type": "text",
+      "id": "search_placeholder",
+      "label": "Search Placeholder Text",
+      "default": "Subject or qualification, e.g. IT"
+    },
+    {
+      "type": "header",
+      "content": "Visual Settings"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "color",
+      "id": "search_box_bg",
+      "label": "Search Box Background",
+      "default": "#DAC8FF"
+    },
+    {
+      "type": "range",
+      "id": "top_padding",
+      "min": 40,
+      "max": 150,
+      "step": 10,
+      "unit": "px",
+      "label": "Top Padding",
+      "default": 100
+    }
+  ],
+  "presets": [
+    {
+      "name": "Homepage Hero",
+      "category": "Hero Sections"
+    }
+  ]
+}
+{% endschema %}
+
+<!-- ================================
+     Homepage Hero Section
+     ================================ -->
+<section class="rh-homepage-hero">
+  <div class="rh-hero-container">
+    <div class="rh-hero-content">
+      <div class="rh-hero-title">{{ section.settings.title }}</div>
+      <div class="rh-hero-subtitle">{{ section.settings.subtitle }}</div>
+    </div>
+    <div class="rh-search-box">
+      <div class="rh-search-content">
+        <form action="/search" method="get" role="search" class="rh-search-input">
+          <div class="rh-search-icon">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10C20 12.4013 19.1536 14.6049 17.7429 16.3287L22 20.5858L20.5858 22L16.3287 17.7429C14.6049 19.1536 12.4013 20 10 20C4.47715 20 0 15.5228 0 10ZM10 2C5.58172 2 2 5.58172 2 10C2 14.4183 5.58172 18 10 18C14.4183 18 18 14.4183 18 10C18 5.58172 14.4183 2 10 2Z" fill="#262626"/>
+            </svg>
+          </div>
+          <input 
+            type="search" 
+            name="q" 
+            class="rh-search-field predictive-search" 
+            placeholder="{{ section.settings.search_placeholder }}"
+            data-predictive-search
+          >
+          <input type="hidden" name="type" value="product">
+        </form>
+        <div class="predictive-search-results" data-predictive-search-results></div>
+        <div class="rh-search-tags">
+          <button type="button" class="rh-tag" data-search="Discount courses">Discount courses</button>
+          <button type="button" class="rh-tag" data-search="Online courses">Online courses</button>
+          <button type="button" class="rh-tag" data-search="On Demand courses">On Demand courses</button>
+          <button type="button" class="rh-tag" data-search="University courses">University courses</button>
+          <button type="button" class="rh-tag" data-search="Free courses">Free courses</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% style %}
+/* ================================
+Homepage Hero Section
+================================ */
+.rh-homepage-hero {
+  width: 100%;
+  padding: {{ section.settings.top_padding }}px 20px 0;
+  {% if section.settings.background_image %}
+    background: url({{ section.settings.background_image | img_url: 'master' }}) no-repeat center center;
+  {% endif %}
+  background-size: cover;
+}
+
+.rh-homepage-hero .rh-hero-container {
+  max-width: 1540px;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+}
+
+.rh-homepage-hero .rh-hero-content {
+  max-width: 621px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.rh-homepage-hero .rh-hero-title {
+  font-size: clamp(48px, 6vw, 85px);
+  font-family: "Inter", sans-sherif;
+  font-weight: 400;
+  line-height: 1.07;
+  color: black;
+}
+
+.rh-homepage-hero .rh-hero-subtitle {
+  font-size: clamp(20px, 2vw, 24px);
+  font-family: "Inter", sans-sherif;
+  font-weight: 400;
+  line-height: 1.45;
+  color: black;
+}
+
+.rh-homepage-hero .rh-search-box {
+  width: 100%;
+  background: {{ section.settings.search_box_bg }};
+  border-radius: 8px;
+  padding: 64px;
+  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.16);
+  position: relative;
+  overflow: hidden;
+}
+
+.rh-homepage-hero .rh-search-content {
+  max-width: 1015px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+.rh-homepage-hero .rh-search-input {
+  width: 100%;
+  padding: 16px;
+  background: white;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  outline: 1px solid #F5F5F5;
+}
+
+.rh-homepage-hero .rh-search-icon {
+  width: 24px;
+  height: 24px;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.rh-homepage-hero .rh-search-icon-inner {
+  width: 22px;
+  height: 22px;
+  position: absolute;
+  left: 1px;
+  top: 1px;
+  background: #262626;
+}
+
+.rh-homepage-hero .rh-search-field {
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 20px;
+  font-family: "Inter", sans-sherif;
+  font-weight: 400;
+  line-height: 1.4;
+  color: #262626;
+}
+
+.rh-homepage-hero .rh-search-field::placeholder {
+  color: #8C8C8C;
+}
+
+.rh-homepage-hero .rh-search-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
+.rh-homepage-hero .rh-tag {
+  padding: 6px 18px;
+  background: black;
+  border-radius: 30px;
+  color: white;
+  font-size: 20px;
+  font-family: "Inter", sans-sherif;
+  font-weight: 400;
+  line-height: 1.4;
+  white-space: nowrap;
+  border: none;
+  cursor: po"Inter", sans-sherif;
+  transition: all 0.2s ease-in-out;
+}
+
+.rh-homepage-hero .rh-tag:hover {
+  background: #262626;
+  transform: translateY(-1px);
+}
+
+.rh-homepage-hero .rh-tag:active {
+  transform: translateY(0);
+}
+
+/* Predictive Search Results Styling */
+.predictive-search-results {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  display: none;
+}
+
+.predictive-search-results.is-active {
+  display: block;
+}
+
+@media screen and (max-width: 768px) {
+  .rh-homepage-hero .rh-search-box {
+    padding: 32px 20px;
+  }
+
+  .rh-homepage-hero .rh-search-tags {
+    gap: 12px;
+  }
+
+  .rh-homepage-hero .rh-tag {
+    font-size: 16px;
+    padding: 6px 14px;
+  }
+}
+{% endstyle %}
+
+{% javascript %}
+document.addEventListener('DOMContentLoaded', function() {
+  // Handle predictive search
+  const searchInput = document.querySelector('.predictive-search');
+  const resultsContainer = document.querySelector('.predictive-search-results');
+  
+  if (searchInput && resultsContainer) {
+    let searchTimeout;
+    
+    searchInput.addEventListener('input', function() {
+      clearTimeout(searchTimeout);
+      const searchTerm = this.value;
+      
+      if (searchTerm.length > 2) {
+        searchTimeout = setTimeout(() => {
+          fetch(`/search/suggest.json?q=${encodeURIComponent(searchTerm)}&resources[type]=product`)
+            .then(response => response.json())
+            .then(data => {
+              const products = data.resources.results.products;
+              resultsContainer.innerHTML = '';
+              
+              if (products.length > 0) {
+                products.forEach(product => {
+                  resultsContainer.innerHTML += `
+                    <a href="${product.url}" class="predictive-search-item">
+                      <div class="predictive-search-item-content">
+                        <div class="predictive-search-item-title">${product.title}</div>
+                        <div class="predictive-search-item-price">${product.price}</div>
+                      </div>
+                    </a>
+                  `;
+                });
+                resultsContainer.classList.add('is-active');
+              }
+            });
+        }, 300);
+      } else {
+        resultsContainer.classList.remove('is-active');
+      }
+    });
+    
+    // Handle search tag clicks
+    document.querySelectorAll('.rh-tag').forEach(tag => {
+      tag.addEventListener('click', function() {
+        const searchTerm = this.getAttribute('data-search');
+        searchInput.value = searchTerm;
+        searchInput.form.submit();
+      });
+    });
+    
+    // Close predictive search when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!searchInput.contains(e.target) && !resultsContainer.contains(e.target)) {
+        resultsContainer.classList.remove('is-active');
+      }
+    });
+  }
+});
+{% endjavascript %}

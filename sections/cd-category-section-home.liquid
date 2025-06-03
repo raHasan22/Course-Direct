@@ -1,0 +1,201 @@
+{% schema %}
+{
+  "name": "CD Category Grid",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "What do you want to learn?"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "label": "Number of columns on desktop",
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "columns_tablet",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "label": "Number of columns on tablet",
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "columns_mobile",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "label": "Number of columns on mobile",
+      "default": 1
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border Color",
+      "default": "#D9D9D9"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Category Item",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Category Title",
+          "default": "Category Name"
+        },
+        {
+          "type": "html",
+          "id": "svg_icon",
+          "label": "SVG Icon Code",
+          "info": "Paste your SVG code here"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "CD Category Grid",
+      "blocks": [
+        {
+          "type": "category"
+        },
+        {
+          "type": "category"
+        },
+        {
+          "type": "category"
+        },
+        {
+          "type": "category"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  .category-section {
+      background: {{ section.settings.background_color }};
+      padding: 120px 20px;
+  }
+
+  .category-section .container {
+      max-width: 1540px;
+      margin: 0 auto;
+  }
+
+  .category-section .section-title {
+      color: {{ section.settings.text_color }};
+      font-size: 56px;
+      font-family: Inter, sans-serif;
+      font-weight: 400;
+      line-height: 70.40px;
+      margin-bottom: 48px;
+  }
+
+  .category-section .category-wrapper {
+      display: grid;
+      grid-template-columns: repeat({{ section.settings.columns_desktop }}, 1fr);
+      gap: 35px;
+  }
+
+  .category-section .category-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 18px;
+      border-radius: 8px;
+      border: 1px dashed {{ section.settings.border_color }};
+      color: {{ section.settings.text_color }};
+      text-decoration: none;
+      transition: all 0.3s ease;
+      justify-content: center;
+  }
+
+  .category-section .category-item:hover {
+      background: rgba(255, 255, 255, 0.1);
+  }
+
+  .category-section .category-icon {
+      width: 24px;
+      height: 24px;
+      position: relative;
+      overflow: hidden;
+      flex-shrink: 0;
+  }
+
+  .category-section .category-text {
+      font-size: 20px;
+      font-family: Inter, sans-serif;
+      font-weight: 400;
+      line-height: 28px;
+  }
+
+  @media (max-width: 1280px) {
+      .category-section .category-wrapper {
+          grid-template-columns: repeat({{ section.settings.columns_tablet }}, 1fr);
+      }
+  }
+
+  @media (max-width: 1024px) {
+      .category-section .category-wrapper {
+          grid-template-columns: repeat({{ section.settings.columns_tablet }}, 1fr);
+      }
+  }
+
+  @media (max-width: 768px) {
+      .category-section .category-wrapper {
+          grid-template-columns: repeat({{ section.settings.columns_mobile }}, 1fr);
+      }
+      .category-section .section-title {
+          font-size: 40px;
+          line-height: 50px;
+      }
+  }
+</style>
+
+<section class="category-section">
+  <div class="container">
+    <h2 class="section-title">{{ section.settings.title }}</h2>
+    <div class="category-wrapper">
+      {% for block in section.blocks %}
+        {% if block.type == 'category' %}
+          <a href="{{ block.settings.collection.url }}" class="category-item" {{ block.shopify_attributes }}>
+            <div class="category-icon">
+              {{ block.settings.svg_icon }}
+            </div>
+            <div class="category-text">{{ block.settings.title }}</div>
+          </a>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,110 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "cd_about_site_features_a6yjiQ": {
+      "type": "cd-about-site-features",
+      "blocks": {
+        "feature_h4zzYM": {
+          "type": "feature",
+          "settings": {
+            "feature_icon": "shopify://shop_images/Elements-geometric-shape-circle-point.png",
+            "feature_title": "87,766 courses in 1,005 subjects",
+            "feature_description": "Develop your skills in a huge range of subjects"
+          }
+        },
+        "feature_aHmXMm": {
+          "type": "feature",
+          "settings": {
+            "feature_icon": "shopify://shop_images/Star-Cosmos--Streamline-Geometric-Shapes.png",
+            "feature_title": "Thousands of satisfied customers",
+            "feature_description": "Rated 4.2 stars on average"
+          }
+        },
+        "feature_ThrBaU": {
+          "type": "feature",
+          "settings": {
+            "feature_icon": "shopify://shop_images/Flash-1--Streamline-Fun-Stickers.png",
+            "feature_title": "Pay by instalments (0% APR)",
+            "feature_description": "Spread the cost over 3, 6, 9 or 12 months"
+          }
+        }
+      },
+      "block_order": [
+        "feature_h4zzYM",
+        "feature_aHmXMm",
+        "feature_ThrBaU"
+      ],
+      "name": "CD About Site Features",
+      "settings": {
+        "padding_top": 100,
+        "padding_bottom": 100,
+        "feature_icon_size": 80
+      }
+    },
+    "cd_category_section_home_fTQMkK": {
+      "type": "cd-category-section-home",
+      "blocks": {
+        "category_dKGtpc": {
+          "type": "category",
+          "settings": {
+            "collection": "",
+            "title": "Category Name",
+            "svg_icon": ""
+          }
+        },
+        "category_BABzMN": {
+          "type": "category",
+          "settings": {
+            "collection": "",
+            "title": "Category Name",
+            "svg_icon": ""
+          }
+        },
+        "category_AGCUb6": {
+          "type": "category",
+          "settings": {
+            "collection": "",
+            "title": "Category Name",
+            "svg_icon": ""
+          }
+        },
+        "category_TK3UQd": {
+          "type": "category",
+          "settings": {
+            "collection": "",
+            "title": "Category Name",
+            "svg_icon": ""
+          }
+        }
+      },
+      "block_order": [
+        "category_dKGtpc",
+        "category_BABzMN",
+        "category_AGCUb6",
+        "category_TK3UQd"
+      ],
+      "name": "CD Category Grid",
+      "settings": {
+        "title": "What do you want to learn?",
+        "columns_desktop": 4,
+        "columns_tablet": 3,
+        "columns_mobile": 1,
+        "background_color": "#000000",
+        "text_color": "#FFFFFF",
+        "border_color": "#D9D9D9"
+      }
+    }
+  },
+  "order": [
+    "cd_about_site_features_a6yjiQ",
+    "cd_category_section_home_fTQMkK"
+  ]
+}
