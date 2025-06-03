@@ -9,6 +9,18 @@
  */
 {
   "sections": {
+    "cd_homepage_hero_Unxi9Q": {
+      "type": "cd-homepage-hero",
+      "name": "CD Homepage Hero",
+      "settings": {
+        "title": "Love Mondays",
+        "subtitle": "Get back on course",
+        "search_placeholder": "Subject or qualification, e.g. IT",
+        "background_image": "shopify://shop_images/Group_1000006163_58fd370c-57cc-43a4-bb3f-567f489f3d67.png",
+        "search_box_bg": "#dac8ff",
+        "top_padding": 100
+      }
+    },
     "cd_about_site_features_a6yjiQ": {
       "type": "cd-about-site-features",
       "blocks": {
@@ -49,39 +61,307 @@
         "feature_icon_size": 80
       }
     },
+    "cd_course_slider_8AtCt7": {
+      "type": "cd-course-slider",
+      "name": "CD Course Slider",
+      "settings": {
+        "title": "Popular with other students",
+        "background_color": "#f3ffe3",
+        "course_source": "collection",
+        "course_collection": "all",
+        "manual_courses": [],
+        "button_text": "View More",
+        "button_link": "shopify://collections"
+      }
+    },
+    "cd_course_slider_iJLy7h": {
+      "type": "cd-course-slider",
+      "name": "CD Course Slider",
+      "settings": {
+        "title": "Learning on demand courses",
+        "background_color": "#e4ff97",
+        "course_source": "manual",
+        "course_collection": "all",
+        "manual_courses": [
+          "beginning-python",
+          "front-end-web-development",
+          "foundations-of-nutrition-and-healthy-eating",
+          "introduction-to-graphic-design-with-adobe-creative-suite",
+          "javascript-basics",
+          "starting-your-own-online-business"
+        ],
+        "button_text": "View More",
+        "button_link": "shopify://collections"
+      }
+    },
+    "cd_courses_with_extra_UDGR4g": {
+      "type": "cd-courses-with-extra",
+      "blocks": {
+        "card_r8Y6V8": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/Frame_1000006212.png",
+            "title": "Finance available",
+            "description": "Access courses which you can pay by installments to ease the initial upfront cost.",
+            "link": "shopify://collections",
+            "image_background": "#8895fe"
+          }
+        },
+        "card_J3TReG": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/Frame_1000006214.png",
+            "title": "Job guarantee",
+            "description": "Explore courses which place you in work upon completion of the course.",
+            "link": "shopify://collections",
+            "image_background": "#8895fe"
+          }
+        },
+        "card_QJkFce": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/Frame_1000006215.png",
+            "title": "Funding available",
+            "description": "View courses with funding such as government funding, bursaries, grants and more.",
+            "link": "",
+            "image_background": "#8895fe"
+          }
+        }
+      },
+      "block_order": [
+        "card_r8Y6V8",
+        "card_J3TReG",
+        "card_QJkFce"
+      ],
+      "name": "CD Courses with Extras",
+      "settings": {
+        "title": "Courses with added extras",
+        "background_color": "#fff2df",
+        "columns_desktop": 3,
+        "columns_tablet": 2,
+        "gap": 32,
+        "padding": 120
+      }
+    },
+    "cd_inspiration_sec_RBDfJM": {
+      "type": "cd-inspiration-sec",
+      "name": "CD Inspiration Section",
+      "settings": {
+        "title": "Looking for inspiration?",
+        "university_title": "University courses",
+        "university_link": "",
+        "university_bg": "#00a6e8",
+        "free_title": "Free courses",
+        "free_link": "",
+        "free_bg": "#21b967",
+        "discount_title": "Discount courses",
+        "discount_link": "",
+        "discount_bg": "#fadca2",
+        "career_title": "Career guides",
+        "career_link": "",
+        "career_bg": "#000000",
+        "padding_top": 120,
+        "padding_bottom": 120
+      }
+    },
+    "cd_certification_sec_bhwtVh": {
+      "type": "cd-certification-sec",
+      "blocks": {
+        "certification_t9fAB8": {
+          "type": "certification",
+          "settings": {
+            "logo": "shopify://shop_images/image_21_1.png",
+            "course_count": "124 courses",
+            "link": ""
+          }
+        },
+        "certification_yPcVXV": {
+          "type": "certification",
+          "settings": {
+            "logo": "shopify://shop_images/image_24.png",
+            "course_count": "124 courses",
+            "link": ""
+          }
+        },
+        "certification_Up9yfR": {
+          "type": "certification",
+          "settings": {
+            "logo": "shopify://shop_images/image_25.png",
+            "course_count": "124 courses",
+            "link": ""
+          }
+        },
+        "certification_eRFWzc": {
+          "type": "certification",
+          "settings": {
+            "logo": "shopify://shop_images/image_26.png",
+            "course_count": "124 courses",
+            "link": ""
+          }
+        },
+        "certification_bnJVbU": {
+          "type": "certification",
+          "settings": {
+            "logo": "shopify://shop_images/image_27.png",
+            "course_count": "124 courses",
+            "link": ""
+          }
+        },
+        "certification_DepNqP": {
+          "type": "certification",
+          "settings": {
+            "logo": "shopify://shop_images/image_28.png",
+            "course_count": "124 courses",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "certification_t9fAB8",
+        "certification_yPcVXV",
+        "certification_Up9yfR",
+        "certification_eRFWzc",
+        "certification_bnJVbU",
+        "certification_DepNqP"
+      ],
+      "name": "CD Certification Section",
+      "settings": {
+        "title": "GAIN CERTIFICATION",
+        "background_color": "#e6f8ff",
+        "padding_top": 100,
+        "padding_bottom": 100,
+        "card_border_color": "#d9d9d9"
+      }
+    },
     "cd_category_section_home_fTQMkK": {
       "type": "cd-category-section-home",
       "blocks": {
         "category_dKGtpc": {
           "type": "category",
           "settings": {
-            "collection": "",
-            "title": "Category Name",
-            "svg_icon": ""
+            "collection": "all",
+            "title": "Health, Safety & Care",
+            "svg_icon": "<svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M12 21C10.6588 21 9.88572 20.4278 8.33953 19.2834C0.221721 13.2749 1.01807 6.15294 4.53744 3.99415C7.21909 2.34923 9.55962 3.01211 10.9656 4.06801C11.5422 4.50096 11.8304 4.71743 12 4.71743C12.1696 4.71743 12.4578 4.50096 13.0344 4.06801C14.4404 3.01211 16.7809 2.34923 19.4626 3.99415C21.1812 5.04838 22.2505 7.28623 21.9494 10\" stroke=\"white\" stroke-width=\"1.5\" stroke-linecap=\"round\"></path>\n<path d=\"M14 18C14 18 15 18 16 20C16 20 19.1765 15 22 14\" stroke=\"white\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n</svg>"
           }
         },
         "category_BABzMN": {
           "type": "category",
           "settings": {
-            "collection": "",
-            "title": "Category Name",
-            "svg_icon": ""
+            "collection": "all",
+            "title": "Business, Management & Legal",
+            "svg_icon": "<svg width=\"25\" height=\"24\" viewbox=\"0 0 25 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M10.5 13.3333C10.5 13.0233 10.5 12.8683 10.5341 12.7412C10.6265 12.3961 10.8961 12.1265 11.2412 12.0341C11.3683 12 11.5233 12 11.8333 12H13.1667C13.4767 12 13.6317 12 13.7588 12.0341C14.1039 12.1265 14.3735 12.3961 14.4659 12.7412C14.5 12.8683 14.5 13.0233 14.5 13.3333V14C14.5 15.1046 13.6046 16 12.5 16C11.3954 16 10.5 15.1046 10.5 14V13.3333Z\" stroke=\"white\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n<path d=\"M14.4 13.5H15.5826C16.8668 13.5 17.5089 13.5 18.0556 13.3842C19.638 13.049 20.929 12.0207 21.4939 10.6455C21.6891 10.1704 21.7687 9.59552 21.928 8.4457C21.9878 8.01405 22.0177 7.79823 21.989 7.62169C21.9052 7.10754 21.4932 6.68638 20.9381 6.54764C20.7475 6.5 20.5065 6.5 20.0244 6.5H4.97562C4.49351 6.5 4.25245 6.5 4.06187 6.54764C3.50682 6.68638 3.09477 7.10754 3.01104 7.62169C2.98229 7.79823 3.01219 8.01405 3.07198 8.4457C3.23128 9.59552 3.31092 10.1704 3.50609 10.6455C4.071 12.0207 5.36198 13.049 6.94436 13.3842C7.49105 13.5 8.13318 13.5 9.41743 13.5H10.6\" stroke=\"white\" stroke-width=\"1.5\"></path>\n<path d=\"M4 11.5V13.5C4 17.2712 4 19.1569 5.10649 20.3284C6.21297 21.5 7.99383 21.5 11.5556 21.5H13.4444C17.0062 21.5 18.787 21.5 19.8935 20.3284C21 19.1569 21 17.2712 21 13.5V11.5\" stroke=\"white\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n<path d=\"M16 6.5L15.9227 6.14679C15.5377 4.38673 15.3452 3.50671 14.8869 3.00335C14.4286 2.5 13.8199 2.5 12.6023 2.5H12.3977C11.1801 2.5 10.5714 2.5 10.1131 3.00335C9.65478 3.50671 9.46228 4.38673 9.07727 6.14679L9 6.5\" stroke=\"white\" stroke-width=\"1.5\"></path>\n</svg>"
           }
         },
         "category_AGCUb6": {
           "type": "category",
           "settings": {
-            "collection": "",
-            "title": "Category Name",
-            "svg_icon": ""
+            "collection": "all",
+            "title": "Construction & Engineering",
+            "svg_icon": "<svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M16 10L18.1494 10.6448C19.5226 11.0568 20.2092 11.2628 20.6046 11.7942C21 12.3256 21 13.0425 21 14.4761L21 22\" stroke=\"white\" stroke-width=\"1.5\" stroke-linejoin=\"round\"></path>\n<path d=\"M8 9L11 9M8 13L11 13\" stroke=\"white\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n<path d=\"M12 22V19C12 18.0572 12 17.5858 11.7071 17.2929C11.4142 17 10.9428 17 10 17H9C8.05719 17 7.58579 17 7.29289 17.2929C7 17.5858 7 18.0572 7 19V22\" stroke=\"white\" stroke-width=\"1.5\" stroke-linejoin=\"round\"></path>\n<path d=\"M2 22H22\" stroke=\"white\" stroke-width=\"1.5\" stroke-linecap=\"round\"></path>\n<path d=\"M3 22L3 6.71724C3 4.20649 3 2.95111 3.79118 2.32824C4.58237 1.70537 5.74742 2.04355 8.07752 2.7199L13.0775 4.17122C14.4836 4.57937 15.1867 4.78344 15.5933 5.33965C16 5.89587 16 6.65344 16 8.16857L16 22\" stroke=\"white\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n</svg>"
           }
         },
         "category_TK3UQd": {
           "type": "category",
           "settings": {
-            "collection": "",
-            "title": "Category Name",
-            "svg_icon": ""
+            "collection": "all",
+            "title": "HR, Sales & Marketing",
+            "svg_icon": "<svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<ellipse cx=\"18\" cy=\"10\" rx=\"4\" ry=\"8\" stroke=\"white\" stroke-width=\"1.5\"></ellipse>\n<path d=\"M18 2C14.8969 2 8.46512 4.37761 4.77105 5.85372C3.07942 6.52968 2 8.17832 2 10C2 11.8217 3.07942 13.4703 4.77105 14.1463C8.46512 15.6224 14.8969 18 18 18\" stroke=\"white\" stroke-width=\"1.5\"></path>\n<path d=\"M11 22L9.05674 20.9303C6.94097 19.7657 5.74654 17.4134 6.04547 15\" stroke=\"white\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n</svg>"
+          }
+        },
+        "category_Wa3LFT": {
+          "type": "category",
+          "settings": {
+            "collection": "all",
+            "title": "Software & Web Development",
+            "svg_icon": "<svg width=\"25\" height=\"24\" viewbox=\"0 0 25 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M17.5 8L19.3398 9.85008C20.1133 10.6279 20.5 11.0168 20.5 11.5C20.5 11.9832 20.1133 12.3721 19.3398 13.1499L17.5 15\" stroke=\"white\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n<path d=\"M7.5 8L5.66019 9.85008C4.88673 10.6279 4.5 11.0168 4.5 11.5C4.5 11.9832 4.88673 12.3721 5.66019 13.1499L7.5 15\" stroke=\"white\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n<path d=\"M15 4L10 20\" stroke=\"white\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n</svg>"
+          }
+        },
+        "category_ByNU4F": {
+          "type": "category",
+          "settings": {
+            "collection": "all",
+            "title": "IT & Analytics",
+            "svg_icon": "<svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M20.5 15.8278C17.9985 21.756 9.86407 23.4835 5.20143 18.8641C0.629484 14.3347 2.04493 6.12883 8.05653 3.5\" stroke=\"white\" stroke-width=\"1.5\" stroke-linecap=\"round\"></path>\n<path d=\"M17.6831 12.5C19.5708 12.5 20.5146 12.5 21.1241 11.655C21.1469 11.6234 21.1848 11.5667 21.2052 11.5336C21.7527 10.6471 21.4705 9.966 20.9063 8.60378C20.3946 7.36853 19.6447 6.24615 18.6993 5.30073C17.7538 4.35531 16.6315 3.60536 15.3962 3.0937C14.034 2.52946 13.3529 2.24733 12.4664 2.79477C12.4333 2.81523 12.3766 2.85309 12.345 2.87587C11.5 3.4854 11.5 4.42922 11.5 6.31686V8.42748C11.5 10.3473 11.5 11.3072 12.0964 11.9036C12.6928 12.5 13.6527 12.5 15.5725 12.5H17.6831Z\" stroke=\"white\" stroke-width=\"1.5\"></path>\n</svg>"
+          }
+        },
+        "category_9ridW9": {
+          "type": "category",
+          "settings": {
+            "collection": "all",
+            "title": "Project Management",
+            "svg_icon": "<svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M4.5 10.2653L4.5 6L19.5 6V10.2653C19.5 13.4401 19.5 15.0275 18.5237 16.0137C17.5474 17 15.976 17 12.8333 17H11.1667C8.02397 17 6.45262 17 5.47631 16.0137C4.5 15.0275 4.5 13.4401 4.5 10.2653Z\" stroke=\"white\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n<path d=\"M4.5 6L5.22115 4.46154C5.78045 3.26838 6.06009 2.6718 6.62692 2.3359C7.19375 2 7.92084 2 9.375 2L14.625 2C16.0792 2 16.8062 2 17.3731 2.3359C17.9399 2.6718 18.2196 3.26838 18.7788 4.46154L19.5 6\" stroke=\"white\" stroke-width=\"1.5\" stroke-linecap=\"round\"></path>\n<path d=\"M10.5 9H13.5\" stroke=\"white\" stroke-width=\"1.5\" stroke-linecap=\"round\"></path>\n<path d=\"M12 19.5V22M12 19.5L7 19.5M12 19.5H17M7 19.5H4.5C3.11929 19.5 2 20.6193 2 22M7 19.5V22M17 19.5H19.5C20.8807 19.5 22 20.6193 22 22M17 19.5V22\" stroke=\"white\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n</svg>"
+          }
+        },
+        "category_hwAy9M": {
+          "type": "category",
+          "settings": {
+            "collection": "all",
+            "title": "Teaching & Childcare",
+            "svg_icon": "<svg width=\"25\" height=\"24\" viewbox=\"0 0 25 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M14.5 18.5C14.5 18.5 15.5 18.5 16.5 20.5C16.5 20.5 19.6765 15.5 22.5 14.5\" stroke=\"white\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n<path d=\"M6 11.5H5.99102\" stroke=\"white\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n<path d=\"M11.5 19.5H11C7.24142 19.5 5.36213 19.5 4.10746 18.5091C3.90678 18.3506 3.72119 18.176 3.5528 17.9871C2.5 16.8062 2.5 15.0375 2.5 11.5C2.5 7.96252 2.5 6.19377 3.5528 5.0129C3.72119 4.82403 3.90678 4.64935 4.10746 4.49087C5.36213 3.5 7.24142 3.5 11 3.5H14C17.7586 3.5 19.6379 3.5 20.8925 4.49087C21.0932 4.64935 21.2788 4.82403 21.4472 5.0129C22.3957 6.07684 22.4897 7.61799 22.499 10.5V11\" stroke=\"white\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n<path d=\"M15 11.5C15 12.8807 13.8807 14 12.5 14C11.1193 14 10 12.8807 10 11.5C10 10.1193 11.1193 9 12.5 9C13.8807 9 15 10.1193 15 11.5Z\" stroke=\"white\" stroke-width=\"1.5\"></path>\n</svg>"
+          }
+        },
+        "category_7V9hHF": {
+          "type": "category",
+          "settings": {
+            "collection": "all",
+            "title": "Personal Development",
+            "svg_icon": "<svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M16.999 11.9704C16.999 12.5227 16.5513 12.9704 15.999 12.9704C15.8307 12.9704 15.6722 12.9288 15.533 12.8554C15.5101 12.8433 15.4896 12.8273 15.4712 12.809L14.1681 11.5114C14.0604 11.4041 13.8895 11.3947 13.7689 11.4872C11.3507 13.3419 8.86808 14.2442 6.80124 14.6632C5.38064 14.9512 4.15688 15.0112 3.28245 14.9984C2.99884 14.9943 2.75132 14.9825 2.54502 14.9683C2.37973 14.9569 2.25896 14.81 2.27483 14.6451L2.40895 13.2515C2.42482 13.0866 2.57132 12.9661 2.73667 12.9766C2.89838 12.9869 3.09119 12.9954 3.31154 12.9986C4.06969 13.0097 5.1477 12.9577 6.40388 12.7031C8.1415 12.3508 10.2209 11.6114 12.276 10.1066C12.4225 9.99939 12.4363 9.78692 12.3077 9.65883L11.15 8.50604C11.1293 8.48541 11.1114 8.462 11.0986 8.43568C11.0348 8.30399 10.999 8.15619 10.999 8.00001C10.999 7.44773 11.4467 7.00001 11.999 7.00001L14.0532 7.00001C14.4775 6.99993 14.8891 6.99985 15.2286 7.04514C15.6104 7.0961 16.0471 7.2202 16.4106 7.58101C16.7751 7.94284 16.9015 8.37929 16.9533 8.76183C16.9992 9.10024 16.9991 9.51023 16.999 9.93069L16.999 11.9704Z\" fill=\"white\"></path>\n<path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M15.75 1.25C16.3023 1.25 16.75 1.69772 16.75 2.25V3.63462C16.75 4.1869 16.3023 4.63462 15.75 4.63462C15.1977 4.63462 14.75 4.1869 14.75 3.63462V2.25C14.75 1.69772 15.1977 1.25 15.75 1.25ZM21.0647 2.92695C21.4555 3.31717 21.456 3.95033 21.0658 4.34116L20.0883 5.32024C19.698 5.71107 19.0649 5.71157 18.674 5.32135C18.2832 4.93113 18.2827 4.29797 18.6729 3.90714L19.6505 2.92807C20.0407 2.53723 20.6738 2.53673 21.0647 2.92695ZM19.3676 8.25C19.3676 7.69772 19.8153 7.25 20.3676 7.25H21.75C22.3023 7.25 22.75 7.69772 22.75 8.25C22.75 8.80228 22.3023 9.25 21.75 9.25H20.3676C19.8153 9.25 19.3676 8.80228 19.3676 8.25Z\" fill=\"white\"></path>\n<path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M12 3.20455C7.1424 3.20455 3.20455 7.1424 3.20455 12C3.20455 16.8576 7.1424 20.7955 12 20.7955C16.8576 20.7955 20.7955 16.8576 20.7955 12C20.7955 11.4603 21.233 11.0227 21.7727 11.0227C22.3125 11.0227 22.75 11.4603 22.75 12C22.75 17.9371 17.9371 22.75 12 22.75C6.06294 22.75 1.25 17.9371 1.25 12C1.25 6.06294 6.06294 1.25 12 1.25C12.5397 1.25 12.9773 1.68754 12.9773 2.22727C12.9773 2.76701 12.5397 3.20455 12 3.20455Z\" fill=\"white\"></path>\n</svg>"
+          }
+        },
+        "category_MKq3ed": {
+          "type": "category",
+          "settings": {
+            "collection": "all",
+            "title": "Operations & Purchasing",
+            "svg_icon": "<svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M15 15C15 15.8284 15.6716 16.5 16.5 16.5C17.3284 16.5 18 15.8284 18 15C18 14.1716 17.3284 13.5 16.5 13.5C15.6716 13.5 15 14.1716 15 15Z\" stroke=\"white\" stroke-width=\"1.5\"></path>\n<path d=\"M15.0038 7.80281C9.57619 7.42671 5.1047 6.62133 3 6V15.0614C3 17.0558 3 18.0531 3.61958 18.8663C4.23916 19.6796 5.08923 19.9093 6.78937 20.3687C9.53623 21.1109 12.4235 21.553 15.0106 21.8058C17.6919 22.0677 19.0325 22.1987 20.0163 21.2998C21 20.4008 21 18.9566 21 16.0683V14.0546C21 11.2497 21 9.8473 20.1929 8.97688C19.3859 8.10646 17.9252 8.00525 15.0038 7.80281Z\" stroke=\"white\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n<path d=\"M17.6258 8C18.0035 6.57673 18.3453 3.98822 17.327 2.70292C16.6816 1.88827 15.7223 1.96654 14.7818 2.04926C9.83791 2.48406 6.34544 3.36731 4.39301 3.96737C3.55348 4.2254 3 5.04522 3 5.96044\" stroke=\"white\" stroke-width=\"1.5\" stroke-linejoin=\"round\"></path>\n</svg>"
+          }
+        },
+        "category_L6FTwd": {
+          "type": "category",
+          "settings": {
+            "collection": "all",
+            "title": "Media, Arts & Creative Skills",
+            "svg_icon": "<svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M9.77907 3.35212C10.3428 2.74898 10.6246 2.44741 10.9257 2.27941C11.5935 1.90686 12.4065 1.90686 13.0743 2.27941C13.3754 2.44741 13.6572 2.74898 14.2209 3.35212C14.8996 4.07828 15.5834 4.34707 16.5445 4.31459C17.3696 4.2867 17.7822 4.27276 18.1139 4.36689C18.8495 4.57561 19.4244 5.15054 19.6331 5.88612C19.7272 6.21784 19.7133 6.63038 19.6854 7.45546C19.6518 8.44883 19.9453 9.12242 20.6479 9.77907C21.251 10.3428 21.5526 10.6246 21.7206 10.9257C22.0931 11.5935 22.0931 12.4065 21.7206 13.0743C21.5526 13.3754 21.251 13.6572 20.6479 14.2209C19.9217 14.8996 19.6529 15.5834 19.6854 16.5445C19.7133 17.3696 19.7272 17.7822 19.6331 18.1139C19.4244 18.8495 18.8495 19.4244 18.1139 19.6331C17.7822 19.7272 17.3696 19.7133 16.5445 19.6854C15.5834 19.6529 14.8996 19.9217 14.2209 20.6479C13.6572 21.251 13.3754 21.5526 13.0743 21.7206C12.4065 22.0931 11.5935 22.0931 10.9257 21.7206C10.6246 21.5526 10.3428 21.251 9.77907 20.6479C9.12242 19.9453 8.44883 19.6518 7.45546 19.6854C6.63038 19.7133 6.21784 19.7272 5.88612 19.6331C5.15054 19.4244 4.57561 18.8495 4.36689 18.1139C4.27276 17.7822 4.2867 17.3696 4.31459 16.5445C4.34707 15.5834 4.07828 14.8996 3.35212 14.2209C2.74898 13.6572 2.44741 13.3754 2.27941 13.0743C1.90686 12.4065 1.90686 11.5935 2.27941 10.9257C2.44741 10.6246 2.74898 10.3428 3.35212 9.77907C4.07828 9.10038 4.34707 8.41658 4.31459 7.45546C4.2867 6.63038 4.27276 6.21784 4.36689 5.88612C4.57561 5.15054 5.15054 4.57561 5.88612 4.36689C7.32838 3.95764 8.57898 4.63615 9.77907 3.35212Z\" stroke=\"white\" stroke-width=\"1.5\"></path>\n</svg>"
+          }
+        },
+        "category_e7YqrT": {
+          "type": "category",
+          "settings": {
+            "collection": "all",
+            "title": "Secretarial, PA & Office Skills",
+            "svg_icon": "<svg width=\"25\" height=\"24\" viewbox=\"0 0 25 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M7.07757 15.4816C5.6628 16.324 1.95336 18.0441 4.21266 20.1966C5.31631 21.248 6.54549 22 8.09087 22H16.9091C18.4545 22 19.6837 21.248 20.7873 20.1966C23.0466 18.0441 19.3372 16.324 17.9224 15.4816C14.6048 13.5061 10.3952 13.5061 7.07757 15.4816Z\" stroke=\"white\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n<path d=\"M17 6.5C17 8.98528 14.9853 11 12.5 11C10.0147 11 8 8.98528 8 6.5C8 4.01472 10.0147 2 12.5 2C14.9853 2 17 4.01472 17 6.5Z\" stroke=\"white\" stroke-width=\"1.5\"></path>\n</svg>"
+          }
+        },
+        "category_4AaiQn": {
+          "type": "category",
+          "settings": {
+            "collection": "all",
+            "title": "Sports, Fitness & Animal Care",
+            "svg_icon": "<svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M11.8614 19.224L20.8481 3.72126C21.1689 3.16783 20.9654 2.47169 20.3905 2.15561C19.8259 1.8452 19.1047 2.01295 18.754 2.53628L8.61227 17.6689C8.23552 18.2311 7.46084 18.4113 6.85433 18.0778C6.04998 17.6356 6.17032 16.8476 6.44582 16.1473C6.70887 15.4787 6.42574 14.727 5.77639 14.37C4.91469 13.8963 4.03029 14.3288 3.57111 15.0861C2.25235 17.2611 3.35339 20.3548 5.48365 21.526C7.75091 22.7724 10.5962 21.4065 11.8614 19.224Z\" stroke=\"white\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n<circle cx=\"18.5\" cy=\"19.5\" r=\"2.5\" stroke=\"white\" stroke-width=\"1.5\" stroke-linejoin=\"round\"></circle>\n<path d=\"M16 7L18 8.5\" stroke=\"white\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n</svg>"
+          }
+        },
+        "category_RzPDR6": {
+          "type": "category",
+          "settings": {
+            "collection": "all",
+            "title": "Fashion & Beauty",
+            "svg_icon": "<svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M17.0032 2.55556L14.5016 2C14.0013 3 13.0006 3.5 12 3.5C10.9994 3.5 9.99871 3 9.49839 2L6.99678 2.55556M17.0032 2.55556L17.4345 2.65134C18.442 2.87509 19.3482 3.4731 19.7132 4.43787C20.3752 6.18796 20.9185 8.98395 20.9962 12.9991C21.0053 13.4665 21.0098 13.7002 20.8627 13.8501C20.7156 14 20.4788 14 20.0052 14H17.966M17.0032 2.55556C17.0032 4.86557 17.2187 8.87061 17.966 14M17.966 14C18.1099 14.9879 18.3937 16.6177 18.6283 17.9295C18.8053 18.9196 18.8938 19.4146 18.5583 20.0311C18.2227 20.6476 17.8839 20.7899 17.2062 21.0744C16.0771 21.5484 14.3775 22 12 22C9.62254 22 7.92293 21.5484 6.79378 21.0744C6.11609 20.7899 5.77725 20.6476 5.44171 20.0311C5.10617 19.4146 5.19469 18.9196 5.37173 17.9295C5.60631 16.6177 5.89007 14.9879 6.034 14M6.99678 2.55556L6.56545 2.65134C5.55795 2.87509 4.6518 3.4731 4.28683 4.43787C3.62477 6.18796 3.08153 8.98395 3.00375 12.9991C2.9947 13.4665 2.99017 13.7002 3.13728 13.8501C3.28438 14 3.5212 14 3.99484 14H6.034M6.99678 2.55556C6.99678 4.86557 6.78127 8.87061 6.034 14\" stroke=\"white\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n<path d=\"M14.031 3C13.884 6.47826 14.1192 13.7478 18 15M9.96919 3C10.1162 6.47826 9.88048 13.7478 6 15\" stroke=\"white\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n</svg>"
+          }
+        },
+        "category_zMDcqW": {
+          "type": "category",
+          "settings": {
+            "collection": "all",
+            "title": "Teaching & Childcare",
+            "svg_icon": "<svg width=\"25\" height=\"24\" viewbox=\"0 0 25 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M13.5 15C11.2083 21 4.79167 15 2.5 21\" stroke=\"white\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n<path d=\"M16 15H17.5013C19.8583 15 21.0368 15 21.7691 14.2678C22.5013 13.5355 22.5013 12.357 22.5013 10V8C22.5013 5.64298 22.5013 4.46447 21.7691 3.73223C21.0368 3 19.8583 3 17.5013 3L13.5013 3C11.1443 3 9.96576 3 9.23353 3.73223C8.61312 4.35264 8.51838 5.29344 8.50391 7\" stroke=\"white\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n<circle cx=\"8\" cy=\"12.5\" r=\"2.5\" stroke=\"white\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></circle>\n<path d=\"M12.5 7L18.5 7M18.5 11L15.5 11\" stroke=\"white\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n</svg>"
+          }
+        },
+        "category_tRX7rt": {
+          "type": "category",
+          "settings": {
+            "collection": "all",
+            "title": "Accounting & Finance",
+            "svg_icon": "<svg width=\"25\" height=\"24\" viewbox=\"0 0 25 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M14.5 18.5C14.5 18.5 15.5 18.5 16.5 20.5C16.5 20.5 19.6765 15.5 22.5 14.5\" stroke=\"white\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n<path d=\"M6 11.5H5.99102\" stroke=\"white\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n<path d=\"M11.5 19.5H11C7.24142 19.5 5.36213 19.5 4.10746 18.5091C3.90678 18.3506 3.72119 18.176 3.5528 17.9871C2.5 16.8062 2.5 15.0375 2.5 11.5C2.5 7.96252 2.5 6.19377 3.5528 5.0129C3.72119 4.82403 3.90678 4.64935 4.10746 4.49087C5.36213 3.5 7.24142 3.5 11 3.5H14C17.7586 3.5 19.6379 3.5 20.8925 4.49087C21.0932 4.64935 21.2788 4.82403 21.4472 5.0129C22.3957 6.07684 22.4897 7.61799 22.499 10.5V11\" stroke=\"white\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n<path d=\"M15 11.5C15 12.8807 13.8807 14 12.5 14C11.1193 14 10 12.8807 10 11.5C10 10.1193 11.1193 9 12.5 9C13.8807 9 15 10.1193 15 11.5Z\" stroke=\"white\" stroke-width=\"1.5\"></path>\n</svg>"
           }
         }
       },
@@ -89,7 +369,19 @@
         "category_dKGtpc",
         "category_BABzMN",
         "category_AGCUb6",
-        "category_TK3UQd"
+        "category_TK3UQd",
+        "category_Wa3LFT",
+        "category_ByNU4F",
+        "category_9ridW9",
+        "category_hwAy9M",
+        "category_7V9hHF",
+        "category_MKq3ed",
+        "category_L6FTwd",
+        "category_e7YqrT",
+        "category_4AaiQn",
+        "category_RzPDR6",
+        "category_zMDcqW",
+        "category_tRX7rt"
       ],
       "name": "CD Category Grid",
       "settings": {
@@ -98,13 +390,55 @@
         "columns_tablet": 3,
         "columns_mobile": 1,
         "background_color": "#000000",
-        "text_color": "#FFFFFF",
-        "border_color": "#D9D9D9"
+        "text_color": "#ffffff",
+        "border_color": "#d9d9d9"
+      }
+    },
+    "cd_flex_flip_sec_H4mMM6": {
+      "type": "cd-flex-flip-sec",
+      "name": "CD Flex Flip Section",
+      "settings": {
+        "title": "Gift vouchers",
+        "description": "Reed Courses gift vouchers are the perfect option for anyone looking to treat their friends, family or colleagues to a brand new learning opportunity.",
+        "button_text": "Buy gift vouchers",
+        "button_link": "",
+        "image": "shopify://shop_images/Frame_1000006251.png",
+        "background_color": "#e9faf1",
+        "padding_top_desktop": 160,
+        "padding_bottom_desktop": 80,
+        "flex_direction": "row",
+        "padding_top_mobile": 64,
+        "padding_bottom_mobile": 32
+      }
+    },
+    "cd_flex_flip_sec_ELN6LG": {
+      "type": "cd-flex-flip-sec",
+      "name": "CD Flex Flip Section",
+      "settings": {
+        "title": "Advertise your course with us",
+        "description": "Reach over 10 million potential students.",
+        "button_text": "Read More",
+        "button_link": "",
+        "image": "shopify://shop_images/Frame_1000006253.png",
+        "background_color": "#e9faf1",
+        "padding_top_desktop": 80,
+        "padding_bottom_desktop": 160,
+        "flex_direction": "row",
+        "padding_top_mobile": 32,
+        "padding_bottom_mobile": 64
       }
     }
   },
   "order": [
+    "cd_homepage_hero_Unxi9Q",
     "cd_about_site_features_a6yjiQ",
-    "cd_category_section_home_fTQMkK"
+    "cd_course_slider_8AtCt7",
+    "cd_course_slider_iJLy7h",
+    "cd_courses_with_extra_UDGR4g",
+    "cd_inspiration_sec_RBDfJM",
+    "cd_certification_sec_bhwtVh",
+    "cd_category_section_home_fTQMkK",
+    "cd_flex_flip_sec_H4mMM6",
+    "cd_flex_flip_sec_ELN6LG"
   ]
 }

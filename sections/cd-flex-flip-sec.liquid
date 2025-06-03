@@ -1,0 +1,280 @@
+{% schema %}
+{
+  "name": "CD Flex Flip Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Gift vouchers"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Section Description",
+      "default": "Reed Courses gift vouchers are the perfect option for anyone looking to treat their friends, family or colleagues to a brand new learning opportunity."
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Buy gift vouchers"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Section Image"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#e9faf1"
+    },
+    {
+      "type": "header",
+      "content": "Desktop Settings"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "label": "Top Padding",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "label": "Bottom Padding",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 100
+    },
+    {
+      "type": "select",
+      "id": "flex_direction",
+      "label": "Content Layout",
+      "options": [
+        {
+          "value": "row",
+          "label": "Image Left, Content Right"
+        },
+        {
+          "value": "row-reverse",
+          "label": "Image Right, Content Left"
+        }
+      ],
+      "default": "row"
+    },
+    {
+      "type": "header",
+      "content": "Mobile Settings"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Top Padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Bottom Padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 60
+    }
+  ],
+  "presets": [
+    {
+      "name": "CD Flex Flip - Image Left",
+      "category": "Custom Sections",
+      "settings": {
+        "flex_direction": "row",
+        "background_color": "#e9faf1",
+        "title": "Gift vouchers",
+        "description": "Reed Courses gift vouchers are the perfect option for anyone looking to treat their friends, family or colleagues to a brand new learning opportunity.",
+        "button_text": "Buy gift vouchers"
+      }
+    },
+    {
+      "name": "CD Flex Flip - Image Right",
+      "category": "Custom Sections",
+      "settings": {
+        "flex_direction": "row-reverse",
+        "background_color": "#F5F5F5",
+        "title": "Course Categories",
+        "description": "Browse through our extensive range of course categories to find the perfect learning path for you.",
+        "button_text": "Explore Categories"
+      }
+    }
+  ]
+}
+{% endschema %}
+
+<!-- ================================
+             Flex Flip Section
+             ================================ -->
+<section class="rh-flex-flip-sec">
+  <div class="rh-flex-flip-container">
+    <div class="rh-flex-flip-image">
+      {% if section.settings.image %}
+        <img src="{{ section.settings.image | img_url: 'master' }}" alt="{{ section.settings.title }} illustration" />
+      {% else %}
+        <img src="./Frame 1000006251.png" alt="Gift voucher illustration" />
+      {% endif %}
+    </div>
+    <div class="rh-flex-flip-content">
+      <div class="rh-flex-flip-text">
+        <div class="rh-flex-flip-title">{{ section.settings.title }}</div>
+        <div class="rh-flex-flip-description">{{ section.settings.description }}</div>
+      </div>
+      {% if section.settings.button_text %}
+        <div class="rh-flex-flip-button">
+          <a href="{{ section.settings.button_link }}">
+            <span>{{ section.settings.button_text }}</span>
+          </a>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% style %}
+/* ================================
+Flex Flip Section
+================================ */
+.rh-flex-flip-sec {
+  width: 100%;
+  background: {{ section.settings.background_color }};
+  padding: {{ section.settings.padding_top_desktop }}px 20px {{ section.settings.padding_bottom_desktop }}px;
+  transition: all 0.3s ease;
+}
+
+.rh-flex-flip-sec .rh-flex-flip-container {
+  max-width: 1540px;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(40px, 5vw, 297px);
+  flex-direction: {{ section.settings.flex_direction }};
+  transition: flex-direction 0.3s ease;
+}
+
+.rh-flex-flip-sec .rh-flex-flip-content {
+  width: 100%;
+  max-width: 490px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.rh-flex-flip-sec .rh-flex-flip-text {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.rh-flex-flip-sec .rh-flex-flip-title {
+  font-size: clamp(28px, 3vw, 36px);
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  line-height: 1.4;
+  color: black;
+}
+
+.rh-flex-flip-sec .rh-flex-flip-description {
+  font-size: clamp(16px, 1.5vw, 20px);
+  font-family: "Inter", sans-serif;
+  font-weight: 300;
+  line-height: 1.4;
+  color: black;
+}
+
+.rh-flex-flip-sec .rh-flex-flip-button {
+  display: inline-flex;
+  padding: 12px 24px;
+  border-radius: 8px;
+  outline: 1px solid black;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: fit-content;
+  background: transparent;
+}
+
+.rh-flex-flip-sec .rh-flex-flip-button:hover {
+  background: #f5f5f5;
+  outline-color: #6C47FF;
+}
+
+.rh-flex-flip-sec .rh-flex-flip-button a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.rh-flex-flip-sec .rh-flex-flip-button span {
+  font-size: 20px;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  line-height: 28px;
+  color: black;
+  text-align: center;
+}
+
+.rh-flex-flip-sec .rh-flex-flip-image {
+  width: 100%;
+  max-width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.rh-flex-flip-sec .rh-flex-flip-image img {
+  max-width: 100%;
+  height: auto;
+}
+
+@media screen and (max-width: 768px) {
+  .rh-flex-flip-sec {
+    padding: {{ section.settings.padding_top_mobile }}px 20px {{ section.settings.padding_bottom_mobile }}px;
+  }
+
+  .rh-flex-flip-sec .rh-flex-flip-container {
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .rh-flex-flip-sec .rh-flex-flip-content {
+    max-width: 100%;
+    text-align: center;
+    align-items: center;
+  }
+
+  .rh-flex-flip-sec .rh-flex-flip-text {
+    align-items: center;
+  }
+
+  .rh-flex-flip-sec .rh-flex-flip-image {
+    max-width: 100%;
+    order: -1;
+  }
+}
+{% endstyle %} 

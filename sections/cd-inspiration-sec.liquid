@@ -1,0 +1,300 @@
+{% schema %}
+{
+  "name": "CD Inspiration Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Looking for inspiration?"
+    },
+    {
+      "type": "header",
+      "content": "Card Settings"
+    },
+    {
+      "type": "text",
+      "id": "university_title",
+      "label": "University Card Title",
+      "default": "University courses"
+    },
+    {
+      "type": "url",
+      "id": "university_link",
+      "label": "University Card Link"
+    },
+    {
+      "type": "color",
+      "id": "university_bg",
+      "label": "University Card Background",
+      "default": "#00a6e8"
+    },
+    {
+      "type": "text",
+      "id": "free_title",
+      "label": "Free Courses Card Title",
+      "default": "Free courses"
+    },
+    {
+      "type": "url",
+      "id": "free_link",
+      "label": "Free Courses Card Link"
+    },
+    {
+      "type": "color",
+      "id": "free_bg",
+      "label": "Free Courses Card Background",
+      "default": "#21b967"
+    },
+    {
+      "type": "text",
+      "id": "discount_title",
+      "label": "Discount Card Title",
+      "default": "Discount courses"
+    },
+    {
+      "type": "url",
+      "id": "discount_link",
+      "label": "Discount Card Link"
+    },
+    {
+      "type": "color",
+      "id": "discount_bg",
+      "label": "Discount Card Background",
+      "default": "#fadca2"
+    },
+    {
+      "type": "text",
+      "id": "career_title",
+      "label": "Career Card Title",
+      "default": "Career guides"
+    },
+    {
+      "type": "url",
+      "id": "career_link",
+      "label": "Career Card Link"
+    },
+    {
+      "type": "color",
+      "id": "career_bg",
+      "label": "Career Card Background",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 40,
+      "max": 150,
+      "step": 10,
+      "unit": "px",
+      "label": "Top Padding",
+      "default": 120
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 40,
+      "max": 150,
+      "step": 10,
+      "unit": "px",
+      "label": "Bottom Padding",
+      "default": 120
+    }
+  ],
+  "presets": [
+    {
+      "name": "CD Inspiration Section",
+      "category": "Content Sections"
+    }
+  ]
+}
+{% endschema %}
+
+<!-- ================================
+             Inspiration Section
+             ================================ -->
+             <section class="rh-inspiration-sec">
+                <div class="rh-inspiration-container">
+                  <div class="rh-inspiration-title">{{ section.settings.title }}</div>
+                  <div class="rh-content-container">
+                    <div class="rh-row">
+                      <a href="{{ section.settings.university_link }}" class="rh-card rh-card-university">
+                        <div class="rh-card-text">{{ section.settings.university_title }}</div>
+                      </a>
+                      <div class="rh-image">
+                        <svg
+                          width="120"
+                          height="120"
+                          viewBox="0 0 120 120"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <rect width="120" height="120" rx="5" fill="#045481" />
+                          <path
+                            d="M0 0C66.2742 0 120 53.7258 120 120H0V0Z"
+                            fill="#BA8E01"
+                          />
+                          <path
+                            d="M0 60C33.1371 60 60 86.8629 60 120H0V60Z"
+                            fill="#045481"
+                          />
+                        </svg>
+                      </div>
+                      <a href="{{ section.settings.free_link }}" class="rh-card rh-card-free">
+                        <div class="rh-card-text">{{ section.settings.free_title }}</div>
+                      </a>
+                    </div>
+                    <div class="rh-row">
+                      <a href="{{ section.settings.discount_link }}" class="rh-card rh-card-discount">
+                        <div class="rh-card-text">{{ section.settings.discount_title }}</div>
+                      </a>
+                      <div class="rh-image">
+                        <svg
+                          width="120"
+                          height="120"
+                          viewBox="0 0 120 120"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M60 120C26.8629 120 2.34843e-06 93.1371 5.24537e-06 60L60 60L60 120Z"
+                            fill="#FF7237"
+                          />
+                          <path
+                            d="M0 -5.24537e-06C33.1371 -2.34843e-06 60 26.8629 60 60L-5.24537e-06 60L0 -5.24537e-06Z"
+                            fill="#FF00E6"
+                          />
+                          <path
+                            d="M120 5.24537e-06C86.8629 2.34843e-06 60 26.8629 60 60L120 60L120 5.24537e-06Z"
+                            fill="#FFC700"
+                          />
+                          <path
+                            d="M60 120C93.1371 120 120 93.1371 120 60L60 60L60 120Z"
+                            fill="#FF00E6"
+                          />
+                        </svg>
+                      </div>
+                      <a href="{{ section.settings.career_link }}" class="rh-card rh-card-career">
+                        <div class="rh-card-text">{{ section.settings.career_title }}</div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+{% style %}
+.rh-inspiration-sec {
+  width: 100%;
+  padding: {{ section.settings.padding_top }}px 20px {{ section.settings.padding_bottom }}px;
+}
+
+.rh-inspiration-container {
+  max-width: 1525px;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: clamp(24px, 3vw, 40px);
+}
+
+.rh-inspiration-container .rh-inspiration-title {
+  align-self: stretch;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  color: black;
+  font-size: clamp(28px, 2.5vw, 36px);
+  font-family: "Inter", sans-sherif;
+  font-weight: 400;
+  line-height: 1.4;
+  word-wrap: break-word;
+}
+
+.rh-inspiration-container .rh-content-container {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: clamp(16px, 2vw, 24px);
+  width: 100%;
+}
+
+.rh-inspiration-container .rh-row {
+  align-self: stretch;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: clamp(16px, 2vw, 24px);
+  width: 100%;
+}
+
+.rh-inspiration-container .rh-card {
+  padding: clamp(24px, 2.5vw, 40px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 100px;
+  text-decoration: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.rh-inspiration-container .rh-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.rh-inspiration-container .rh-card-text {
+  color: black;
+  font-size: clamp(32px, 5vw, 76px);
+  font-family: "Inter", sans-sherif;
+  font-weight: 400;
+  line-height: 1.15;
+  word-wrap: break-word;
+}
+
+.rh-inspiration-container .rh-card-university {
+  background: {{ section.settings.university_bg }};
+}
+
+.rh-inspiration-container .rh-card-free {
+  background: {{ section.settings.free_bg }};
+}
+
+.rh-inspiration-container .rh-card-discount {
+  background: {{ section.settings.discount_bg }};
+}
+
+.rh-inspiration-container .rh-card-career {
+  background: {{ section.settings.career_bg }};
+  border-radius: 24px;
+}
+
+.rh-inspiration-container .rh-card-career .rh-card-text {
+  color: {% if section.settings.career_bg == '#000000' %}white{% else %}black{% endif %};
+}
+
+.rh-inspiration-container .rh-image {
+  flex-shrink: 0;
+}
+
+.rh-inspiration-container .rh-image svg {
+  width: clamp(80px, 10vw, 120px);
+  height: clamp(80px, 10vw, 120px);
+}
+
+@media screen and (max-width: 768px) {
+  .rh-inspiration-sec {
+    padding: 40px 16px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .rh-inspiration-sec {
+    padding: 32px 12px;
+  }
+}
+{% endstyle %}

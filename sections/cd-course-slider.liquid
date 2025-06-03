@@ -1,0 +1,564 @@
+{% schema %}
+{
+  "name": "CD Course Slider",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Popular with other students"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#f3ffe3"
+    },
+    {
+      "type": "select",
+      "id": "course_source",
+      "label": "Course Source",
+      "options": [
+        {
+          "value": "manual",
+          "label": "Manual Selection"
+        },
+        {
+          "value": "collection",
+          "label": "Collection"
+        }
+      ],
+      "default": "manual"
+    },
+    {
+      "type": "collection",
+      "id": "course_collection",
+      "label": "Course Collection",
+      "info": "Select a collection to display courses"
+    },
+    {
+      "type": "product_list",
+      "id": "manual_courses",
+      "label": "Manual Course Selection",
+      "limit": 10,
+      "info": "Select courses manually"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "View More"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "CD Course Slider",
+      "category": "Course"
+    }
+  ]
+}
+{% endschema %}
+<style>
+    .course-slider-home {
+      padding: 120px 20px;
+      overflow: hidden;
+    }
+
+    #shopify-section-{{ section.id }} .course-slider-home {
+      background: {{ section.settings.background_color }};
+    }
+
+    .course-slider-home .container {
+      max-width: 1540px;
+      margin: 0 auto;
+    }
+
+    .course-slider-home .section-title {
+      color: black;
+      font-size: 56px;
+      font-family: Inter, sans-serif;
+      font-weight: 400;
+      line-height: 70.4px;
+      margin-bottom: 48px;
+    }
+
+    .course-slider-home .pagination-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 32px;
+    }
+
+    .course-slider-home .swiper-pagination {
+      position: static;
+      width: auto;
+    }
+
+    .course-slider-home .swiper-pagination-fraction {
+      color: black;
+      font-size: 20px;
+      font-family: Inter, sans-serif;
+      font-weight: 400;
+      line-height: 28px;
+    }
+
+    .course-slider-home .pagination-controls {
+      display: flex;
+      gap: 12px;
+    }
+
+    .course-slider-home .pagination-button {
+      width: 48px;
+      height: 48px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 24px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      background: none;
+      border: none;
+      padding: 0;
+    }
+
+    .course-slider-home .pagination-button.prev {
+      padding: 1px;
+      border: 1px solid #d9d9d9;
+    }
+
+    .course-slider-home .pagination-button.next {
+      border: 1px solid #d9d9d9;
+    }
+
+    .course-slider-home .pagination-button:hover {
+      background: #f0f0f0;
+      border: 1px solid #f0f0f0;
+    }
+
+    .course-slider-home .pagination-button.swiper-button-disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .course-slider-home .slider-container {
+      position: relative;
+      margin: 0;
+      padding: 0;
+      /* overflow: hidden; */
+    }
+
+    .course-slider-home .swiper {
+      overflow: visible;
+      /* padding-left: 20px; */
+      margin-right: -20px;
+    }
+
+    .course-slider-home .swiper-slide {
+      width: auto;
+    }
+
+    .course-slider-home .course-card {
+      /* min-width: 490px; */
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      text-decoration: none;
+    }
+
+    .course-slider-home .course-image {
+      width: 100%;
+      height: 294px;
+      position: relative;
+      background: white;
+      overflow: hidden;
+      border-radius: 8px;
+      border: 1px solid #f0f0f0;
+    }
+
+    .course-slider-home .course-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .course-slider-home .course-content {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .course-slider-home .course-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .course-slider-home .course-title {
+      max-width: 256px;
+      color: black;
+      font-size: 14px;
+      font-family: Inter, sans-serif;
+      font-weight: 500;
+      line-height: 20px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      height: 40px;
+    }
+
+    .course-slider-home .course-stats {
+      display: flex;
+      gap: 12px;
+      white-space: nowrap;
+      flex-wrap: wrap;
+    }
+
+    .course-slider-home .stat-item {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .course-slider-home .stat-icon {
+      width: 16px;
+      height: 16px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .course-slider-home .stat-icon svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .course-slider-home .stat-text {
+      color: #454545;
+      font-size: 12px;
+      font-family: Inter, sans-serif;
+      font-weight: 400;
+      line-height: 18px;
+    }
+
+    .course-slider-home .course-meta {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .course-slider-home .meta-item {
+      color: #454545;
+      font-size: 12px;
+      font-family: Inter, sans-serif;
+      font-weight: 400;
+      line-height: 18px;
+    }
+  a.course-btn-primary {
+      font-family: Inter;
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 28px;
+      letter-spacing: -0.1px;
+      text-align: center;
+      text-decoration: underline;
+      text-decoration-style: solid;
+      text-decoration-offset: 0%;
+      text-decoration-thickness: 0%;
+      color: #000;
+      text-align: center;
+      align-self: center;
+      width: fit-content;
+      display: block;
+      margin: 32px auto 0;
+  }
+    .course-slider-home .meta-dot {
+      width: 3px;
+      height: 3px;
+      background: #454545;
+      border-radius: 9999px;
+    }
+
+    @media (max-width: 1280px) {
+      .course-slider-home .course-card {
+        /* min-width: 400px; */
+      }
+    }
+
+    @media (max-width: 768px) {
+      .course-slider-home {
+        padding: 60px 20px;
+      }
+      .course-slider-home .swiper {
+        margin-right: 0;
+      }
+      .course-slider-home .section-title {
+        font-size: 40px;
+        line-height: 50px;
+      }
+
+      .course-slider-home .course-card {
+        /* min-width: 300px; */
+      }
+      .course-slider-home .course-header {
+        flex-direction: column;
+        gap: 10px;
+      }
+      /* .course-slider-home .meta-dot{
+              display: none;
+          } */
+      .course-slider-home .course-meta {
+        flex-wrap: wrap;
+      }
+    }
+</style>
+<section class="course-slider-home">
+  <div class="container">
+    <h2 class="section-title">{{ section.settings.title }}</h2>
+
+    <div class="pagination-wrapper">
+      <div class="pagination">
+        <div class="swiper-pagination"></div>
+      </div>
+      <div class="pagination-controls">
+        <button class="pagination-button prev">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M15.304 5.66663L5.33337 16L15.304 26.3333L16.2814 25.388L7.88004 16.68H26.6667V15.32H7.88004L16.2814 6.61196L15.304 5.66663Z" fill="black"/>
+          </svg>
+        </button>
+        <button class="pagination-button next">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M16.696 5.66663L26.6667 16L16.696 26.3333L15.7187 25.388L24.1214 16.68H5.33337V15.32H24.12L15.72 6.61196L16.696 5.66663Z" fill="black"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="slider-container">
+      <div class="swiper course-slider">
+        <div class="swiper-wrapper">
+          {% if section.settings.course_source == 'manual' %}
+            {% for product in section.settings.manual_courses %}
+              <div class="swiper-slide">
+                <a href="{{ product.url }}" class="course-card">
+                  <div class="course-image">
+                    <img
+                      src="{{ product.featured_image | img_url: '490x294', crop: 'center' }}"
+                      alt="{{ product.title }}"
+                    >
+                  </div>
+                  <div class="course-content">
+                    <div class="course-header">
+                      <div class="course-title">{{ product.title }}</div>
+                      <div class="course-stats">
+                        <div class="stat-item">
+                          <div class="stat-icon">
+                            <svg
+                              width="16"
+                              height="16"
+                              viewBox="0 0 16 16"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path d="M2 14.6666H14C14 11.7211 11.3137 9.33325 8 9.33325C4.68629 9.33325 2 11.7211 2 14.6666Z" stroke="#454545" stroke-width="1.2"/>
+                              <path d="M11 4.33325C11 5.99011 9.65685 7.33325 8 7.33325C6.34315 7.33325 5 5.99011 5 4.33325C5 2.6764 6.34315 1.33325 8 1.33325C9.65685 1.33325 11 2.6764 11 4.33325Z" stroke="#454545" stroke-width="1.2"/>
+                            </svg>
+                          </div>
+                          <div class="stat-text">
+                            {{ product.metafields.custom.student_count | default: '0' }} enquiries
+                          </div>
+                        </div>
+                        <div class="stat-item">
+                          <div class="stat-icon">
+                            <svg
+                              width="16"
+                              height="16"
+                              viewBox="0 0 16 16"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path d="M5.33337 14H10.6667M8.00004 11.3333V14M2.66671 2H13.3334C14.0698 2 14.6667 2.59695 14.6667 3.33333V10C14.6667 10.7364 14.0698 11.3333 13.3334 11.3333H2.66671C1.93033 11.3333 1.33337 10.7364 1.33337 10V3.33333C1.33337 2.59695 1.93033 2 2.66671 2Z" stroke="#454545" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                          </div>
+                          <div class="stat-text">{{ product.metafields.custom.course_type | default: 'Online' }}</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="course-meta">
+                      <div class="meta-item">
+                        by {{ product.metafields.custom.vendor_name | default: product.vendor }}
+                      </div>
+                      <div class="meta-dot"></div>
+                      <div class="meta-item">{{ product.metafields.custom.course_duration | default: '7 weeks' }}</div>
+                      <div class="meta-dot"></div>
+                      <div class="meta-item">
+                        {{ product.metafields.custom.learning_period | default: 'Self-paced' }}
+                      </div>
+                      <div class="meta-dot"></div>
+                      <div class="meta-item meta-price">
+                        {% if product.price == 0 %}
+                          Free
+                        {% else %}
+                          {% if product.compare_at_price > product.price %}
+                            Save
+                            {{
+                              product.compare_at_price
+                              | minus: product.price
+                              | times: 100.0
+                              | divided_by: product.compare_at_price
+                              | round
+                            -}}
+                            %
+                            <del>{{ product.compare_at_price | money }}</del>
+                          {% endif %}
+                          {{ product.price | money }}
+                        {% endif %}
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            {% endfor %}
+          {% else %}
+            {% for product in section.settings.course_collection.products %}
+              <div class="swiper-slide">
+                <a href="{{ product.url }}" class="course-card">
+                  <div class="course-image">
+                    <img
+                      src="{{ product.featured_image | img_url: '490x294', crop: 'center' }}"
+                      alt="{{ product.title }}"
+                    >
+                  </div>
+                  <div class="course-content">
+                    <div class="course-header">
+                      <div class="course-title">{{ product.title }}</div>
+                      <div class="course-stats">
+                        <div class="stat-item">
+                          <div class="stat-icon">
+                            <svg
+                              width="16"
+                              height="16"
+                              viewBox="0 0 16 16"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path d="M2 14.6666H14C14 11.7211 11.3137 9.33325 8 9.33325C4.68629 9.33325 2 11.7211 2 14.6666Z" stroke="#454545" stroke-width="1.2"/>
+                              <path d="M11 4.33325C11 5.99011 9.65685 7.33325 8 7.33325C6.34315 7.33325 5 5.99011 5 4.33325C5 2.6764 6.34315 1.33325 8 1.33325C9.65685 1.33325 11 2.6764 11 4.33325Z" stroke="#454545" stroke-width="1.2"/>
+                            </svg>
+                          </div>
+                          <div class="stat-text">
+                            {{ product.metafields.custom.student_count | default: '0' }} enquiries
+                          </div>
+                        </div>
+                        <div class="stat-item">
+                          <div class="stat-icon">
+                            <svg
+                              width="16"
+                              height="16"
+                              viewBox="0 0 16 16"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path d="M5.33337 14H10.6667M8.00004 11.3333V14M2.66671 2H13.3334C14.0698 2 14.6667 2.59695 14.6667 3.33333V10C14.6667 10.7364 14.0698 11.3333 13.3334 11.3333H2.66671C1.93033 11.3333 1.33337 10.7364 1.33337 10V3.33333C1.33337 2.59695 1.93033 2 2.66671 2Z" stroke="#454545" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                          </div>
+                          <div class="stat-text">{{ product.metafields.custom.course_type | default: 'Online' }}</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="course-meta">
+                      <div class="meta-item">
+                        by {{ product.metafields.custom.vendor_name | default: product.vendor }}
+                      </div>
+                      <div class="meta-dot"></div>
+                      <div class="meta-item">{{ product.metafields.custom.course_duration | default: '7 weeks' }}</div>
+                      <div class="meta-dot"></div>
+                      <div class="meta-item">
+                        {{ product.metafields.custom.learning_period | default: 'Self-paced' }}
+                      </div>
+                      <div class="meta-dot"></div>
+                      <div class="meta-item meta-price">
+                        {% if product.price == 0 %}
+                          Free
+                        {% else %}
+                          {% if product.compare_at_price > product.price %}
+                            Save
+                            {{
+                              product.compare_at_price
+                              | minus: product.price
+                              | times: 100.0
+                              | divided_by: product.compare_at_price
+                              | round
+                            -}}
+                            %
+                            <del>{{ product.compare_at_price | money }}</del>
+                          {% endif %}
+                          {{ product.price | money }}
+                        {% endif %}
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            {% endfor %}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    {% if section.settings.button_link != blank %}
+      <a href="{{ section.settings.button_link }}" class="course-btn-primary">{{ section.settings.button_text }}</a>
+    {% endif %}
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const sections = document.querySelectorAll('.course-slider-home');
+
+    sections.forEach((section, index) => {
+      const swiperContainer = section.querySelector('.course-slider');
+      const pagination = section.querySelector('.swiper-pagination');
+      const nextButton = section.querySelector('.pagination-button.next');
+      const prevButton = section.querySelector('.pagination-button.prev');
+
+      new Swiper(swiperContainer, {
+        slidesPerView: 'auto',
+        spaceBetween: 32,
+        pagination: {
+          el: pagination,
+          type: 'fraction',
+        },
+        navigation: {
+          nextEl: nextButton,
+          prevEl: prevButton,
+        },
+        breakpoints: {
+          320: {
+            slidesPerView: 1,
+            spaceBetween: 20,
+          },
+          768: {
+            slidesPerView: 2,
+            spaceBetween: 24,
+          },
+          1024: {
+            slidesPerView: 3,
+            spaceBetween: 32,
+          },
+          1280: {
+            slidesPerView: 3,
+            spaceBetween: 32,
+          },
+        },
+      });
+    });
+  });
+</script>

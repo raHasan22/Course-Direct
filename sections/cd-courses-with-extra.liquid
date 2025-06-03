@@ -1,0 +1,234 @@
+{% schema %}
+{
+  "name": "CD Courses with Extras",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Courses with added extras"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#FFF2DF"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "min": 2,
+      "max": 6,
+      "step": 1,
+      "label": "Number of columns on desktop",
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "columns_tablet",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "label": "Number of columns on tablet",
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "min": 16,
+      "max": 48,
+      "step": 4,
+      "label": "Gap between cards",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "padding",
+      "min": 40,
+      "max": 160,
+      "step": 20,
+      "label": "Section padding",
+      "default": 120
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Card Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Card Title",
+          "default": "Card Title"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Card Description",
+          "default": "Card description goes here"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Card Link"
+        },
+        {
+          "type": "color",
+          "id": "image_background",
+          "label": "Image Background Color",
+          "default": "#8895FE"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "CD Courses with Extras",
+      "blocks": [
+        {
+          "type": "card"
+        },
+        {
+          "type": "card"
+        },
+        {
+          "type": "card"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  .course-with-added-extras {
+      padding: {{ section.settings.padding }}px 20px;
+      background-color: {{ section.settings.background_color }};
+  }
+
+  .course-with-added-extras .container {
+      max-width: 1540px;
+      margin: 0 auto;
+  }
+
+  .course-with-added-extras .section-title {
+      text-align: center;
+      color: black;
+      font-size: 56px;
+      font-family: Inter, sans-serif;
+      font-weight: 400;
+      line-height: 70.40px;
+      margin-bottom: 48px;
+    margin-top: 0;
+  }
+
+  .course-with-added-extras .card-wrapper {
+      display: grid;
+      grid-template-columns: repeat({{ section.settings.columns_desktop }}, 1fr);
+      gap: {{ section.settings.gap }}px;
+  }
+
+  .course-with-added-extras .card {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      text-decoration: none;
+  }
+
+  .course-with-added-extras .card-image {
+      position: relative;
+      background: {{ block.settings.image_background }};
+      overflow: hidden;
+      border-radius: 8px;
+      aspect-ratio: 1;
+  }
+
+  .course-with-added-extras .card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+  }
+
+  .course-with-added-extras .card-content {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+  }
+
+  .course-with-added-extras .card-title {
+      color: black;
+      font-size: 24px;
+      font-family: Inter, sans-serif;
+      font-weight: 500;
+      text-decoration: underline;
+      line-height: 35px;
+  }
+
+  .course-with-added-extras .card-description {
+      color: black;
+      font-size: 20px;
+      font-family: Inter, sans-serif;
+      font-weight: 300;
+      line-height: 28px;
+  }
+
+  @media (max-width: 1024px) {
+      .course-with-added-extras .card-wrapper {
+          grid-template-columns: repeat({{ section.settings.columns_tablet }}, 1fr);
+      }
+      .course-with-added-extras .card:last-child {
+          grid-column: 1 / -1;
+          max-width: 600px;
+          margin: 0 auto;
+      }
+  }
+
+  @media (max-width: 768px) {
+      .course-with-added-extras .card-wrapper {
+          grid-template-columns: 1fr;
+      }
+      .course-with-added-extras .card:last-child {
+          grid-column: 1;
+          max-width: 100%;
+      }
+      .course-with-added-extras .section-title {
+          font-size: 40px;
+          line-height: 50px;
+      }
+  }
+</style>
+
+<section class="course-with-added-extras">
+  <div class="container">
+    <h2 class="section-title">{{ section.settings.title }}</h2>
+    <div class="card-wrapper">
+      {% for block in section.blocks %}
+        {% if block.type == 'card' %}
+          <a href="{{ block.settings.link }}" class="card" {{ block.shopify_attributes }}>
+            <div class="card-image" style="background: {{ block.settings.image_background }}">
+              {% if block.settings.image %}
+                {{
+                  block.settings.image
+                  | image_url: width: 490
+                  | image_tag: loading: 'lazy', alt: block.settings.title
+                }}
+              {% else %}
+                {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+              {% endif %}
+            </div>
+            <div class="card-content">
+              <div class="card-title">{{ block.settings.title }}</div>
+              <div class="card-description">{{ block.settings.description }}</div>
+            </div>
+          </a>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
