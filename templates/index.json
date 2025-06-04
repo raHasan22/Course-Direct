@@ -411,14 +411,14 @@
         "padding_bottom_mobile": 32
       }
     },
-    "cd_flex_flip_sec_ELN6LG": {
+    "cd_flex_flip_sec_YaFTnL": {
       "type": "cd-flex-flip-sec",
       "name": "CD Flex Flip Section",
       "settings": {
         "title": "Advertise your course with us",
         "description": "Reach over 10 million potential students.",
         "button_text": "Read More",
-        "button_link": "",
+        "button_link": "#",
         "image": "shopify://shop_images/Frame_1000006253.png",
         "background_color": "#e9faf1",
         "padding_top_desktop": 80,
@@ -439,6 +439,6 @@
     "cd_certification_sec_bhwtVh",
     "cd_category_section_home_fTQMkK",
     "cd_flex_flip_sec_H4mMM6",
-    "cd_flex_flip_sec_ELN6LG"
+    "cd_flex_flip_sec_YaFTnL"
   ]
 }

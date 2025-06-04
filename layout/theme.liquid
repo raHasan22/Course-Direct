@@ -298,6 +298,7 @@
     </script>
     {{ 'swiper-bundle.min.css' | asset_url | stylesheet_tag }}
     {{ 'global-style.css' | asset_url | stylesheet_tag }}
+    {{ 'cd-product-card.css' | asset_url | stylesheet_tag }}
   </head>
 
   <body class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">
@@ -314,7 +315,13 @@
     <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
       {{ content_for_layout }}
     </main>
-
+    <div id="notificationModal" class="modal">
+      <div class="modal-content">
+        <span class="modal-close" onclick="closeModal()">&times;</span>
+        <h3>Success!</h3>
+        <p>Product has been added to your cart.</p>
+      </div>
+    </div>
     {% sections 'footer-group' %}
 
     <ul hidden>
@@ -375,5 +382,6 @@
       <script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
     <script src="{{ 'swiper-bundle.min.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'cd-product-card.js' | asset_url }}" defer="defer"></script>
   </body>
 </html>
