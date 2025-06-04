@@ -189,7 +189,7 @@
 }
 
 .rh-inspiration-container {
-  max-width: 1525px;
+  max-width: 1540px;
   margin: 0 auto;
   width: 100%;
   display: flex;
@@ -201,12 +201,9 @@
 
 .rh-inspiration-container .rh-inspiration-title {
   align-self: stretch;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
   color: black;
-  font-size: clamp(28px, 2.5vw, 36px);
-  font-family: "Inter", sans-sherif;
+  font-size: clamp(24px, 3vw, 36px);
+  font-family: "Inter", sans-serif;
   font-weight: 400;
   line-height: 1.4;
   word-wrap: break-word;
@@ -227,12 +224,12 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  gap: clamp(16px, 2vw, 24px);
+  gap: clamp(12px, 2vw, 24px);
   width: 100%;
 }
 
 .rh-inspiration-container .rh-card {
-  padding: clamp(24px, 2.5vw, 40px);
+  padding: clamp(10px, 2.5vw, 24px) clamp(16px, 2.5vw, 40px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -240,6 +237,7 @@
   border-radius: 100px;
   text-decoration: none;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  min-width: 0; /* Prevents flex items from overflowing */
 }
 
 .rh-inspiration-container .rh-card:hover {
@@ -249,8 +247,8 @@
 
 .rh-inspiration-container .rh-card-text {
   color: black;
-  font-size: clamp(32px, 5vw, 76px);
-  font-family: "Inter", sans-sherif;
+  font-size: clamp(24px, 4vw, 76px);
+  font-family: "Inter", sans-serif;
   font-weight: 400;
   line-height: 1.15;
   word-wrap: break-word;
@@ -286,15 +284,82 @@
   height: clamp(80px, 10vw, 120px);
 }
 
+/* Tablet Styles */
+@media screen and (max-width: 1024px) {
+  .rh-inspiration-container .rh-card {
+    padding: clamp(16px, 2vw, 32px);
+    border-radius: 50px;
+  }
+
+  .rh-inspiration-container .rh-card-text {
+    font-size: clamp(20px, 3vw, 48px);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .rh-inspiration-container .rh-image svg {
+    width: clamp(60px, 8vw, 100px);
+    height: clamp(60px, 8vw, 100px);
+  }
+}
+
+/* Mobile Styles */
 @media screen and (max-width: 768px) {
   .rh-inspiration-sec {
     padding: 40px 16px;
   }
+
+  .rh-inspiration-container {
+    padding: 0;
+    gap: 20px;
+  }
+
+  .rh-inspiration-container .rh-row {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .rh-inspiration-container .rh-card {
+    width: 100%;
+    padding: 16px;
+    border-radius: 24px;
+  }
+
+  .rh-inspiration-container .rh-card-text {
+    font-size: clamp(18px, 5vw, 32px);
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .rh-inspiration-container .rh-image {
+    display: none; /* Hide decorative images on mobile */
+  }
+
+  .rh-inspiration-container .rh-card-career {
+    border-radius: 24px;
+  }
 }
 
+/* Small Mobile Styles */
 @media screen and (max-width: 480px) {
   .rh-inspiration-sec {
     padding: 32px 12px;
+  }
+
+  .rh-inspiration-container .rh-inspiration-title {
+    tex-align: center;
+    font-size: 20px;
+  }
+
+  .rh-inspiration-container .rh-card {
+    padding: 12px;
+  }
+
+  .rh-inspiration-container .rh-card-text {
+    font-size: 18px;
   }
 }
 {% endstyle %}

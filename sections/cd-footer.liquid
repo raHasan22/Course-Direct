@@ -1,0 +1,405 @@
+{% schema %}
+{
+  "name": "CD Footer",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Footer Logo"
+    },
+    {
+      "type": "header",
+      "content": "Certificate Validator"
+    },
+    {
+      "type": "text",
+      "id": "validator_title",
+      "label": "Validator Title",
+      "default": "CERTIFICATE VALIDATOR"
+    },
+    {
+      "type": "textarea",
+      "id": "validator_description",
+      "label": "Validator Description",
+      "default": "Quickly and easily check the validity of your Course360 course certificates with Course360's Course Certificate Validator tool."
+    },
+    {
+      "type": "text",
+      "id": "certificate_placeholder",
+      "label": "Certificate Input Placeholder",
+      "default": "Certificate code"
+    },
+    {
+      "type": "text",
+      "id": "check_button_text",
+      "label": "Check Button Text",
+      "default": "Check"
+    },
+    {
+      "type": "header",
+      "content": "Social Media"
+    },
+    {
+      "type": "text",
+      "id": "twitter_url",
+      "label": "Twitter URL"
+    },
+    {
+      "type": "text",
+      "id": "facebook_url",
+      "label": "Facebook URL"
+    },
+    {
+      "type": "header",
+      "content": "Footer Bottom"
+    },
+    {
+      "type": "text",
+      "id": "copyright_text",
+      "label": "Copyright Text",
+      "default": "COPYRIGHT © Coursedirect.co.uk 2025"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "menu",
+      "name": "Menu Column",
+      "settings": [
+        {
+          "type": "text",
+          "id": "menu_title",
+          "label": "Menu Title",
+          "default": "COURSES"
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "Menu"
+        }
+      ]
+    },
+    {
+      "type": "footer_link",
+      "name": "Footer Link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "link_text",
+          "label": "Link Text"
+        },
+        {
+          "type": "url",
+          "id": "link_url",
+          "label": "Link URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "CD Footer",
+      "blocks": [
+        {
+          "type": "menu"
+        },
+        {
+          "type": "menu"
+        },
+        {
+          "type": "menu"
+        },
+        {
+          "type": "menu"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+     .cd-footer {
+         background-color: #000;
+         padding: 120px 10px 40px 10px;
+     }
+     .cd-footer .footer-container {
+         max-width: 1540px;
+         margin: 0 auto;
+         display: grid;
+         grid-template-columns: 348px 1fr;
+         gap: 178px;
+     }
+     .footer-container-bottom{
+         max-width: 1540px;
+         margin: 0 auto;
+     }
+     .cd-footer .footer-container .footer-menu-items-wrapper {
+         display: grid;
+         grid-template-columns: 1fr 1fr 1fr 1fr;
+         gap: 34px;
+     }
+    .cd-footer .footer-top-left {
+         display: flex;
+         flex-direction: column;
+         gap: 60px;
+     }
+   .cd-footer  .logo-wrapper {
+         margin-bottom: 32px;
+     }
+   .cd-footer  .social-icons {
+         display: flex;
+         gap: 8px;
+     }
+   .cd-footer  .certificate-validator {
+         display: flex;
+         flex-direction: column;
+         gap: 16px;
+     }
+   .cd-footer  .validator-title {
+         color: #BFBFBF;
+         font-size: 16px;
+         font-family: Inter;
+         font-weight: 400;
+         line-height: 24px;
+     }
+  .cd-footer   .validator-description {
+         color: white;
+         font-size: 18px;
+         font-family: Inter;
+         font-weight: 300;
+         line-height: 26px;
+     }
+  .cd-footer   .certificate-input {
+         padding: 12px 16px;
+         background: white;
+         border-radius: 8px;
+         outline: 1px black solid;
+         outline-offset: -1px;
+         color: #595959;
+         font-size: 16px;
+         font-family: Inter;
+         font-weight: 400;
+         line-height: 24px;
+         max-width: 348px;
+   width:100%;
+     }
+  .cd-footer   .check-button {
+         padding: 12px 32px;
+         background: #00A6E8;
+         border-radius: 8px;
+         color: white;
+         font-size: 18px;
+         font-family: Inter;
+         font-weight: 400;
+         line-height: 26px;
+         display: flex;
+         align-items: center;
+         gap: 6px;
+         cursor: pointer;
+         margin-top: 16px;
+   align-items: center;
+   justify-content: center;
+   outline: none;
+   border: none;
+   max-width: 348px;
+   width:100%;
+     }
+   .cd-footer  .footer-menu-item {
+         display: flex;
+         flex-direction: column;
+         gap: 16px;
+     }
+   .cd-footer  .menu-title {
+         color: #BFBFBF;
+         font-size: 16px;
+         font-family: Inter;
+         font-weight: 400;
+         line-height: 24px;
+       margin: 0;
+     }
+    .cd-footer .menu-links {
+         display: flex;
+         flex-direction: column;
+         gap: 12px;
+     }
+   .cd-footer  .menu-link {
+         color: white;
+         font-size: 18px;
+         font-family: Inter;
+         font-weight: 300;
+         line-height: 26px;
+         text-decoration: none;
+     }
+   .cd-footer  .footer-bottom {
+         margin-top: 60px;
+         display: flex;
+         justify-content: flex-end;
+         align-items: center;
+         gap: 24px;
+     }
+   .cd-footer  .footer-links {
+         display: flex;
+         gap: 12px;
+     }
+   .cd-footer  .footer-link {
+         color: white;
+         font-size: 14px;
+         font-family: Inter;
+         font-weight: 400;
+         line-height: 20px;
+         text-decoration: none;
+     }
+   .cd-footer  .copyright {
+         color: white;
+         font-size: 14px;
+         font-family: Inter;
+         font-weight: 400;
+         line-height: 20px;
+     }
+     @media (max-width: 1540px) {
+         .cd-footer .footer-container {
+             gap: 60px;
+         }
+     }
+     @media (max-width: 1024px) {
+         .cd-footer .footer-container {
+             grid-template-columns: 1fr;
+             gap: 60px;
+         }
+         .cd-footer .footer-container .footer-menu-items-wrapper {
+             grid-template-columns: repeat(2, 1fr);
+         }
+       .cd-footer  .footer-bottom{
+             justify-content: center;
+         }
+     }
+
+     @media (max-width: 768px) {
+         .cd-footer .footer-container .footer-menu-items-wrapper {
+             grid-template-columns: 1fr;
+         }
+       .cd-footer  .footer-bottom {
+             flex-direction: column;
+             align-items: flex-start;
+         }
+       .cd-footer  .footer-links {
+             flex-wrap: wrap;
+         }
+     }
+</style>
+
+<footer class="cd-footer">
+  <div class="footer-container">
+    <div class="footer-top-left">
+      <div>
+        <div class="logo-wrapper">
+          {% if section.settings.logo %}
+            {{ section.settings.logo | image_url: width: 300 | image_tag: loading: 'lazy', alt: shop.name }}
+          {% else %}
+            <img src="https://placehold.co/300x100" alt="{{ shop.name }}">
+          {% endif %}
+        </div>
+        <div class="social-icons">
+          {% if section.settings.twitter_url != blank %}
+            <a href="{{ section.settings.twitter_url }}" target="_blank">
+              <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="36" height="36" rx="18" fill="white" fill-opacity="0.24" />
+                <path d="M19.4704 16.77L25.3004 10H23.9004L18.8504 15.88L14.8104 10H10.1504L16.2604 18.9L10.1504 26H11.5304L16.8804 19.79L21.1404 26H25.8104L19.4704 16.77ZM17.5704 18.97L16.9604 18.09L12.0304 11.04H14.1504L18.1304 16.73L18.7504 17.61L23.9204 25.01H21.7904L17.5804 18.97H17.5704Z" fill="white" />
+              </svg>
+            </a>
+          {% endif %}
+          {% if section.settings.facebook_url != blank %}
+            <a href="{{ section.settings.facebook_url }}" target="_blank">
+              <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="36" height="36" rx="18" fill="white" fill-opacity="0.24" />
+                <path d="M27 18C27 13.0295 22.9705 9 18 9C13.0295 9 9 13.0295 9 18C9 22.4921 12.2912 26.2155 16.5938 26.8907V20.6016H14.3086V18H16.5938V16.0172C16.5938 13.7616 17.9374 12.5156 19.9932 12.5156C20.9779 12.5156 22.0078 12.6914 22.0078 12.6914V14.9062H20.873C19.7549 14.9062 19.4062 15.6 19.4062 16.3118V18H21.9023L21.5033 20.6016H19.4062V26.8907C23.7088 26.2155 27 22.4922 27 18Z" fill="white" />
+              </svg>
+            </a>
+          {% endif %}
+        </div>
+      </div>
+      <div class="certificate-validator">
+        <div>
+          <div class="validator-title">{{ section.settings.validator_title }}</div>
+          <div class="validator-description">{{ section.settings.validator_description }}</div>
+        </div>
+        <div>
+          {%- form 'customer', id: 'ContactFooter', class: 'newsletter-form' -%}
+            <input type="hidden" name="contact[tags]" value="newsletter">
+            <input
+              type="email"
+              name="contact[email]"
+              class="certificate-input"
+              value="{{ form.email }}"
+              aria-required="true"
+              autocorrect="off"
+              autocapitalize="off"
+              autocomplete="email"
+              {% if form.errors %}
+                autofocus
+                aria-invalid="true"
+                aria-describedby="ContactFooter-error"
+              {% elsif form.posted_successfully? %}
+                aria-describedby="ContactFooter-success"
+              {% endif %}
+              placeholder="{{ section.settings.certificate_placeholder }}"
+              required
+            >
+            <button type="submit" class="check-button">
+              {{ section.settings.check_button_text }}
+              <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M1.16675 7.33317C1.16675 3.65127 4.15152 0.666504 7.83341 0.666504C11.5153 0.666504 14.5001 3.65127 14.5001 7.33317C14.5001 8.93402 13.9358 10.4031 12.9954 11.5523L15.8334 14.3904L14.8906 15.3332L12.0526 12.4951C10.9033 13.4356 9.43426 13.9998 7.83341 13.9998C4.15152 13.9998 1.16675 11.0151 1.16675 7.33317ZM7.83341 1.99984C4.8879 1.99984 2.50008 4.38765 2.50008 7.33317C2.50008 10.2787 4.8879 12.6665 7.83341 12.6665C10.7789 12.6665 13.1667 10.2787 13.1667 7.33317C13.1667 4.38765 10.7789 1.99984 7.83341 1.99984Z" fill="white"/>
+              </svg>
+            </button>
+
+            {%- if form.errors -%}
+              <small class="newsletter-form__message form__message" id="ContactFooter-error">
+                {{- form.errors.translated_fields.email | capitalize }}
+                {{ form.errors.messages.email -}}
+              </small>
+            {%- endif -%}
+
+            {%- if form.posted_successfully? -%}
+              <h3
+                class="newsletter-form__message newsletter-form__message--success form__message"
+                id="ContactFooter-success"
+                tabindex="-1"
+                autofocus
+              >
+                {{- 'newsletter.success' | t }}
+              </h3>
+            {%- endif -%}
+          {%- endform -%}
+        </div>
+      </div>
+    </div>
+    <div class="footer-menu-items-wrapper">
+      {% for block in section.blocks %}
+        {% if block.type == 'menu' %}
+          <div class="footer-menu-item" {{ block.shopify_attributes }}>
+            <p class="menu-title">{{ block.settings.menu_title }}</p>
+            <div class="menu-links">
+              {% if block.settings.menu != blank %}
+                {% for link in linklists[block.settings.menu].links %}
+                  <a href="{{ link.url }}" class="menu-link">{{ link.title }}</a>
+                {% endfor %}
+              {% endif %}
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+  <div class="footer-container-bottom">
+    <div class="footer-bottom">
+      <div class="footer-links">
+        {% for block in section.blocks %}
+          {% if block.type == 'footer_link' %}
+            <a href="{{ block.settings.link_url }}" class="footer-link">{{ block.settings.link_text }}</a>
+          {% endif %}
+        {% endfor %}
+      </div>
+      <div class="copyright">{{ section.settings.copyright_text }}</div>
+    </div>
+  </div>
+</footer>

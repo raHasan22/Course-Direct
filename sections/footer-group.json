@@ -11,8 +11,91 @@
   "name": "t:sections.footer.name",
   "type": "footer",
   "sections": {
+    "cd_footer_ABzWbT": {
+      "type": "cd-footer",
+      "blocks": {
+        "menu_qTfPfU": {
+          "type": "menu",
+          "settings": {
+            "menu_title": "COURSES",
+            "menu": "footer-couress"
+          }
+        },
+        "menu_a7dtEA": {
+          "type": "menu",
+          "settings": {
+            "menu_title": "JOBS",
+            "menu": "jobs"
+          }
+        },
+        "menu_XPU7BM": {
+          "type": "menu",
+          "settings": {
+            "menu_title": "MORE FROM US",
+            "menu": "footer"
+          }
+        },
+        "menu_AQU49e": {
+          "type": "menu",
+          "settings": {
+            "menu_title": "COURSE DIRECT",
+            "menu": "customer-account-main-menu"
+          }
+        },
+        "footer_link_FnQmNq": {
+          "type": "footer_link",
+          "settings": {
+            "link_text": "Manage Preferences",
+            "link_url": "#"
+          }
+        },
+        "footer_link_8J6h8j": {
+          "type": "footer_link",
+          "settings": {
+            "link_text": "Security",
+            "link_url": "#"
+          }
+        },
+        "footer_link_k8mNYD": {
+          "type": "footer_link",
+          "settings": {
+            "link_text": "Privacy",
+            "link_url": "#"
+          }
+        },
+        "footer_link_kLBiFV": {
+          "type": "footer_link",
+          "settings": {
+            "link_text": "Terms & condition",
+            "link_url": "#"
+          }
+        }
+      },
+      "block_order": [
+        "menu_qTfPfU",
+        "menu_a7dtEA",
+        "menu_XPU7BM",
+        "menu_AQU49e",
+        "footer_link_FnQmNq",
+        "footer_link_8J6h8j",
+        "footer_link_k8mNYD",
+        "footer_link_kLBiFV"
+      ],
+      "name": "CD Footer",
+      "settings": {
+        "logo": "shopify://shop_images/Course_Direct.png",
+        "validator_title": "CERTIFICATE VALIDATOR",
+        "validator_description": "Quickly and easily check the validity of your Course360 course certificates with Course360's Course Certificate Validator tool.",
+        "certificate_placeholder": "Enter Your Email",
+        "check_button_text": "Subscribe",
+        "twitter_url": "#",
+        "facebook_url": "#",
+        "copyright_text": "COPYRIGHT © Coursedirect.co.uk 2025"
+      }
+    },
     "footer": {
       "type": "footer",
+      "disabled": true,
       "settings": {
         "color_scheme": "scheme-1",
         "newsletter_enable": true,
@@ -30,6 +113,7 @@
     }
   },
   "order": [
+    "cd_footer_ABzWbT",
     "footer"
   ]
 }
