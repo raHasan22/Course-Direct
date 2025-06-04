@@ -103,7 +103,7 @@
   ],
   "presets": [
     {
-      "name": "CD Flex Flip - Image Left",
+      "name": "CD Flex Flip Section",
       "category": "Custom Sections",
       "settings": {
         "flex_direction": "row",
@@ -111,17 +111,6 @@
         "title": "Gift vouchers",
         "description": "Reed Courses gift vouchers are the perfect option for anyone looking to treat their friends, family or colleagues to a brand new learning opportunity.",
         "button_text": "Buy gift vouchers"
-      }
-    },
-    {
-      "name": "CD Flex Flip - Image Right",
-      "category": "Custom Sections",
-      "settings": {
-        "flex_direction": "row-reverse",
-        "background_color": "#F5F5F5",
-        "title": "Course Categories",
-        "description": "Browse through our extensive range of course categories to find the perfect learning path for you.",
-        "button_text": "Explore Categories"
       }
     }
   ]
@@ -133,13 +122,13 @@
   Flex Flip Section
   ================================
 -->
-<section class="rh-flex-flip-sec">
-  <div class="rh-flex-flip-container layout-{{ section.settings.flex_direction }}">
+<section class="rh-flex-flip-sec" id="section-{{ section.id }}">
+  <div class="rh-flex-flip-container">
     <div class="rh-flex-flip-image">
       {% if section.settings.image %}
         <img src="{{ section.settings.image | img_url: 'master' }}" alt="{{ section.settings.title }} illustration">
       {% else %}
-        <img src="./Frame 1000006251.png" alt="Gift voucher illustration">
+        <img src="https://placehold.co/753x546" alt="Gift voucher illustration">
       {% endif %}
     </div>
     <div class="rh-flex-flip-content">
@@ -162,14 +151,14 @@
   /* ================================
   Flex Flip Section
   ================================ */
-  .rh-flex-flip-sec {
+  #section-{{ section.id }}.rh-flex-flip-sec {
     width: 100%;
     background: {{ section.settings.background_color }};
     padding: {{ section.settings.padding_top_desktop }}px 20px {{ section.settings.padding_bottom_desktop }}px;
     transition: all 0.3s ease;
   }
 
-  .rh-flex-flip-sec .rh-flex-flip-container {
+  #section-{{ section.id }} .rh-flex-flip-container {
     max-width: 1540px;
     margin: 0 auto;
     width: 100%;
@@ -178,32 +167,24 @@
     justify-content: space-between;
     gap: clamp(40px, 5vw, 297px);
     transition: flex-direction 0.3s ease;
-  }
-
-  /* Base flex direction */
-  .rh-flex-flip-container {
     flex-direction: column;
   }
 
   /* Mobile flex direction */
   @media screen and (max-width: 768px) {
-    .rh-flex-flip-container {
+    #section-{{ section.id }} .rh-flex-flip-container {
       flex-direction: column;
     }
   }
 
   /* Desktop flex direction */
   @media screen and (min-width: 769px) {
-    .rh-flex-flip-container.layout-row {
-      flex-direction: row;
-    }
-
-    .rh-flex-flip-container.layout-row-reverse {
-      flex-direction: row-reverse;
+    #section-{{ section.id }} .rh-flex-flip-container {
+      flex-direction: {{ section.settings.flex_direction }};
     }
   }
 
-  .rh-flex-flip-sec .rh-flex-flip-content {
+  #section-{{ section.id }} .rh-flex-flip-content {
     width: 100%;
     max-width: 490px;
     display: flex;
@@ -211,13 +192,13 @@
     gap: 24px;
   }
 
-  .rh-flex-flip-sec .rh-flex-flip-text {
+  #section-{{ section.id }} .rh-flex-flip-text {
     display: flex;
     flex-direction: column;
     gap: 16px;
   }
 
-  .rh-flex-flip-sec .rh-flex-flip-title {
+  #section-{{ section.id }} .rh-flex-flip-title {
     font-size: clamp(28px, 3vw, 36px);
     font-family: "Inter", sans-serif;
     font-weight: 400;
@@ -225,7 +206,7 @@
     color: black;
   }
 
-  .rh-flex-flip-sec .rh-flex-flip-description {
+  #section-{{ section.id }} .rh-flex-flip-description {
     font-size: clamp(16px, 1.5vw, 20px);
     font-family: "Inter", sans-serif;
     font-weight: 300;
@@ -233,7 +214,7 @@
     color: black;
   }
 
-  .rh-flex-flip-sec .rh-flex-flip-button {
+  #section-{{ section.id }} .rh-flex-flip-button {
     display: inline-flex;
     padding: 12px 24px;
     border-radius: 8px;
@@ -244,17 +225,17 @@
     background: transparent;
   }
 
-  .rh-flex-flip-sec .rh-flex-flip-button:hover {
+  #section-{{ section.id }} .rh-flex-flip-button:hover {
     background: #f5f5f5;
     outline-color: #6C47FF;
   }
 
-  .rh-flex-flip-sec .rh-flex-flip-button a {
+  #section-{{ section.id }} .rh-flex-flip-button a {
     text-decoration: none;
     color: inherit;
   }
 
-  .rh-flex-flip-sec .rh-flex-flip-button span {
+  #section-{{ section.id }} .rh-flex-flip-button span {
     font-size: 20px;
     font-family: "Inter", sans-serif;
     font-weight: 500;
@@ -263,7 +244,7 @@
     text-align: center;
   }
 
-  .rh-flex-flip-sec .rh-flex-flip-image {
+  #section-{{ section.id }} .rh-flex-flip-image {
     width: 100%;
     max-width: 50%;
     display: flex;
@@ -271,31 +252,31 @@
     align-items: center;
   }
 
-  .rh-flex-flip-sec .rh-flex-flip-image img {
+  #section-{{ section.id }} .rh-flex-flip-image img {
     max-width: 100%;
     height: auto;
   }
 
   @media screen and (max-width: 768px) {
-    .rh-flex-flip-sec {
+    #section-{{ section.id }}.rh-flex-flip-sec {
       padding: {{ section.settings.padding_top_mobile }}px 20px {{ section.settings.padding_bottom_mobile }}px;
     }
 
-    .rh-flex-flip-sec .rh-flex-flip-container {
+    #section-{{ section.id }} .rh-flex-flip-container {
       gap: 32px;
     }
 
-    .rh-flex-flip-sec .rh-flex-flip-content {
+    #section-{{ section.id }} .rh-flex-flip-content {
       max-width: 100%;
       text-align: center;
       align-items: center;
     }
 
-    .rh-flex-flip-sec .rh-flex-flip-text {
+    #section-{{ section.id }} .rh-flex-flip-text {
       align-items: center;
     }
 
-    .rh-flex-flip-sec .rh-flex-flip-image {
+    #section-{{ section.id }} .rh-flex-flip-image {
       max-width: 100%;
       order: -1;
     }

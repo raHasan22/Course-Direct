@@ -22,6 +22,7 @@
       "settings": {
         "products_per_page": 16,
         "columns_desktop": 4,
+        "columns_mobile": "2",
         "color_scheme": "scheme-1",
         "image_ratio": "adapt",
         "image_shape": "default",
@@ -32,14 +33,61 @@
         "enable_filtering": true,
         "filter_type": "horizontal",
         "enable_sorting": true,
-        "columns_mobile": "2",
         "padding_top": 36,
         "padding_bottom": 36
+      }
+    },
+    "cd_all_courses_faq_section_m4AwYX": {
+      "type": "cd-all-courses-faq-section",
+      "blocks": {
+        "faq_846bXR": {
+          "type": "faq",
+          "settings": {
+            "question": "What courses can I study?",
+            "answer": "<p>FAQ Answer</p>"
+          }
+        },
+        "faq_x3TYAN": {
+          "type": "faq",
+          "settings": {
+            "question": "What is a qualification?",
+            "answer": "<p>FAQ Answer</p>"
+          }
+        },
+        "faq_RDXYYM": {
+          "type": "faq",
+          "settings": {
+            "question": "What methods of study are available?",
+            "answer": "<p>FAQ Answer</p>"
+          }
+        },
+        "faq_b4gWJf": {
+          "type": "faq",
+          "settings": {
+            "question": "What free courses are available?",
+            "answer": "<p>FAQ Answer</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_846bXR",
+        "faq_x3TYAN",
+        "faq_RDXYYM",
+        "faq_b4gWJf"
+      ],
+      "name": "CD All Courses FAQ",
+      "settings": {
+        "title": "FAQs",
+        "background_color": "#F3EDFF",
+        "text_color": "#000000",
+        "padding_top": 100,
+        "padding_bottom": 100
       }
     }
   },
   "order": [
     "banner",
-    "product-grid"
+    "product-grid",
+    "cd_all_courses_faq_section_m4AwYX"
   ]
 }

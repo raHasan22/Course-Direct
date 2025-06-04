@@ -1,0 +1,244 @@
+{% schema %}
+{
+  "name": "CD All Courses FAQ",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "FAQs"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#F3EDFF"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "Top Padding",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "Bottom Padding",
+      "default": 100
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq",
+      "name": "FAQ Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "FAQ Question"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>FAQ Answer</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "CD All Courses FAQ",
+      "blocks": [
+        {
+          "type": "faq"
+        },
+        {
+          "type": "faq"
+        },
+        {
+          "type": "faq"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  section.all-faq-section {
+      padding: {{ section.settings.padding_top }}px 10px {{ section.settings.padding_bottom }}px;
+      background: {{ section.settings.background_color }};
+  }
+
+  section.all-faq-section .faq-container {
+      max-width: 1540px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 200px;
+  }
+
+  section.all-faq-section  .left-area {
+      flex: 0 0 auto;
+  }
+
+  section.all-faq-section   .right-area {
+      flex: 1;
+      max-width: 884px;
+  }
+
+  section.all-faq-section   .faq-title {
+      color: {{ section.settings.text_color }};
+      font-size: 56px;
+      font-family: Inter, sans-serif;
+      font-weight: 400;
+      line-height: 70.40px;
+      margin: 0;
+  }
+
+  section.all-faq-section   .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+  }
+
+  section.all-faq-section   .faq-item {
+      border-bottom: 1px solid {{ section.settings.text_color }};
+  }
+
+  section.all-faq-section    .faq-question {
+      padding: 32px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      color: {{ section.settings.text_color }};
+      font-size: 36px;
+      font-family: Inter, sans-serif;
+      font-weight: 300;
+      line-height: 52px;
+  }
+
+  section.all-faq-section   .faq-answer {
+      display: none;
+      padding: 0 0 32px;
+      color: {{ section.settings.text_color }};
+      font-size: 18px;
+      font-family: Inter, sans-serif;
+      line-height: 1.5;
+  }
+
+  section.all-faq-section   .faq-item.active .faq-answer {
+      display: block;
+  }
+
+  section.all-faq-section   .faq-item.active .arrow-icon {
+      transform: rotate(180deg);
+  }
+
+  section.all-faq-section  .arrow-icon {
+      transition: transform 0.3s ease;
+  }
+
+  @media (max-width: 1024px) {
+      section.all-faq-section .faq-container{
+          gap: 0px;
+          flex-direction: column;
+      }
+
+      section.all-faq-section   .faq-title {
+          font-size: 42px;
+          line-height: 1.2;
+          margin-bottom: 40px;
+      }
+
+      section.all-faq-section  .faq-question {
+          font-size: 28px;
+          line-height: 1.3;
+      }
+  }
+
+  @media (max-width: 768px) {
+      section.all-faq-section  .faq-question {
+          font-size: 24px;
+          padding: 24px 0;
+      }
+
+      section.all-faq-section  .faq-answer {
+          font-size: 16px;
+      }
+  }
+</style>
+
+<section class="all-faq-section">
+  <div class="faq-container">
+    <div class="left-area">
+      <h2 class="faq-title">{{ section.settings.title }}</h2>
+    </div>
+    <div class="right-area">
+      <div class="faq-list">
+        {% for block in section.blocks %}
+          {% if block.type == 'faq' %}
+            <div class="faq-item" {{ block.shopify_attributes }}>
+              <div class="faq-question">
+                <span>{{ block.settings.question }}</span>
+                <svg
+                  class="arrow-icon"
+                  width="32"
+                  height="32"
+                  viewBox="0 0 32 32"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M5.66699 16.6959L16.0003 26.6666L26.3337 16.6959L25.3883 15.7186L16.6803 24.1213V5.33325H15.3203V24.1199L6.61233 15.7199L5.66699 16.6959Z" fill="{{ section.settings.text_color }}"/>
+                </svg>
+              </div>
+              <div class="faq-answer">
+                {{ block.settings.answer }}
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll('.all-faq-section .faq-question').forEach(question => {
+      question.addEventListener('click', () => {
+          const faqItem = question.parentElement;
+          const currentlyActive = document.querySelector('.faq-item.active');
+
+          // If clicking the currently active item, just close it
+          if (currentlyActive === faqItem) {
+              faqItem.classList.remove('active');
+              return;
+          }
+
+          // If there's an active item, close it
+          if (currentlyActive) {
+              currentlyActive.classList.remove('active');
+          }
+
+          // Open the clicked item
+          faqItem.classList.add('active');
+      });
+  });
+</script>
