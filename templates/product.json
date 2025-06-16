@@ -66,6 +66,7 @@
         "description",
         "share"
       ],
+      "disabled": true,
       "settings": {
         "enable_sticky_info": true,
         "color_scheme": "scheme-1",
@@ -82,27 +83,60 @@
         "padding_bottom": 12
       }
     },
+    "single_course_7FEe9n": {
+      "type": "single-course",
+      "blocks": {
+        "reviews_XYAYPK": {
+          "type": "reviews",
+          "settings": {
+            "review_title": "Review",
+            "rating_label": "Course Rating",
+            "leave_review_text": "Leave a review",
+            "leave_review_url": "",
+            "review_date_text": "Posted recently",
+            "view_more_text": "View more",
+            "view_more_url": "",
+            "progress_label_1": "Service",
+            "progress_value_1": 97,
+            "progress_label_2": "Content",
+            "progress_value_2": 95,
+            "progress_label_3": "Value",
+            "progress_value_3": 90,
+            "filter_1": "Most Recent",
+            "filter_2": "Highest Rated",
+            "filter_3": "Lowest Rated"
+          }
+        }
+      },
+      "block_order": [
+        "reviews_XYAYPK"
+      ],
+      "name": "Single Course",
+      "settings": {}
+    },
     "related-products": {
       "type": "related-products",
       "settings": {
-        "heading": "You may also like",
+        "background_color": "#fff2df",
+        "heading": "People who bought this course also purchased",
         "heading_size": "h2",
-        "products_to_show": 4,
+        "products_to_show": 6,
         "columns_desktop": 4,
-        "columns_mobile": "2",
+        "columns_mobile": "1",
         "color_scheme": "scheme-1",
         "image_ratio": "square",
         "image_shape": "default",
         "show_secondary_image": true,
         "show_vendor": false,
         "show_rating": false,
-        "padding_top": 36,
-        "padding_bottom": 28
+        "padding_top": 120,
+        "padding_bottom": 120
       }
     }
   },
   "order": [
     "main",
+    "single_course_7FEe9n",
     "related-products"
   ]
 }

@@ -97,21 +97,26 @@
 }
 {% endschema %}
 
-<!--====================================
-      Main Header Component
-      - Contains main navigation
-      - Responsive mobile menu
-      - User action buttons
-      - Sign in/Register buttons
-    =====================================-->
+<!--
+  ====================================
+    Main Header Component
+    - Contains main navigation
+    - Responsive mobile menu
+    - User action buttons
+    - Sign in/Register buttons
+  =====================================
+-->
 <header class="cd-header" style="background-color: {{ section.settings.background_color }};">
   <div class="cd-header__container">
     <div class="cd-header__left">
       <a href="/" class="cd-header__logo" style="width: {{ section.settings.logo_width }}px;">
         {% if section.settings.logo %}
-          <img src="{{ section.settings.logo | img_url: 'master' }}" alt="{{ shop.name }} Logo" />
+          <img src="{{ section.settings.logo | img_url: 'master' }}" alt="{{ shop.name }} Logo">
         {% else %}
-          <img src="https://cdn.shopify.com/s/files/1/0899/4426/0935/files/site_logo.png?v=1749037140" alt="{{ shop.name }} Logo" />
+          <img
+            src="https://cdn.shopify.com/s/files/1/0899/4426/0935/files/site_logo.png?v=1749037140"
+            alt="{{ shop.name }} Logo"
+          >
         {% endif %}
       </a>
       <!-- Main Navigation -->
@@ -130,7 +135,11 @@
                   <ul class="cd-nav__dropdown">
                     {% for childlink in link.links %}
                       <li>
-                        <a href="{{ childlink.url }}" class="cd-nav__dropdown-link" style="color: {{ section.settings.text_color }};">
+                        <a
+                          href="{{ childlink.url }}"
+                          class="cd-nav__dropdown-link"
+                          style="color: {{ section.settings.text_color }};"
+                        >
                           {{ childlink.title }}
                         </a>
                       </li>
@@ -153,92 +162,49 @@
     <div class="cd-header__right">
       <!-- Action Icons -->
       <div class="cd-header__icons">
-        <button class="cd-header__icon-btn" aria-label="Favorites" style="color: {{ section.settings.text_color }};">
+        <button
+          class="cd-header__icon-btn cd-header__favorites-btn"
+          aria-label="Favorites"
+          style="color: {{ section.settings.text_color }};"
+        >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
             <path d="M12 21L10.55 19.7C5.4 15.1 2 12.1 2 8.5C2 5.5 4.42 3 7.5 3C9.24 3 10.91 3.81 12 5.09C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.5 22 8.5C22 12.1 18.6 15.1 13.45 19.7L12 21Z" stroke="currentColor" stroke-width="2"/>
           </svg>
         </button>
-        
-        <details-modal class="header__search">
-          <details>
-            <summary class="header__icon header__icon--search header__icon--summary link focus-inset modal__toggle" aria-haspopup="dialog" aria-label="{{ 'general.search.search' | t }}">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" style="color: {{ section.settings.text_color }};">
-                <path d="M21 21L16.5 16.5M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z" stroke="currentColor" stroke-width="2"/>
-              </svg>
-            </summary>
-            <div class="search-modal modal__content" role="dialog" aria-modal="true" aria-label="{{ 'general.search.search' | t }}">
-              <div class="modal-overlay"></div>
-              <div class="search-modal__content">
-                <form action="{{ routes.search_url }}" method="get" role="search" class="search search-modal__form">
-                  <div class="field">
-                    <input class="search__input field__input"
-                      id="Search-In-Modal"
-                      type="search"
-                      name="q"
-                      value="{{ search.terms | escape }}"
-                      placeholder="{{ 'general.search.search' | t }}"
-                      {%- if settings.predictive_search_enabled -%}
-                        role="combobox"
-                        aria-expanded="false"
-                        aria-owns="predictive-search-results-list"
-                        aria-controls="predictive-search-results-list"
-                        aria-haspopup="listbox"
-                        aria-autocomplete="list"
-                        autocorrect="off"
-                        autocomplete="off"
-                        autocapitalize="off"
-                        spellcheck="false"
-                      {%- endif -%}
-                    >
-                    <label class="field__label" for="Search-In-Modal">{{ 'general.search.search' | t }}</label>
-                    <input type="hidden" name="options[prefix]" value="last">
-                    <button class="search__button field__button" aria-label="{{ 'general.search.search' | t }}">
-                      <svg class="icon icon-search" aria-hidden="true" focusable="false">
-                        <use href="#icon-search">
-                      </svg>
-                    </button>
-                  </div>
-
-                  {%- if settings.predictive_search_enabled -%}
-                    <div class="predictive-search predictive-search--header" tabindex="-1" data-predictive-search>
-                      <div class="predictive-search__loading-state">
-                        <svg aria-hidden="true" focusable="false" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
-                          <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
-                        </svg>
-                      </div>
-                    </div>
-                    <span class="predictive-search-status visually-hidden" role="status" aria-hidden="true"></span>
-                  {%- endif -%}
-                </form>
-                <button type="button" class="search-modal__close-button modal__close-button link link--text focus-inset" aria-label="{{ 'accessibility.close' | t }}">
-                  <svg class="icon icon-close" aria-hidden="true" focusable="false">
-                    <use href="#icon-close">
-                  </svg>
-                </button>
-              </div>
-            </div>
-          </details>
-        </details-modal>
-
-        <a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link focus-inset" id="cart-icon-bubble">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" style="color: {{ section.settings.text_color }};">
+        <button
+          class="cd-header__icon-btn cd-header__search-btn"
+          aria-label="Search"
+          style="color: {{ section.settings.text_color }};"
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M21 21L16.5 16.5M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z" stroke="currentColor" stroke-width="2"/>
+          </svg>
+        </button>
+        <a
+          href="/cart"
+          class="cd-header__icon-btn cd-header__cart-btn"
+          aria-label="Shopping Cart"
+          style="color: {{ section.settings.text_color }};"
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
             <path d="M3 3H5L5.4 5M5.4 5H21L17 13H7M5.4 5L7 13M7 13L4.707 15.293C4.077 15.923 4.523 17 5.414 17H17M17 17C16.4696 17 15.9609 17.2107 15.5858 17.5858C15.2107 17.9609 15 18.4696 15 19C15 19.5304 15.2107 20.0391 15.5858 20.4142C15.9609 20.7893 16.4696 21 17 21C17.5304 21 18.0391 20.7893 18.4142 20.4142C18.7893 20.0391 19 19.5304 19 19C19 18.4696 18.7893 17.9609 18.4142 17.5858C18.0391 17.2107 17.5304 17 17 17Z" stroke="currentColor" stroke-width="2"/>
           </svg>
-          <span class="visually-hidden">{{ 'templates.cart.cart' | t }}</span>
-          <div class="cart-count-bubble">
-            {%- if cart.item_count < 100 -%}
-              <span aria-hidden="true">{{ cart.item_count }}</span>
-            {%- endif -%}
-            <span class="visually-hidden">{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span>
-          </div>
         </a>
       </div>
       <!-- Authentication Buttons -->
       <div class="cd-header__auth">
-        <a href="{{ section.settings.signin_link }}" class="cd-btn cd-btn--outline" style="color: {{ section.settings.button_text_color }}; border-color: {{ section.settings.button_text_color }};">
+        <a
+          href="{{ section.settings.signin_link }}"
+          class="cd-btn cd-btn--outline"
+          style="color: {{ section.settings.button_text_color }}; border-color: {{ section.settings.button_text_color }};"
+        >
           {{ section.settings.signin_text }}
         </a>
-        <a href="{{ section.settings.register_link }}" class="cd-btn cd-btn--filled" style="color: {{ section.settings.register_button_text_color }}; background-color: {{ section.settings.button_background_color }};">
+        <a
+          href="{{ section.settings.register_link }}"
+          class="cd-btn cd-btn--filled"
+          style="color: {{ section.settings.register_button_text_color }}; background-color: {{ section.settings.button_background_color }};"
+        >
           {{ section.settings.register_text }}
         </a>
       </div>
@@ -250,357 +216,463 @@
       </button>
     </div>
   </div>
+
+  <!-- Favorites Popup -->
+  <div class="cd-favorites-popup" style="display: none;">
+    <div class="cd-favorites-popup__content">
+      <div class="cd-favorites-popup__header">
+        <h3>Your Favorites</h3>
+        <button class="cd-favorites-popup__close">&times;</button>
+      </div>
+      <div class="cd-favorites-popup__items">
+        <!-- Favorites items will be loaded here -->
+        <p class="cd-favorites-popup__empty">You haven't added any favorites yet.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Search Popup -->
+  <div class="cd-search-popup" style="display: none;">
+    <div class="cd-search-popup__content">
+      <button class="cd-search-popup__close">&times;</button>
+      <form action="/search" method="get" class="cd-search-popup__form" role="search">
+        <input type="hidden" name="type" value="product">
+        <input
+          type="search"
+          name="q"
+          placeholder="Search products..."
+          class="cd-search-popup__input"
+          autocomplete="off"
+          autocorrect="off"
+          autocapitalize="off"
+        >
+        <button type="submit" class="cd-search-popup__submit">Search</button>
+      </form>
+      <div class="cd-search-popup__results"></div>
+    </div>
+  </div>
 </header>
 
 {% style %}
-            /*==================================
-        Header Component Styles
-        - Main navigation
-        - Dropdown menus
-        - Mobile responsiveness
-        - Animations and transitions
-        ====================================*/
-        .cd-header {
-        position: -webkit-sticky;
-        position: sticky;
-        top: 0;
-        width: 100%;
-        background: white;
-        border-bottom: 1px solid #D9D9D9;
-        z-index: 1000;
-        padding-left: 20px;
-        padding-right: 20px;
-        }
+  /*==================================
+      Header Component Styles
+      - Main navigation
+      - Dropdown menus
+      - Mobile responsiveness
+      - Animations and transitions
+  ====================================*/
+  .cd-header {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background: white;
+    border-bottom: 1px solid #D9D9D9;
+    z-index: 1000;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 
-        .cd-header .cd-header__container {
-        max-width: 1540px;
-        margin: 0 auto;
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-        justify-content: space-between;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center;
-        }
+  .cd-header .cd-header__container {
+    max-width: 1540px;
+    margin: 0 auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+  }
 
-        .cd-header .cd-header__left {
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center;
-        gap: 24px;
-        }
+  .cd-header .cd-header__left {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    gap: 24px;
+  }
 
-        .cd-header .cd-header__logo {
-        display: block;
-        width: 120px;
-        height: auto;
-        }
+  .cd-header .cd-header__logo {
+    display: block;
+    width: 120px;
+    height: auto;
+  }
 
-        .cd-header .cd-header__logo img {
-        width: 100%;
-        height: auto;
-        display: block;
-        }
+  .cd-header .cd-header__logo img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
 
-        .cd-header .cd-nav {
-        margin-left: 24px;
-        }
+  .cd-header .cd-nav {
+    margin-left: 24px;
+  }
 
-        .cd-header .cd-nav__list {
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        gap: 4px;
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        }
+  .cd-header .cd-nav__list {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    gap: 4px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
 
-        .cd-header .cd-nav__link {
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center;
-        gap: 4px;
-        padding: 8px;
-        color: black;
+  .cd-header .cd-nav__link {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    gap: 4px;
+    padding: 8px;
+    color: black;
+    font-size: 16px;
+    font-family: "Inter", sans-serif;
+    font-weight: 300;
+    line-height: 28px;
+    text-decoration: none;
+    -webkit-transition: color 0.2s;
+    transition: color 0.2s;
+  }
+
+  .cd-header .cd-nav__link:hover {
+    color: #666;
+  }
+
+  .cd-header .cd-nav__item--has-dropdown {
+    position: relative;
+  }
+
+  .cd-header .cd-nav__dropdown-icon {
+    width: 24px;
+    height: 24px;
+    -webkit-transition: -webkit-transform 0.2s;
+    transition: -webkit-transform 0.2s;
+    transition: transform 0.2s;
+    transition: transform 0.2s, -webkit-transform 0.2s;
+  }
+
+  .cd-header .cd-nav__item--has-dropdown:hover .cd-header .cd-nav__dropdown-icon {
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+  }
+
+  .cd-header .cd-nav__dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 200px;
+    background: white;
+    border-radius: 8px;
+    -webkit-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 8px 0;
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transform: translateY(10px);
+    transform: translateY(10px);
+    -webkit-transition: all 0.2s;
+    transition: all 0.2s;
+  }
+
+  .cd-header .cd-nav__item--has-dropdown:hover .cd-header .cd-nav__dropdown {
+    opacity: 1;
+    visibility: visible;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+
+  .cd-header .cd-nav__dropdown-link {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+
+  .cd-header .cd-header__right {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .cd-header .cd-header__icons {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    gap: 8px;
+  }
+
+  .cd-header .cd-header__icon-btn {
+    padding: 8px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: black;
+    -webkit-transition: color 0.2s;
+    transition: color 0.2s;
+  }
+
+  .cd-header .cd-header__icon-btn:hover {
+    color: #666;
+  }
+
+  .cd-header .cd-header__auth {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    gap: 8px;
+    margin-left: 8px;
+  }
+
+  .cd-header .cd-btn {
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    line-height: 28px;
+    text-decoration: none;
+    -webkit-transition: all 0.2s;
+    transition: all 0.2s;
+  }
+
+  .cd-header .cd-btn--outline {
+    color: black;
+    background: white;
+    outline: 1px solid black;
+  }
+
+  .cd-header .cd-btn--outline:hover {
+    background: #f5f5f5;
+  }
+
+  .cd-header .cd-btn--filled {
+    color: white;
+    background: black;
+  }
+
+  .cd-header .cd-btn--filled:hover {
+    background: #333;
+  }
+
+  .cd-header .cd-header__mobile-menu {
+    display: none;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    gap: 6px;
+    padding: 8px;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  .cd-header .cd-header__mobile-menu-line {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: black;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+  }
+
+  /* Favorites Popup Styles */
+  .cd-favorites-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 2000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .cd-favorites-popup__content {
+    background: white;
+    width: 90%;
+    max-width: 600px;
+    max-height: 80vh;
+    border-radius: 8px;
+    padding: 20px;
+    overflow-y: auto;
+    position: relative;
+  }
+
+  .cd-favorites-popup__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .cd-favorites-popup__close {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+  }
+
+  .cd-favorites-popup__items {
+    display: flex;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 15px;
+    align-items: stretch;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .cd-favorites-popup__empty {
+    text-align: center;
+    padding: 20px;
+    color: #666;
+  }
+
+  /* Search Popup Styles */
+  .cd-search-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 2000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .cd-search-popup__content {
+    background: white;
+    width: 90%;
+    max-width: 600px;
+    border-radius: 8px;
+    padding: 20px;
+    position: relative;
+  }
+
+  .cd-search-popup__close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+  }
+
+  .cd-search-popup__form {
+    display: flex;
+    margin-bottom: 15px;
+  }
+
+  .cd-search-popup__input {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px 0 0 4px;
+    font-size: 16px;
+  }
+
+  .cd-search-popup__submit {
+    padding: 12px 20px;
+    background: black;
+    color: white;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+  }
+
+  .cd-search-popup__results {
+    max-height: 300px;
+    overflow-y: auto;
+  }
+
+  /* Large Desktop Screens */
+  @media (min-width: 1201px) {
+    .cd-header .cd-header__container {
+        padding: 16px 0px;
+    }
+
+    .cd-header .cd-nav__link {
         font-size: 16px;
-        font-family: "Inter", sans-serif;
-        font-weight: 300;
-        line-height: 28px;
-        text-decoration: none;
-        -webkit-transition: color 0.2s;
-        transition: color 0.2s;
-        }
+        padding: 8px 12px;
+    }
 
-        .cd-header .cd-nav__link:hover {
-        color: #666;
-        }
+    .cd-header .cd-header__logo {
+        width: 140px;
+    }
+  }
 
-        .cd-header .cd-nav__item--has-dropdown {
-        position: relative;
-        }
+  /* Desktop and Tablet */
+  @media (max-width: 1200px) {
+    .cd-header {
+        padding: 24px;
+    }
+    .cd-header .cd-header__container {
+        max-width: 100%;
+    }
 
-        .cd-header .cd-nav__dropdown-icon {
-        width: 24px;
-        height: 24px;
-        -webkit-transition: -webkit-transform 0.2s;
-        transition: -webkit-transform 0.2s;
-        transition: transform 0.2s;
-        transition: transform 0.2s, -webkit-transform 0.2s;
-        }
+    .cd-header .cd-nav__link {
+        font-size: 15px;
+        padding: 6px 10px;
+    }
 
-        .cd-header .cd-nav__item--has-dropdown:hover .cd-header .cd-nav__dropdown-icon {
-        -webkit-transform: rotate(180deg);
-        transform: rotate(180deg);
-        }
+    .cd-header .cd-btn {
+        padding: 10px 20px;
+        font-size: 15px;
+    }
 
-        .cd-header .cd-nav__dropdown {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        min-width: 200px;
-        background: white;
-        border-radius: 8px;
-        -webkit-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        padding: 8px 0;
-        opacity: 0;
-        visibility: hidden;
-        -webkit-transform: translateY(10px);
-        transform: translateY(10px);
-        -webkit-transition: all 0.2s;
-        transition: all 0.2s;
-        }
+    .cd-header .cd-header__logo {
+        width: 110px;
+    }
+  }
 
-        .cd-header .cd-nav__item--has-dropdown:hover .cd-header .cd-nav__dropdown {
-        opacity: 1;
-        visibility: visible;
-        -webkit-transform: translateY(0);
-        transform: translateY(0);
-        }
+  /* Tablet and Mobile Devices */
+  @media (max-width: 991px) {
+    .cd-header {
+        padding: 12px;;
+    }
+    .cd-header .cd-header__container {
+    }
 
-        .cd-header .cd-nav__dropdown-link {
-        padding: 8px 16px;
-        font-size: 14px;
-        }
-
-        .cd-header .cd-header__right {
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center;
-        gap: 8px;
-        }
-
-        .cd-header .cd-header__icons {
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        gap: 8px;
-        }
-
-        .cd-header .cd-header__icon-btn {
-        padding: 8px;
-        background: none;
-        border: none;
-        cursor: pointer;
-        color: black;
-        -webkit-transition: color 0.2s;
-        transition: color 0.2s;
-        }
-
-        .cd-header .cd-header__icon-btn:hover {
-        color: #666;
-        }
-
-        .cd-header .cd-header__auth {
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        gap: 8px;
-        margin-left: 8px;
-        }
-
-        .cd-header .cd-btn {
-        padding: 12px 24px;
-        border-radius: 8px;
-        font-size: 16px;
-        font-family: "Inter", sans-serif;
-        font-weight: 500;
-        line-height: 28px;
-        text-decoration: none;
-        -webkit-transition: all 0.2s;
-        transition: all 0.2s;
-        }
-
-        .cd-header .cd-btn--outline {
-        color: black;
-        background: white;
-        outline: 1px solid black;
-        }
-
-        .cd-header .cd-btn--outline:hover {
-        background: #f5f5f5;
-        }
-
-        .cd-header .cd-btn--filled {
-        color: white;
-        background: black;
-        }
-
-        .cd-header .cd-btn--filled:hover {
-        background: #333;
-        }
-
-        .cd-header .cd-header__mobile-menu {
+    .cd-header .cd-nav {
         display: none;
-        -webkit-box-orient: vertical;
-        -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-        flex-direction: column;
-        gap: 6px;
-        padding: 8px;
-        background: none;
-        border: none;
-        cursor: pointer;
-        }
+    }
 
-        .cd-header .cd-header__mobile-menu-line {
-        display: block;
-        width: 24px;
-        height: 2px;
-        background: black;
-        -webkit-transition: all 0.3s;
-        transition: all 0.3s;
-        }
+    .cd-header .cd-header__icons {
+        display: none;
+    }
 
-        /* Large Desktop Screens */
-        @media (min-width: 1201px) {
-        .cd-header .cd-header__container {
-            padding: 16px 0px;
-        }
+    .cd-header .cd-header__auth {
+        display: none;
+    }
 
-        .cd-header .cd-nav__link {
-            font-size: 16px;
-            padding: 8px 12px;
-        }
+    .cd-header .cd-btn {
+        padding: 8px 14px;
+        font-size: 14px;
+        white-space: nowrap;
+    }
 
-        .cd-header .cd-header__logo {
-            width: 140px;
-        }
-        }
+    .cd-header .cd-header__mobile-menu {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+    }
 
-        /* Desktop and Tablet */
-        @media (max-width: 1200px) {
-        .cd-header {
-            padding: 24px;
-        }
-        .cd-header .cd-header__container {
-            max-width: 100%;
-        }
-
-        .cd-header .cd-nav__link {
-            font-size: 15px;
-            padding: 6px 10px;
-        }
-
-        .cd-header .cd-btn {
-            padding: 10px 20px;
-            font-size: 15px;
-        }
-
-        .cd-header .cd-header__logo {
-            width: 110px;
-        }
-        }
-
-        /* Tablet and Mobile Devices */
-        @media (max-width: 991px) {
-        .cd-header {
-            padding: 12px;;
-        }
-        .cd-header .cd-header__container {
-        }
-
-        .cd-header .cd-nav {
-            display: none;
-        }
-
-        .cd-header .cd-header__icons {
-            display: none;
-        }
-
-        .cd-header .cd-header__auth {
-            display: none;
-        }
-
-        .cd-header .cd-btn {
-            padding: 8px 14px;
-            font-size: 14px;
-            white-space: nowrap;
-        }
-
-        .cd-header .cd-header__mobile-menu {
-            display: -webkit-box;
-            display: -ms-flexbox;
-            display: flex;
-        }
-
-        .cd-header.is-menu-open .cd-nav {
-            display: block;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            width: 100%;
-            background: white;
-            padding: 16px;
-            -webkit-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            z-index: 1000;
-        }
-
-        .cd-header.is-menu-open .cd-nav__list {
-            -webkit-box-orient: vertical;
-            -webkit-box-direction: normal;
-            -ms-flex-direction: column;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .cd-header.is-menu-open .cd-nav__dropdown {
-            position: static;
-            -webkit-box-shadow: none;
-            box-shadow: none;
-            opacity: 1;
-            visibility: visible;
-            -webkit-transform: none;
-            transform: none;
-            padding-left: 16px;
-            display: none;
-        }
-
-        .cd-header.is-menu-open .cd-nav__item--has-dropdown.is-dropdown-open .cd-nav__dropdown {
-            display: block;
-        }
-
-        .cd-header .cd-header__logo {
-            width: 100px;
-        }
-        }
-
-        /* Mobile Menu States */
-        .cd-header.is-menu-open .cd-nav {
+    .cd-header.is-menu-open .cd-nav {
         display: block;
         position: absolute;
         top: 100%;
@@ -611,17 +683,17 @@
         -webkit-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         z-index: 1000;
-        }
+    }
 
-        .cd-header.is-menu-open .cd-nav__list {
+    .cd-header.is-menu-open .cd-nav__list {
         -webkit-box-orient: vertical;
         -webkit-box-direction: normal;
         -ms-flex-direction: column;
         flex-direction: column;
         gap: 8px;
-        }
+    }
 
-        .cd-header.is-menu-open .cd-nav__dropdown {
+    .cd-header.is-menu-open .cd-nav__dropdown {
         position: static;
         -webkit-box-shadow: none;
         box-shadow: none;
@@ -631,225 +703,198 @@
         transform: none;
         padding-left: 16px;
         display: none;
-        }
+    }
 
-        .cd-header.is-menu-open .cd-nav__item--has-dropdown.is-dropdown-open .cd-nav__dropdown {
+    .cd-header.is-menu-open .cd-nav__item--has-dropdown.is-dropdown-open .cd-nav__dropdown {
         display: block;
-        }
+    }
 
-        .cd-header.is-menu-open .cd-nav__item--has-dropdown.is-dropdown-open .cd-nav__dropdown-icon {
-        -webkit-transform: rotate(180deg);
-        transform: rotate(180deg);
-        }
+    .cd-header .cd-header__logo {
+        width: 100px;
+    }
+  }
 
-        /* Mobile Menu Button Animation */
-        .cd-header.is-menu-open .cd-header__mobile-menu-line:nth-child(1) {
-        -webkit-transform: rotate(45deg) translate(5px, 5px);
-        transform: rotate(45deg) translate(5px, 5px);
-        }
+  /* Mobile Menu States */
+  .cd-header.is-menu-open .cd-nav {
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: white;
+    padding: 16px;
+    -webkit-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+  }
 
-        .cd-header.is-menu-open .cd-header__mobile-menu-line:nth-child(2) {
-        opacity: 0;
-        }
+  .cd-header.is-menu-open .cd-nav__list {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    gap: 8px;
+  }
 
-        .cd-header.is-menu-open .cd-header__mobile-menu-line:nth-child(3) {
-        -webkit-transform: rotate(-45deg) translate(5px, -5px);
-        transform: rotate(-45deg) translate(5px, -5px);
-        }
+  .cd-header.is-menu-open .cd-nav__dropdown {
+    position: static;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    opacity: 1;
+    visibility: visible;
+    -webkit-transform: none;
+    transform: none;
+    padding-left: 16px;
+    display: none;
+  }
 
-        /* Search Modal Styles */
-        .search-modal {
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          z-index: 1001;
-          display: none;
-        }
+  .cd-header.is-menu-open .cd-nav__item--has-dropdown.is-dropdown-open .cd-nav__dropdown {
+    display: block;
+  }
 
-        .search-modal[open] {
-          display: block;
-        }
+  .cd-header.is-menu-open .cd-nav__item--has-dropdown.is-dropdown-open .cd-nav__dropdown-icon {
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+  }
 
-        .modal-overlay {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background: rgba(0, 0, 0, 0.5);
-        }
+  /* Mobile Menu Button Animation */
+  .cd-header.is-menu-open .cd-header__mobile-menu-line:nth-child(1) {
+    -webkit-transform: rotate(45deg) translate(5px, 5px);
+    transform: rotate(45deg) translate(5px, 5px);
+  }
 
-        .search-modal__content {
-          position: relative;
-          background: white;
-          padding: 20px;
-          max-width: 600px;
-          margin: 100px auto;
-          border-radius: 8px;
-        }
+  .cd-header.is-menu-open .cd-header__mobile-menu-line:nth-child(2) {
+    opacity: 0;
+  }
 
-        .search-modal__form {
-          display: flex;
-          gap: 10px;
-        }
-
-        .search-modal__form .field {
-          flex: 1;
-          position: relative;
-        }
-
-        .search-modal__form input {
-          width: 100%;
-          padding: 12px;
-          border: 1px solid #ddd;
-          border-radius: 4px;
-        }
-
-        .search-modal__close-button {
-          position: absolute;
-          top: 10px;
-          right: 10px;
-          background: none;
-          border: none;
-          cursor: pointer;
-          padding: 5px;
-        }
-
-        /* Cart Count Bubble */
-        .cart-count-bubble {
-          position: absolute;
-          top: -8px;
-          right: -8px;
-          background: {{ section.settings.button_background_color }};
-          color: {{ section.settings.register_button_text_color }};
-          border-radius: 50%;
-          width: 20px;
-          height: 20px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 12px;
-          font-weight: 500;
-        }
-
-        /* Predictive Search */
-        .predictive-search {
-          position: absolute;
-          top: 100%;
-          left: 0;
-          width: 100%;
-          background: white;
-          border-radius: 4px;
-          box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-          margin-top: 5px;
-          display: none;
-        }
-
-        .predictive-search--header {
-          z-index: 1002;
-        }
-
-        .predictive-search__loading-state {
-          padding: 20px;
-          text-align: center;
-        }
-
-        .spinner {
-          animation: rotate 2s linear infinite;
-          width: 20px;
-          height: 20px;
-        }
-
-        @keyframes rotate {
-          100% {
-            transform: rotate(360deg);
-          }
-        }
-
-        .visually-hidden {
-          position: absolute;
-          width: 1px;
-          height: 1px;
-          padding: 0;
-          margin: -1px;
-          overflow: hidden;
-          clip: rect(0, 0, 0, 0);
-          white-space: nowrap;
-          border: 0;
-        }
+  .cd-header.is-menu-open .cd-header__mobile-menu-line:nth-child(3) {
+    -webkit-transform: rotate(-45deg) translate(5px, -5px);
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
 {% endstyle %}
 
-    <script>
-         // Mobile menu functionality
-      const header = document.querySelector('.cd-header');
-      const mobileMenuBtn = header.querySelector('.cd-header__mobile-menu');
-      const dropdownItems = header.querySelectorAll('.cd-nav__item--has-dropdown');
+<script>
+// Mobile menu functionality
+const header = document.querySelector('.cd-header');
+const mobileMenuBtn = header.querySelector('.cd-header__mobile-menu');
+const dropdownItems = header.querySelectorAll('.cd-nav__item--has-dropdown');
 
-      // Toggle mobile menu
-      mobileMenuBtn.addEventListener('click', () => {
-        header.classList.toggle('is-menu-open');
-      });
+// Toggle mobile menu
+mobileMenuBtn.addEventListener('click', () => {
+  header.classList.toggle('is-menu-open');
+});
 
-      // Handle dropdown toggles in mobile menu
-      dropdownItems.forEach(item => {
-        const link = item.querySelector('.cd-nav__link');
-        
-        link.addEventListener('click', (e) => {
-          if (window.innerWidth <= 991) {
-            e.preventDefault();
-            item.classList.toggle('is-dropdown-open');
-          }
-        });
-      });
+// Handle dropdown toggles in mobile menu
+dropdownItems.forEach(item => {
+  const link = item.querySelector('.cd-nav__link');
+  
+  link.addEventListener('click', (e) => {
+    if (window.innerWidth <= 991) {
+      e.preventDefault();
+      item.classList.toggle('is-dropdown-open');
+    }
+  });
+});
 
-      // Close mobile menu when clicking outside
-      document.addEventListener('click', (e) => {
-        if (!header.contains(e.target) && header.classList.contains('is-menu-open')) {
-          header.classList.remove('is-menu-open');
-          dropdownItems.forEach(item => {
-            item.classList.remove('is-dropdown-open');
-          });
-        }
-      });
+// Close mobile menu when clicking outside
+document.addEventListener('click', (e) => {
+  if (!header.contains(e.target) && header.classList.contains('is-menu-open')) {
+    header.classList.remove('is-menu-open');
+    dropdownItems.forEach(item => {
+      item.classList.remove('is-dropdown-open');
+    });
+  }
+});
 
-      // Close mobile menu on window resize
-      window.addEventListener('resize', () => {
-        if (window.innerWidth > 991) {
-          header.classList.remove('is-menu-open');
-          dropdownItems.forEach(item => {
-            item.classList.remove('is-dropdown-open');
-          });
-        }
-      });
+// Close mobile menu on window resize
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 991) {
+    header.classList.remove('is-menu-open');
+    dropdownItems.forEach(item => {
+      item.classList.remove('is-dropdown-open');
+    });
+  }
+});
 
-      // Search Modal Functionality
-      document.addEventListener('DOMContentLoaded', function() {
-        const searchModal = document.querySelector('details-modal');
-        const searchInput = document.querySelector('#Search-In-Modal');
-        const searchForm = document.querySelector('.search-modal__form');
-        const closeButton = document.querySelector('.search-modal__close-button');
+// Favorites functionality
+const favoritesBtn = document.querySelector('.cd-header__favorites-btn');
+const favoritesPopup = document.querySelector('.cd-favorites-popup');
+const favoritesCloseBtn = document.querySelector('.cd-favorites-popup__close');
 
-        if (searchModal) {
-          searchModal.addEventListener('toggle', function(event) {
-            if (event.target.open) {
-              searchInput.focus();
-            }
-          });
-        }
+favoritesBtn.addEventListener('click', () => {
+  favoritesPopup.style.display = 'flex';
+  // Here you would typically load the favorites from localStorage or your backend
+  // For this example, we'll just show the empty state
+});
 
-        if (closeButton) {
-          closeButton.addEventListener('click', function() {
-            searchModal.querySelector('details').removeAttribute('open');
-          });
-        }
+favoritesCloseBtn.addEventListener('click', () => {
+  favoritesPopup.style.display = 'none';
+});
 
-        // Close modal when clicking outside
-        document.addEventListener('click', function(event) {
-          if (event.target.closest('.search-modal__content')) return;
-          if (event.target.closest('details-modal')) return;
-          searchModal.querySelector('details').removeAttribute('open');
-        });
-      });
-    </script>
+// Close favorites popup when clicking outside
+favoritesPopup.addEventListener('click', (e) => {
+  if (e.target === favoritesPopup) {
+    favoritesPopup.style.display = 'none';
+  }
+});
+
+// Search functionality
+const searchBtn = document.querySelector('.cd-header__search-btn');
+const searchPopup = document.querySelector('.cd-search-popup');
+const searchCloseBtn = document.querySelector('.cd-search-popup__close');
+const searchForm = document.querySelector('.cd-search-popup__form');
+const searchInput = document.querySelector('.cd-search-popup__input');
+const searchResults = document.querySelector('.cd-search-popup__results');
+
+searchBtn.addEventListener('click', () => {
+  searchPopup.style.display = 'flex';
+  searchInput.focus();
+});
+
+searchCloseBtn.addEventListener('click', () => {
+  searchPopup.style.display = 'none';
+});
+
+// Close search popup when clicking outside
+searchPopup.addEventListener('click', (e) => {
+  if (e.target === searchPopup) {
+    searchPopup.style.display = 'none';
+  }
+});
+
+// Handle search form submission
+searchForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const query = searchInput.value.trim();
+  if (query) {
+    window.location.href = `/search?type=product&q=${encodeURIComponent(query)}`;
+  }
+});
+
+// Optional: Live search functionality
+searchInput.addEventListener('input', debounce(() => {
+  const query = searchInput.value.trim();
+  if (query.length > 2) {
+    // Here you would typically make an AJAX request to your search endpoint
+    // For this example, we'll just show a message
+    searchResults.innerHTML = `<p>Searching for "${query}"...</p>`;
+    // In a real implementation, you would fetch results and display them
+  } else {
+    searchResults.innerHTML = '';
+  }
+}, 300));
+
+// Debounce function for search input
+function debounce(func, wait) {
+  let timeout;
+  return function() {
+    const context = this, args = arguments;
+    clearTimeout(timeout);
+    timeout = setTimeout(() => {
+      func.apply(context, args);
+    }, wait);
+  };
+}
+
+// Cart link is already handled by the href="/cart" on the cart button
+</script>

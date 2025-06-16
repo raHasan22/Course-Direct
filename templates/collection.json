@@ -11,10 +11,26 @@
   "sections": {
     "banner": {
       "type": "main-collection-banner",
+      "disabled": true,
       "settings": {
         "show_collection_description": true,
         "show_collection_image": false,
         "color_scheme": "scheme-1"
+      }
+    },
+    "cd_all_courses_hero_WpcxBA": {
+      "type": "cd-all-courses-hero",
+      "name": "Cd All Hero Search Box",
+      "settings": {
+        "search_box_bg": "#ffffff",
+        "search_placeholder": "Search for courses..."
+      }
+    },
+    "cd_all_courses_description_section_cdNR7d": {
+      "type": "cd-all-courses-description-section",
+      "name": "CD All Courses Description Section",
+      "settings": {
+        "description_text": "<p>It's easy for the hustle and bustle of life to get in the way of our personal development. Our online courses can help you take back control - so you can gain that skill you've always dreamed about, on your terms.</p><p>Whether you're looking for a <a href=\"#\" target=\"_blank\" title=\"#\"><strong>Microsoft Excel course</strong></a> to give you the edge, or you'd like to develop your project management skills with a <a href=\"#\" target=\"_blank\" title=\"#\"><strong>PRINCE2 project management course</strong></a>, we've got you covered. Online administration courses and <a href=\"#\" target=\"_blank\" title=\"#\"><strong>HR training courses</strong></a> are also available at the click of a button, meaning you can develop your career prospects at your own pace.</p><p>Small budget? Then it's worth checking out our wide range of <a href=\"#\" target=\"_blank\" title=\"#\"><strong>free online courses</strong></a> too.</p>"
       }
     },
     "product-grid": {
@@ -87,6 +103,8 @@
   },
   "order": [
     "banner",
+    "cd_all_courses_hero_WpcxBA",
+    "cd_all_courses_description_section_cdNR7d",
     "product-grid",
     "cd_all_courses_faq_section_m4AwYX"
   ]

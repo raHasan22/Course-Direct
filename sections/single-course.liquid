@@ -1,0 +1,1008 @@
+{{ 'single-course.css' | asset_url | stylesheet_tag }}
+
+<section class="nxt-singleCourse__area">
+  <div class="nxt-container">
+    <nav class="sidebar-nav">
+      <ul class="sidebar-nav-list">
+        <ul class="sidebar-nav-list">
+          <li><a href="#summary" class="sidebar-nav-item sidebar-nav-item--active">Summary</a></li>
+          <li><a href="#overview" class="sidebar-nav-item">Overview</a></li>
+          <li><a href="#curriculum" class="sidebar-nav-item">Curriculum</a></li>
+          <li><a href="#course-media" class="sidebar-nav-item">Course Media</a></li>
+          <li><a href="#review" class="sidebar-nav-item">Review</a></li>
+        </ul>
+      </ul>
+    </nav>
+    <div class="nxt-singleCourse__content">
+      <div id="summary" class="course-hero">
+        <div class="course-hero__header">
+          <nav class="course-hero__breadcrumbs" aria-label="Breadcrumb">
+            <a href="/">Home</a>
+            <span>/</span>
+            <a href="/collections/all">Courses</a>
+            <span>/</span>
+            <span>{{  product.category }}</span>
+          </nav>
+          <h1 class="course-hero__title">
+            {{ product.title }}
+          </h1>
+          <p class="course-hero__subtitle">
+            {{ product.metafields.custom.course_short_description }}
+          </p>
+        </div>
+        <div class="course-hero__media-row">
+          <div class="course-hero__image-wrapper">
+            <img
+              class="course-hero__image"
+              src="{{ product.featured_image | img_url: '752x565' }}"
+              alt="{{ product.title }}"
+            >
+            {% if product.metafields.custom.course_media_url %}
+              <a href="{{ product.metafields.custom.course_media_url }}" class="course-hero__play-btn" target="_blank">
+                <!-- Play SVG here -->
+                <svg width="68" height="68" viewBox="0 0 68 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="1" y="1" width="66" height="66" rx="33" fill="white" />
+                  <rect x="1" y="1" width="66" height="66" rx="33" stroke="#F5F5F5" stroke-width="2" />
+                  <rect width="24" height="24" transform="translate(25 22)" fill="white" />
+                  <path d="M29.6236 25.3513C29.8548 25.2171 30.14 25.2162 30.3721 25.3488L44.3721 33.3488C44.6058 33.4824 44.75 33.7309 44.75 34C44.75 34.2691 44.6058 34.5177 44.3721 34.6512L30.3721 42.6512C30.14 42.7838 29.8548 42.7829 29.6236 42.6487C29.3923 42.5145 29.25 42.2674 29.25 42V26C29.25 25.7326 29.3923 25.4855 29.6236 25.3513Z" fill="black" />
+                </svg>
+              </a>
+            {% endif %}
+          </div>
+          <div class="nxt-module__overview">
+            <!-- Add dynamic overview content if needed -->
+          </div>
+        </div>
+      </div>
+      <div class="course-details__wrapper">
+        <div class="course-details__main">
+          <!-- Overview Section -->
+          <div id="overview" class="course-details__section course-details__overview">
+            <h2 class="course-details__title">Overview</h2>
+            <div class="course-details__content">
+              {{ product.description }}
+            </div>
+          </div>
+
+          <!-- Curriculum Section -->
+          <div id="curriculum" class="course-details__section course-details__curriculum">
+            <h2 class="course-details__title">Curriculum</h2>
+            <div class="curriculum-stats">
+              <div class="curriculum-stats__item">
+                <span class="curriculum-stats__icon">
+                  <!-- Sections Icon -->
+                  <svg
+                    width="72"
+                    height="72"
+                    viewBox="0 0 72 72"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                        d="M0.000301361 72C19.8827 72 36.0005 55.8823 36.0005 36H0.000301361V72Z"
+                        fill="#00B6FF" />
+                    <path
+                        d="M36.0005 36C36.0005 16.1177 52.1183 7.04529e-07 72.0007 1.57361e-06L72.0007 36L36.0005 36Z"
+                        fill="#00B6FF" />
+                    <path
+                        d="M36.0002 36C16.1178 36 2.81813e-06 19.8823 6.29447e-06 3.8147e-06L36.0002 1.01091e-05L36.0002 36Z"
+                        fill="#00B6FF" />
+                    <path
+                        d="M72.0005 72C72.0005 52.1177 55.8827 36 36.0003 36L36.0003 72L72.0005 72Z"
+                        fill="#00B6FF" />
+                  </svg>
+                </span>
+                <span class="curriculum-stats__info">
+                  <span class="curriculum-stats__value">
+                    {{- product.metafields.custom.sections_count | default: '0' -}}
+                  </span>
+                  <span class="curriculum-stats__label">sections</span>
+                </span>
+              </div>
+              <div class="curriculum-stats__item">
+                <span class="curriculum-stats__icon">
+                  <!-- Lectures Icon -->
+                  <svg
+                    width="72"
+                    height="72"
+                    viewBox="0 0 72 72"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M36.0005 4.83221C18.787 4.83221 4.8327 18.7865 4.8327 36C4.8327 53.2135 18.787 67.1678 36.0005 67.1678C53.214 67.1678 67.1683 53.2135 67.1683 36C67.1683 18.7865 53.214 4.83221 36.0005 4.83221ZM0.000488281 36C0.000488281 16.1177 16.1182 0 36.0005 0C55.8827 0 72.0005 16.1177 72.0005 36C72.0005 55.8822 55.8827 72 36.0005 72C16.1182 72 0.000488281 55.8822 0.000488281 36Z"
+                        fill="#21B967" />
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M35.9995 12.8051C23.1895 12.8051 12.8049 23.1897 12.8049 35.9997C12.8049 48.8098 23.1895 59.1944 35.9995 59.1944C48.8095 59.1944 59.1941 48.8098 59.1941 35.9997C59.1941 23.1897 48.8095 12.8051 35.9995 12.8051ZM7.97266 35.9997C7.97266 20.5209 20.5207 7.9729 35.9995 7.9729C51.4783 7.9729 64.0263 20.5209 64.0263 35.9997C64.0263 51.4785 51.4783 64.0266 35.9995 64.0266C20.5207 64.0266 7.97266 51.4785 7.97266 35.9997Z"
+                        fill="#21B967" />
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M36.0013 21.7448C28.1285 21.7448 21.7463 28.127 21.7463 35.9998C21.7463 43.8727 28.1285 50.2549 36.0013 50.2549C43.8741 50.2549 50.2563 43.8727 50.2563 35.9998C50.2563 28.127 43.8741 21.7448 36.0013 21.7448ZM16.9141 35.9998C16.9141 25.4582 25.4597 16.9126 36.0013 16.9126C46.5429 16.9126 55.0886 25.4582 55.0886 35.9998C55.0886 46.5414 46.5429 55.0871 36.0013 55.0871C25.4597 55.0871 16.9141 46.5414 16.9141 35.9998Z"
+                        fill="#21B967" />
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M36.0002 30.6845C33.0646 30.6845 30.6848 33.0643 30.6848 35.9999C30.6848 38.9356 33.0646 41.3154 36.0002 41.3154C38.9358 41.3154 41.3156 38.9356 41.3156 35.9999C41.3156 33.0643 38.9358 30.6845 36.0002 30.6845ZM25.8525 35.9999C25.8525 30.3956 30.3958 25.8523 36.0002 25.8523C41.6046 25.8523 46.1478 30.3956 46.1478 35.9999C46.1478 41.6043 41.6046 46.1476 36.0002 46.1476C30.3958 46.1476 25.8525 41.6043 25.8525 35.9999Z"
+                        fill="#21B967" />
+                  </svg>
+                </span>
+                <span class="curriculum-stats__info">
+                  <span class="curriculum-stats__value">
+                    {{- product.metafields.custom.lectures_count | default: '0' -}}
+                  </span>
+                  <span class="curriculum-stats__label">lectures</span>
+                </span>
+              </div>
+              <div class="curriculum-stats__item">
+                <span class="curriculum-stats__icon">
+                  <!-- Time Icon -->
+                  <svg
+                    width="72"
+                    height="72"
+                    viewBox="0 0 72 72"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                        d="M38.1315 0.409879C36.4998 -0.136626 35.5012 -0.136626 33.8694 0.409879C29.8887 1.74308 30.0613 10.1802 31.2914 18.5044C28.177 10.6874 24.0913 3.3035 19.9792 4.14858C18.2935 4.49499 17.4299 4.9962 16.2929 6.28796C13.5585 9.39451 17.7806 16.446 22.9233 22.9515C16.4066 17.823 9.34578 13.6164 6.24524 16.3577C4.95598 17.4975 4.45667 18.3622 4.11396 20.0487C3.28361 24.1347 10.5705 28.1767 18.3349 31.266C10.0661 30.0587 1.7345 29.9153 0.410368 33.8689C-0.136138 35.5007 -0.136138 36.4993 0.410368 38.1311C1.7345 42.0847 10.0661 41.9413 18.3349 40.734C10.5705 43.8233 3.28358 47.8653 4.11393 51.9514C4.45664 53.6378 4.95595 54.5025 6.2452 55.6423C9.34571 58.3835 16.4064 54.1771 22.923 49.0487C17.7804 55.5541 13.5584 62.6055 16.2928 65.712C17.4298 67.0038 18.2934 67.505 19.9791 67.8514C24.0913 68.6965 28.177 61.3124 31.2915 53.4952C30.0613 61.8196 29.8886 70.2569 33.8694 71.5901C35.5012 72.1366 36.4998 72.1366 38.1315 71.5901C42.1125 70.2569 41.9396 61.8192 40.7094 53.4947C43.8239 61.3121 47.9097 68.6965 52.022 67.8514C53.7077 67.505 54.5713 67.0038 55.7083 65.712C58.4427 62.6055 54.2207 55.5541 49.0781 49.0487C55.5947 54.1771 62.6554 58.3835 65.7559 55.6423C67.0451 54.5025 67.5445 53.6378 67.8872 51.9514C68.7175 47.8654 61.4307 43.8233 53.6662 40.734C61.935 41.9413 70.2665 42.0847 71.5906 38.1311C72.1371 36.4993 72.1371 35.5007 71.5906 33.8689C70.2665 29.9153 61.935 30.0587 53.6662 31.266C61.4306 28.1767 68.7175 24.1346 67.8871 20.0487C67.5444 18.3622 67.0451 17.4975 65.7559 16.3577C62.6553 13.6164 55.5945 17.823 49.0778 22.9515C54.2205 16.446 58.4426 9.39451 55.7082 6.28796C54.5712 4.9962 53.7076 4.49499 52.0219 4.14858C47.9097 3.30349 43.8239 10.6876 40.7095 18.5049C41.9396 10.1805 42.1124 1.74311 38.1315 0.409879Z"
+                        fill="#FF7237" />
+                  </svg>
+                </span>
+                <span class="curriculum-stats__info">
+                  <span class="curriculum-stats__value">
+                    {{- product.metafields.custom.course_duration | default: '0' -}}
+                  </span>
+                  <span class="curriculum-stats__label">total</span>
+                </span>
+              </div>
+            </div>
+            <!-- Add dynamic modules/accordion if you have metafields for them -->
+            <div class="nxt-accordion">
+              <div class="accordion-item">
+                <div class="accordion-header">
+                  <div class="accordion-title">Module 01: Health &amp; Social Care Overview</div>
+                  <div class="accordion-duration__wrapper">
+                    <span class="accordion-duration">10:33</span>
+                    <div class="accordion-icon">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6 9L11.2929 14.2929C11.6262 14.6262 11.7929 14.7929 12 14.7929C12.2071 14.7929 12.3738 14.6262 12.7071 14.2929L18 9" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-content">
+                  <p>Module content goes here...</p>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <div class="accordion-header">
+                  <div class="accordion-title">Module 01: Health &amp; Social Care Overview</div>
+                  <div class="accordion-duration__wrapper">
+                    <span class="accordion-duration">10:33</span>
+                    <div class="accordion-icon">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6 9L11.2929 14.2929C11.6262 14.6262 11.7929 14.7929 12 14.7929C12.2071 14.7929 12.3738 14.6262 12.7071 14.2929L18 9" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-content">
+                  <p>Module content goes here...</p>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <div class="accordion-header">
+                  <div class="accordion-title">Module 01: Health &amp; Social Care Overview</div>
+                  <div class="accordion-duration__wrapper">
+                    <span class="accordion-duration">10:33</span>
+                    <div class="accordion-icon">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6 9L11.2929 14.2929C11.6262 14.6262 11.7929 14.7929 12 14.7929C12.2071 14.7929 12.3738 14.6262 12.7071 14.2929L18 9" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-content">
+                  <p>Module content goes here...</p>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <div class="accordion-header">
+                  <div class="accordion-title">Module 01: Health &amp; Social Care Overview</div>
+                  <div class="accordion-duration__wrapper">
+                    <span class="accordion-duration">10:33</span>
+                    <div class="accordion-icon">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6 9L11.2929 14.2929C11.6262 14.6262 11.7929 14.7929 12 14.7929C12.2071 14.7929 12.3738 14.6262 12.7071 14.2929L18 9" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-content">
+                  <p>Module content goes here...</p>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <div class="accordion-header">
+                  <div class="accordion-title">Module 01: Health &amp; Social Care Overview</div>
+                  <div class="accordion-duration__wrapper">
+                    <span class="accordion-duration">10:33</span>
+                    <div class="accordion-icon">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6 9L11.2929 14.2929C11.6262 14.6262 11.7929 14.7929 12 14.7929C12.2071 14.7929 12.3738 14.6262 12.7071 14.2929L18 9" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-content">
+                  <p>Module content goes here...</p>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <div class="accordion-header">
+                  <div class="accordion-title">Module 01: Health &amp; Social Care Overview</div>
+                  <div class="accordion-duration__wrapper">
+                    <span class="accordion-duration">10:33</span>
+                    <div class="accordion-icon">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6 9L11.2929 14.2929C11.6262 14.6262 11.7929 14.7929 12 14.7929C12.2071 14.7929 12.3738 14.6262 12.7071 14.2929L18 9" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-content">
+                  <p>Module content goes here...</p>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <div class="accordion-header">
+                  <div class="accordion-title">Module 01: Health &amp; Social Care Overview</div>
+                  <div class="accordion-duration__wrapper">
+                    <span class="accordion-duration">10:33</span>
+                    <div class="accordion-icon">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6 9L11.2929 14.2929C11.6262 14.6262 11.7929 14.7929 12 14.7929C12.2071 14.7929 12.3738 14.6262 12.7071 14.2929L18 9" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-content">
+                  <p>Module content goes here...</p>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <div class="accordion-header">
+                  <div class="accordion-title">Module 01: Health &amp; Social Care Overview</div>
+                  <div class="accordion-duration__wrapper">
+                    <span class="accordion-duration">10:33</span>
+                    <div class="accordion-icon">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6 9L11.2929 14.2929C11.6262 14.6262 11.7929 14.7929 12 14.7929C12.2071 14.7929 12.3738 14.6262 12.7071 14.2929L18 9" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-content">
+                  <p>Module content goes here...</p>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <div class="accordion-header">
+                  <div class="accordion-title">Module 01: Health &amp; Social Care Overview</div>
+                  <div class="accordion-duration__wrapper">
+                    <span class="accordion-duration">10:33</span>
+                    <div class="accordion-icon">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6 9L11.2929 14.2929C11.6262 14.6262 11.7929 14.7929 12 14.7929C12.2071 14.7929 12.3738 14.6262 12.7071 14.2929L18 9" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-content">
+                  <p>Module content goes here...</p>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <div class="accordion-header">
+                  <div class="accordion-title">Module 01: Health &amp; Social Care Overview</div>
+                  <div class="accordion-duration__wrapper">
+                    <span class="accordion-duration">10:33</span>
+                    <div class="accordion-icon">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6 9L11.2929 14.2929C11.6262 14.6262 11.7929 14.7929 12 14.7929C12.2071 14.7929 12.3738 14.6262 12.7071 14.2929L18 9" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-content">
+                  <p>Module content goes here...</p>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <div class="accordion-header">
+                  <div class="accordion-title">Module 01: Health &amp; Social Care Overview</div>
+                  <div class="accordion-duration__wrapper">
+                    <span class="accordion-duration">10:33</span>
+                    <div class="accordion-icon">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6 9L11.2929 14.2929C11.6262 14.6262 11.7929 14.7929 12 14.7929C12.2071 14.7929 12.3738 14.6262 12.7071 14.2929L18 9" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-content">
+                  <p>Module content goes here...</p>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <div class="accordion-header">
+                  <div class="accordion-title">Module 01: Health &amp; Social Care Overview</div>
+                  <div class="accordion-duration__wrapper">
+                    <span class="accordion-duration">10:33</span>
+                    <div class="accordion-icon">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6 9L11.2929 14.2929C11.6262 14.6262 11.7929 14.7929 12 14.7929C12.2071 14.7929 12.3738 14.6262 12.7071 14.2929L18 9" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-content">
+                  <p>Module content goes here...</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Course Media Section -->
+          <div id="course-media" class="course-details__section course-details__course-media">
+            <h2 class="course-details__title">Course Media</h2>
+            <div class="course-media-row">
+              <div class="course-media__image-wrapper">
+                <img
+                  class="course-hero__image"
+                  src="{{ product.featured_image | img_url: '752x565' }}"
+                  alt="{{ product.title }}"
+                >
+                {% if product.metafields.custom.course_media_url %}
+                  <a href="{{ product.metafields.custom.course_media_url }}" class="course-media__play-btn">
+                    <svg
+                      width="68"
+                      height="68"
+                      viewBox="0 0 68 68"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <rect x="1" y="1" width="66" height="66" rx="33" fill="white" />
+                      <rect x="1" y="1" width="66" height="66" rx="33" stroke="#F5F5F5"
+                          stroke-width="2" />
+                      <rect width="24" height="24" transform="translate(25 22)" fill="white" />
+                      <path
+                          d="M29.6236 25.3513C29.8548 25.2171 30.14 25.2162 30.3721 25.3488L44.3721 33.3488C44.6058 33.4824 44.75 33.7309 44.75 34C44.75 34.2691 44.6058 34.5177 44.3721 34.6512L30.3721 42.6512C30.14 42.7838 29.8548 42.7829 29.6236 42.6487C29.3923 42.5145 29.25 42.2674 29.25 42V26C29.25 25.7326 29.3923 25.4855 29.6236 25.3513Z"
+                          fill="black" />
+                    </svg>
+                  </a>
+                {% endif %}
+              </div>
+              <div class="certificate-img">
+                {% if product.metafields.custom.certificate_image != blank %}
+                  <img
+                    width="100%"
+                    height="455"
+                    src="{{ product.metafields.custom.certificate_image | file_url }}"
+                    alt="Certificate"
+                  >
+                {% else %}
+                  <img width="100%" height="455" src="https://placehold.co/349x455" alt="Certificate">
+                {% endif %}
+              </div>
+            </div>
+          </div>
+          <!-- Description Section -->
+          {% if product.metafields.custom.description != blank %}
+            <div class="course-details__section course-details__course-description">
+              <h2 class="course-details__title">Course Description</h2>
+              <div class="course-details__content">
+                {{ product.metafields.custom.description | metafield_tag }}
+              </div>
+            </div>
+          {% endif %}
+          <!-- Review Section -->
+          {% for block in section.blocks %}
+            {% if block.type == 'reviews' %}
+              <div id="review" class="course-details__section course-details__review review-section">
+                <h2 class="course-details__title review-section__title">
+                  {{ block.settings.review_title | default: 'Review' }}
+                </h2>
+                <div class="review-summary-row">
+                  <div class="review-summary__box">
+                    <div class="review-summary__rating">{{ product.metafields.custom.course_rating | default: 5 }}</div>
+                    <div class="review-summary__stars">
+                      {% assign rating = product.metafields.custom.course_rating | default: 5 %}
+                      {% assign rating_percentage = rating | times: 20 %}
+                      <svg viewBox="0 0 1000 200" class="rating">
+                        <defs>
+                          <polygon id="star" points="100,0 131,66 200,76 150,128 162,200 100,166 38,200 50,128 0,76 69,66"></polygon>
+                          <clipPath id="stars">
+                            <use xlink:href="#star"></use>
+                            <use xlink:href="#star" x="20%"></use>
+                            <use xlink:href="#star" x="40%"></use>
+                            <use xlink:href="#star" x="60%"></use>
+                            <use xlink:href="#star" x="80%"></use>
+                          </clipPath>
+                        </defs>
+                        <rect class="rating__background" clip-path="url(#stars)"></rect>
+                        <rect width="{{ rating_percentage }}%" class="rating__value" clip-path="url(#stars)"></rect>
+                      </svg>
+                    </div>
+                    <div class="review-summary__label">
+                      {{ block.settings.rating_label | default: 'Course Rating' }}
+                    </div>
+                    <a href="{{ block.settings.leave_review_url | default: '/collections/all' }}" class="review-summary__link">
+                      {{- block.settings.leave_review_text | default: 'Leave a review' -}}
+                    </a>
+                  </div>
+                  <div class="review-summary__box" style="align-items: flex-start;">
+                    <div class="review-summary__progress">
+                      {% for i in (1..3) %}
+                        {% assign label = 'progress_label_' | append: i %}
+                        {% assign value = 'progress_value_' | append: i %}
+                        <div class="review-progress__item">
+                          <div class="review-progress__label-row">
+                            <span class="review-progress__label">{{ block.settings[label] }}</span>
+                            <span class="review-progress__value">{{ block.settings[value] }}%</span>
+                          </div>
+                          <div class="review-progress__bar-bg">
+                            <div class="review-progress__bar-fill" style="width: {{ block.settings[value] }}%;"></div>
+                          </div>
+                        </div>
+                      {% endfor %}
+                    </div>
+                  </div>
+                </div>
+                <div class="review-filters">
+                  {% for i in (1..3) %}
+                    {% assign filter = 'filter_' | append: i %}
+                    {% if block.settings[filter] != blank %}
+                      <span class="review-filters__item {% if forloop.first %}review-filters__item--active{% endif %}">
+                        {{- block.settings[filter] -}}
+                      </span>
+                      {% unless forloop.last %}
+                        <span class="review-filters__dot"></span>
+                      {% endunless %}
+                    {% endif %}
+                  {% endfor %}
+                </div>
+                <div class="review-list">
+                  {% if product.metafields.custom.reviewer_names.value.size > 0 %}
+                    {% for i in (0..product.metafields.custom.reviewer_names.value.size) %}
+                      {% if forloop.index <= 2 %}
+                        <div class="review-card">
+                          <div class="review-card__header">
+                            <div class="review-card__user">
+                              <img
+                                class="review-card__avatar"
+                                src="{{ product.metafields.custom.reviewer_images.value[i] | default: 'https://placehold.co/56x56' }}"
+                                alt="{{ product.metafields.custom.reviewer_names.value[i] }}"
+                                width="56"
+                                height="56"
+                              >
+                              <div class="review-card__user-info">
+                                <div class="review-card__user-name">
+                                  {{ product.metafields.custom.reviewer_names.value[i] }}
+                                </div>
+                                <div class="review-card__user-meta">
+                                  {{ product.metafields.custom.reviewers_designations.value[i] }}
+                                </div>
+                              </div>
+                            </div>
+                            <div class="review-card__date">
+                              {{ block.settings.review_date_text | default: 'Posted recently' }}
+                            </div>
+                          </div>
+                          <div class="review-card__text">
+                            {{ product.metafields.custom.course_reviews.value[i] }}
+                          </div>
+                        </div>
+                      {% endif %}
+                    {% endfor %}
+                  {% endif %}
+                </div>
+                <a
+                  href="{{ block.settings.view_more_url | default: '/collections/all' }}"
+                  class="review-section__view-more"
+                >
+                  {{- block.settings.view_more_text | default: 'View more' -}}
+                </a>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+        <aside class="course-sidebar">
+          <div class="course-sidebar__section">
+            <div class="course-sidebar__header">Course provided by</div>
+            <div class="course-sidebar__provider">
+              <div class="course-sidebar__provider-info">
+                {% if product.metafields.custom.vendor_image != blank %}
+                  <img src="{{ product.metafields.custom.vendor_image | file_url }}" alt="Provider logo">
+                {% else %}
+                  <img src="https://placehold.co/100x50" alt="Provider logo">
+                {% endif %}
+                <div class="course-sidebar__price">
+                  <span class="course-sidebar__price-main">{{ product.price | money }}</span>
+                  <span class="course-sidebar__price-sub">inc VAT (was {{ product.compare_at_price | money }})</span>
+                </div>
+
+                <div class="course-sidebar__add-to-cart">
+                  <product-form class="product-form">
+                    <form
+                      method="post"
+                      action="/cart/add"
+                      id="product-form-{{ section.id }}"
+                      accept-charset="UTF-8"
+                      class="form"
+                      enctype="multipart/form-data"
+                      novalidate="novalidate"
+                      data-type="add-to-cart-form"
+                    >
+                      <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+                      <quantity-input class="course-sidebar__quantity quantity cart-quantity">
+                        <button
+                          class="quantity__button course-sidebar__quantity-btn course-sidebar__quantity-btn--dec"
+                          name="minus"
+                          type="button"
+                        >
+                          <span class="visually-hidden">Decrease quantity</span>
+                          <span class="svg-wrapper">
+                            <svg
+                              width="19"
+                              height="2"
+                              viewBox="0 0 19 2"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path d="M17.5 1L1.5 1" stroke="#8C8C8C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                          </span>
+                        </button>
+                        <input
+                          class="quantity__input course-sidebar__quantity-value"
+                          type="number"
+                          name="quantity"
+                          value="1"
+                          min="1"
+                          max="100"
+                          step="1"
+                          aria-label="Quantity"
+                        >
+                        <button
+                          class="quantity__button course-sidebar__quantity-btn course-sidebar__quantity-btn--inc"
+                          name="plus"
+                          type="button"
+                        >
+                          <span class="visually-hidden">Increase quantity</span>
+                          <span class="svg-wrapper">
+                            <svg
+                              width="19"
+                              height="18"
+                              viewBox="0 0 19 18"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path d="M9.5 1V17M17.5 9H1.5" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                          </span>
+                        </button>
+                      </quantity-input>
+                      <button class="course-sidebar__add-btn" type="submit" name="add" aria-label="Add to basket">
+                        <span>Add to basket</span>
+                        <div class="loading__spinner hidden"></div>
+                      </button>
+                    </form>
+                  </product-form>
+                </div>
+              </div>
+              <div class="course-sidebar__students">
+                {{ product.metafields.custom.student_count }} students purchased this course
+              </div>
+            </div>
+            <div class="course-sidebar__features">
+              {% if product.metafields.custom.course_provided_by_list.value.size > 0 %}
+                {% for item in product.metafields.custom.course_provided_by_list.value %}
+                  <div class="course-sidebar__feature">
+                    <!-- svg -->
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                          d="M22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12Z"
+                          stroke="black" stroke-width="1.5" />
+                      <path d="M8 12.5L10.5 15L16 9" stroke="black" stroke-width="1.5"
+                          stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+
+                    {{ item }}
+                  </div>
+                {% endfor %}
+              {% endif %}
+
+              <div class="nxt-course__share">
+                <button
+                  onclick="sharecard_product('{{ product.url }}', '{{ product.title }}')"
+                >
+                  <svg
+                    width="41"
+                    height="40"
+                    viewBox="0 0 41 40"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <rect x="1" y="0.5" width="39" height="39" rx="7.5" stroke="#F0F0F0" />
+                    <path
+                        d="M28.8927 16.0317L27.1457 14.5146C25.8871 13.4215 25.3937 12.8335 24.7121 13.0414C23.8622 13.3006 24.142 14.9361 24.142 15.4882C22.8206 15.4882 21.4468 15.3866 20.1443 15.5984C15.8445 16.2974 14.5 19.3566 14.5 22.6525C15.717 21.9065 16.9327 21.0746 18.3954 20.7289C20.2212 20.2973 22.2603 20.5032 24.142 20.5032C24.142 21.0554 23.8622 22.6909 24.7121 22.9501C25.4844 23.1856 25.8871 22.5699 27.1457 21.4769L28.8927 19.9598C29.9642 19.0293 30.5 18.564 30.5 17.9957C30.5 17.4275 29.9642 16.9622 28.8927 16.0317Z"
+                        stroke="#141B34" stroke-width="1.5" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path
+                        d="M19.0676 11C15.2073 11.0069 13.1859 11.1015 11.8941 12.3907C10.5 13.782 10.5 16.0213 10.5 20.4997C10.5 24.9782 10.5 27.2174 11.8941 28.6087C13.2882 30 15.532 30 20.0195 30C24.5071 30 26.7509 30 28.145 28.6087C29.1156 27.64 29.4104 26.2603 29.5 24"
+                        stroke="#141B34" stroke-width="1.5" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                  </svg>
+                </button>
+                <button>
+                  <svg
+                    width="41"
+                    height="40"
+                    viewBox="0 0 41 40"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <rect x="1" y="0.5" width="39" height="39" rx="7.5" stroke="#F0F0F0" />
+                    <path
+                        d="M16 19.5V19C16 18.0572 16 17.5858 16.2929 17.2929C16.5858 17 17.0572 17 18 17H22.5C23.3727 17 23.809 17 23.9472 16.7236C24.0854 16.4472 23.8236 16.0981 23.3 15.4L23 15M25 20V21C25 21.9428 25 22.4142 24.7071 22.7071C24.4142 23 23.9428 23 23 23H18.5C17.6273 23 17.191 23 17.0528 23.2764C16.9146 23.5528 17.1764 23.9019 17.7 24.6L18 25"
+                        stroke="black" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path
+                        d="M11 20C11 15.5217 11 13.2825 12.3912 11.8912C13.7825 10.5 16.0217 10.5 20.5 10.5C24.9783 10.5 27.2175 10.5 28.6088 11.8912C30 13.2825 30 15.5217 30 20C30 24.4783 30 26.7175 28.6088 28.1088C27.2175 29.5 24.9783 29.5 20.5 29.5C16.0217 29.5 13.7825 29.5 12.3912 28.1088C11 26.7175 11 24.4783 11 20Z"
+                        stroke="black" stroke-width="2" />
+                  </svg>
+                </button>
+                <button>
+                  <svg
+                    width="41"
+                    height="40"
+                    viewBox="0 0 41 40"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <rect x="1" y="0.5" width="39" height="39" rx="7.5" stroke="#F0F0F0" />
+                    <path
+                        d="M29.3401 12.61C28.8294 12.099 28.2229 11.6936 27.5555 11.4171C26.888 11.1405 26.1726 10.9982 25.4501 10.9982C24.7276 10.9982 24.0122 11.1405 23.3448 11.4171C22.6773 11.6936 22.0709 12.099 21.5601 12.61L20.5001 13.67L19.4401 12.61C18.4084 11.5783 17.0092 10.9987 15.5501 10.9987C14.0911 10.9987 12.6918 11.5783 11.6601 12.61C10.6284 13.6417 10.0488 15.041 10.0488 16.5C10.0488 17.959 10.6284 19.3583 11.6601 20.39L20.5001 29.23L29.3401 20.39C29.8511 19.8792 30.2565 19.2728 30.533 18.6053C30.8096 17.9379 30.9519 17.2225 30.9519 16.5C30.9519 15.7775 30.8096 15.0621 30.533 14.3946C30.2565 13.7272 29.8511 13.1208 29.3401 12.61Z"
+                        stroke="black" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="course-sidebar__section">
+            <div class="course-sidebar__section-title">Overview</div>
+            <div class="course-sidebar__features">
+              <div class="course-sidebar__feature">
+                <!-- svg -->
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M3 22H21C21 17.5817 16.9706 14 12 14C7.02944 14 3 17.5817 3 22Z"
+                      stroke="black" stroke-width="1.5" />
+                  <path
+                      d="M16.5 6.5C16.5 8.98528 14.4853 11 12 11C9.51472 11 7.5 8.98528 7.5 6.5C7.5 4.01472 9.51472 2 12 2C14.4853 2 16.5 4.01472 16.5 6.5Z"
+                      stroke="black" stroke-width="1.5" />
+                </svg>
+
+                {{ product.metafields.custom.student_count | default: 0 }} enquiries
+              </div>
+              <div class="course-sidebar__feature">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle cx="12" cy="12" r="10" stroke="black" stroke-width="1.5" />
+                  <path d="M12 8V12L14 14" stroke="black" stroke-width="1.5"
+                      stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+
+                {{ product.metafields.custom.course_type | default: 'Online' }}
+              </div>
+              <div class="course-sidebar__feature">
+                <!-- svg -->
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M3 22H21C21 17.5817 16.9706 14 12 14C7.02944 14 3 17.5817 3 22Z"
+                      stroke="black" stroke-width="1.5" />
+                  <path
+                      d="M16.5 6.5C16.5 8.98528 14.4853 11 12 11C9.51472 11 7.5 8.98528 7.5 6.5C7.5 4.01472 9.51472 2 12 2C14.4853 2 16.5 4.01472 16.5 6.5Z"
+                      stroke="black" stroke-width="1.5" />
+                </svg>
+
+                <!-- svg -->
+                {{ product.metafields.custom.course_duration | default: '0 hours' }} •
+                {{ product.metafields.custom.learning_paced | default: 'Self-paced' }}
+              </div>
+              <div class="course-sidebar__feature">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                      d="M4.5 9.49927C4.5 13.6414 7.85786 16.9993 12 16.9993C16.1421 16.9993 19.5 13.6414 19.5 9.49927C19.5 5.35713 16.1421 1.99927 12 1.99927C7.85786 1.99927 4.5 5.35713 4.5 9.49927Z"
+                      stroke="black" stroke-width="1.5" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                  <path
+                      d="M9 10.1667C9 10.1667 9.75 10.1667 10.5 11.5C10.5 11.5 12.8824 8.16667 15 7.5"
+                      stroke="black" stroke-width="1.5" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                  <path
+                      d="M16.8825 15L17.5527 18.2099C17.9833 20.2723 18.1986 21.3035 17.7563 21.7923C17.3141 22.281 16.546 21.8606 15.0099 21.0198L12.7364 19.7753C12.3734 19.5766 12.1919 19.4773 12 19.4773C11.8081 19.4773 11.6266 19.5766 11.2636 19.7753L8.99008 21.0198C7.45397 21.8606 6.68592 22.281 6.24365 21.7923C5.80139 21.3035 6.01669 20.2723 6.44731 18.2099L7.11752 15"
+                      stroke="black" stroke-width="1.5" stroke-linejoin="round" />
+                </svg>
+
+                {{ product.metafields.custom.points | default: '0 CPD points' }}
+              </div>
+              <div class="course-sidebar__feature">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                      d="M11.5 22C7.49306 22 5.48959 22 4.2448 20.5355C3 19.0711 3 16.714 3 12C3 7.28596 3 4.92893 4.2448 3.46447C5.48959 2 7.49306 2 11.5 2C15.5069 2 17.5104 2 18.7552 3.46447C19.7572 4.64332 19.9527 6.40054 19.9908 9.5"
+                      stroke="black" stroke-width="1.5" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                  <path d="M8 8.00024H15M8 13.0002H11" stroke="black" stroke-width="1.5"
+                      stroke-linecap="round" stroke-linejoin="round" />
+                  <path
+                      d="M19.6092 18.1056C20.4521 17.492 21 16.4976 21 15.3752C21 13.5113 19.489 12.0002 17.625 12.0002H17.375C15.511 12.0002 14 13.5113 14 15.3752C14 16.4976 14.5479 17.492 15.3908 18.1056M19.6092 18.1056C19.0523 18.5111 18.3666 18.7502 17.625 18.7502H17.375C16.6334 18.7502 15.9477 18.5111 15.3908 18.1056M19.6092 18.1056L20.192 19.9407C20.4143 20.6406 20.5255 20.9905 20.4951 21.2085C20.4318 21.662 20.0619 21.9986 19.6252 22.0002C19.4154 22.001 19.101 21.836 18.4723 21.5061C18.2027 21.3646 18.0679 21.2939 17.93 21.2523C17.649 21.1676 17.351 21.1676 17.07 21.2523C16.9321 21.2939 16.7973 21.3646 16.5277 21.5061C15.899 21.836 15.5846 22.001 15.3748 22.0002C14.9381 21.9986 14.5682 21.662 14.5049 21.2085C14.4745 20.9905 14.5857 20.6406 14.808 19.9407L15.3908 18.1056"
+                      stroke="black" stroke-width="1.5" />
+                </svg>
+
+                <!-- svg -->
+                Certificate(s) included
+              </div>
+              <div class="course-sidebar__feature">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                      d="M2 8C2 9.34178 10.1062 13 12 13C13.8938 13 22 9.34178 22 8C22 6.65822 13.8938 3 12 3C10.1062 3 2 6.65822 2 8Z"
+                      stroke="black" stroke-width="1.5" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                  <path
+                      d="M6 11L6.24545 16.6299C6.25036 16.7426 6.26256 16.8555 6.29528 16.9635C6.39639 17.2973 6.58275 17.6006 6.86707 17.8044C9.09162 19.3985 14.9084 19.3985 17.1329 17.8044C17.4173 17.6006 17.6036 17.2973 17.7047 16.9635C17.7374 16.8555 17.7496 16.7426 17.7546 16.6299L18 11"
+                      stroke="black" stroke-width="1.5" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                  <path
+                      d="M21.25 9.5C21.25 9.08579 20.9142 8.75 20.5 8.75C20.0858 8.75 19.75 9.08579 19.75 9.5H21.25ZM19.0714 19.7634L19.8011 19.9368L19.0714 19.7634ZM21.9286 19.7634L22.6583 19.5901L21.9286 19.7634ZM20.5 9.5H19.75V16.5072H20.5H21.25V9.5H20.5ZM19.0714 19.7634L19.8011 19.9368C19.946 19.327 20.1952 18.7697 20.4619 18.2478C20.7062 17.7696 21.0263 17.2164 21.1976 16.7827L20.5 16.5072L19.8024 16.2317C19.6655 16.5784 19.4364 16.9581 19.1261 17.5653C18.8382 18.1288 18.5272 18.8095 18.3417 19.5901L19.0714 19.7634ZM21.9286 19.7634L22.6583 19.5901C22.4728 18.8095 22.1618 18.1288 21.8739 17.5653C21.5636 16.9581 21.3345 16.5784 21.1976 16.2317L20.5 16.5072L19.8024 16.7827C19.9737 17.2164 20.2938 17.7696 20.5381 18.2478C20.8048 18.7697 21.054 19.327 21.1989 19.9368L21.9286 19.7634Z"
+                      fill="black" />
+                </svg>
+
+                Tutor support
+              </div>
+            </div>
+          </div>
+          {% if product.metafields.custom.certificate_details_list.value.size > 0 %}
+            <div class="course-sidebar__section">
+              <div class="course-sidebar__section-title">Certificate</div>
+              <div class="course-sidebar__certificates">
+                {% for item in product.metafields.custom.certificate_details_list.value %}
+                  <div class="course-sidebar__certificate">
+                    <!-- svg -->
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                          d="M22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12Z"
+                          stroke="black" stroke-width="1.5" />
+                      <path d="M8 12.5L10.5 15L16 9" stroke="black" stroke-width="1.5"
+                          stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    {{ item }}
+                  </div>
+                {% endfor %}
+              </div>
+            </div>
+          {% endif %}
+          {% if product.metafields.custom.additional_info_list.value.size > 0 %}
+            <div class="course-sidebar__section">
+              <div class="course-sidebar__section-title">Additional info</div>
+              <div class="course-sidebar__additional">
+                {% for item in product.metafields.custom.additional_info_list.value %}
+                  <div class="course-sidebar__additional-info">
+                    <!-- svg -->
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                          d="M22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12Z"
+                          stroke="black" stroke-width="1.5" />
+                      <path d="M8 12.5L10.5 15L16 9" stroke="black" stroke-width="1.5"
+                          stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+
+                    {{ item }}
+                  </div>
+                {% endfor %}
+              </div>
+            </div>
+          {% endif %}
+        </aside>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="{{ 'single-course.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name": "Single Course",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "reviews",
+      "name": "Reviews Section",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "review_title",
+          "label": "Section Title",
+          "default": "Review"
+        },
+        {
+          "type": "text",
+          "id": "rating_label",
+          "label": "Rating Label",
+          "default": "Course Rating"
+        },
+        {
+          "type": "text",
+          "id": "leave_review_text",
+          "label": "Leave Review Text",
+          "default": "Leave a review"
+        },
+        {
+          "type": "url",
+          "id": "leave_review_url",
+          "label": "Leave Review URL"
+        },
+        {
+          "type": "text",
+          "id": "review_date_text",
+          "label": "Review Date Text",
+          "default": "Posted recently"
+        },
+        {
+          "type": "text",
+          "id": "view_more_text",
+          "label": "View More Text",
+          "default": "View more"
+        },
+        {
+          "type": "url",
+          "id": "view_more_url",
+          "label": "View More URL"
+        },
+        {
+          "type": "header",
+          "content": "Progress Bars"
+        },
+        {
+          "type": "text",
+          "id": "progress_label_1",
+          "label": "Progress Label 1",
+          "default": "Service"
+        },
+        {
+          "type": "range",
+          "id": "progress_value_1",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "label": "Progress Value 1",
+          "default": 97
+        },
+        {
+          "type": "text",
+          "id": "progress_label_2",
+          "label": "Progress Label 2",
+          "default": "Content"
+        },
+        {
+          "type": "range",
+          "id": "progress_value_2",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "label": "Progress Value 2",
+          "default": 95
+        },
+        {
+          "type": "text",
+          "id": "progress_label_3",
+          "label": "Progress Label 3",
+          "default": "Value"
+        },
+        {
+          "type": "range",
+          "id": "progress_value_3",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "label": "Progress Value 3",
+          "default": 90
+        },
+        {
+          "type": "header",
+          "content": "Filter Options"
+        },
+        {
+          "type": "text",
+          "id": "filter_1",
+          "label": "Filter 1",
+          "default": "Most Recent"
+        },
+        {
+          "type": "text",
+          "id": "filter_2",
+          "label": "Filter 2",
+          "default": "Highest Rated"
+        },
+        {
+          "type": "text",
+          "id": "filter_3",
+          "label": "Filter 3",
+          "default": "Lowest Rated"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Single Course",
+      "blocks": [
+        {
+          "type": "reviews"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

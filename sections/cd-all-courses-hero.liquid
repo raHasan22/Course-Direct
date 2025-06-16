@@ -1,0 +1,618 @@
+{% schema %}
+{
+  "name": "Cd All Search Box",
+  "settings": [
+    {
+      "type": "color",
+      "id": "search_box_bg",
+      "label": "Search box background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "text",
+      "id": "search_placeholder",
+      "label": "Search placeholder text",
+      "default": "Search for courses..."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Cd All Hero Search Box",
+      "category": "All Courses"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="srs-search-box">
+  <h2>Find a course</h2>
+  <div class="rh-search-content">
+    <form action="/search" method="get" role="search" class="search search-modal__form">
+      <div class="field">
+        <input
+          class="search__input field__input"
+          id="Search-In-Modal"
+          type="search"
+          name="q"
+          value=""
+          placeholder="{{ section.settings.search_placeholder }}"
+          role="combobox"
+          aria-expanded="false"
+          aria-owns="predictive-search-results"
+          aria-controls="predictive-search-results"
+          aria-haspopup="listbox"
+          aria-autocomplete="list"
+          autocorrect="off"
+          autocomplete="off"
+          autocapitalize="off"
+          spellcheck="false"
+        >
+        <label class="field__label" for="Search-In-Modal">Search</label>
+        <input type="hidden" name="options[prefix]" value="last">
+        <button type="reset" class="reset__button field__button hidden" aria-label="Clear search term">
+          <span class="svg-wrapper">
+            <svg fill="none" stroke="currentColor" class="icon icon-close" viewBox="0 0 18 18">
+              <circle cx="9" cy="9" r="8.5" stroke-opacity=".2"></circle>
+              <path stroke-linecap="round" stroke-linejoin="round" d="M11.83 11.83 6.172 6.17M6.229 11.885l5.544-5.77"></path>
+            </svg>
+          </span>
+        </button>
+        <button class="search__button field__button" aria-label="Search">
+          <span class="svg-wrapper">
+            <svg fill="none" class="icon icon-search" viewBox="0 0 18 19">
+              <path fill="currentColor" fill-rule="evenodd" d="M11.03 11.68A5.784 5.784 0 1 1 2.85 3.5a5.784 5.784 0 0 1 8.18 8.18m.26 1.12a6.78 6.78 0 1 1 .72-.7l5.4 5.4a.5.5 0 1 1-.71.7z" clip-rule="evenodd"></path>
+            </svg>
+          </span>
+        </button>
+      </div>
+      <div class="predictive-search predictive-search--header" tabindex="-1" data-predictive-search>
+        <div class="predictive-search__loading-state">
+          <svg xmlns="http://www.w3.org/2000/svg" class="spinner" viewBox="0 0 66 66">
+            <circle stroke-width="6" cx="33" cy="33" r="30" fill="none" class="path"></circle>
+          </svg>
+        </div>
+      </div>
+      <span class="predictive-search-status visually-hidden" role="status" aria-hidden="true"></span>
+    </form>
+    <div class="rh-search-tags">
+      <button type="button" class="rh-tag" data-search="Discount courses">Discount courses</button>
+      <button type="button" class="rh-tag" data-search="Online courses">Online courses</button>
+      <button type="button" class="rh-tag" data-search="On Demand courses">On Demand courses</button>
+      <button type="button" class="rh-tag" data-search="University courses">University courses</button>
+      <button type="button" class="rh-tag" data-search="Free courses">Free courses</button>
+    </div>
+  </div>
+</div>
+
+<style>
+    .srs-search-box {
+      width: 100%;
+      background: {{ section.settings.search_box_bg }};
+      /* border-radius: 8px; */
+      padding: 80px 0;
+      /* box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.16); */
+      position: relative;
+      overflow: hidden;
+    }
+
+    .srs-search-box:after {
+      content: "";
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      top: 0;
+      left: 0;
+      background: url(https://cdn.shopify.com/s/files/1/0899/4426/0935/files/Frame_1000006315.png?v=1749616642);
+      z-index: 0;
+    }
+  .srs-search-box h2 {
+      font-family: Inter;
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 52px;
+  letter-spacing: -0.4px;
+  text-align: center;
+    z-index: 1;
+    position: relative;
+  }
+    .srs-search-box .rh-search-content {
+      max-width: 1015px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .srs-search-box .rh-search-input {
+              width: 100%;
+              padding: 16px;
+              background: white;
+              border-radius: 8px;
+              display: flex;
+              align-items: center;
+              gap: 8px;
+              outline: 1px solid #F5F5F5;
+              position: relative;
+              }
+
+            .srs-search-box   .rh-search-icon {
+              width: 24px;
+              height: 24px;
+              position: relative;
+              overflow: hidden;
+              flex-shrink: 0;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              }
+
+            .srs-search-box   .rh-search-field {
+              width: 100%;
+              border: none;
+              outline: none;
+              font-size: 20px;
+              font-family: "Inter", sans-sherif;
+              font-weight: 400;
+              line-height: 1.4;
+              color: #262626;
+              background: transparent;
+              padding: 0;
+              cursor: text;
+              }
+
+            .srs-search-box   .rh-search-field::placeholder {
+              color: #8C8C8C;
+              opacity: 1;
+              }
+
+             .srs-search-box  .rh-search-field:focus {
+              outline: none;
+              }
+
+             .srs-search-box  .rh-search-field:focus::placeholder {
+              opacity: 0.7;
+              }
+
+             .srs-search-box  .rh-search-tags {
+              display: flex;
+              flex-wrap: wrap;
+              gap: 8px;
+              justify-content: center;
+              }
+
+             .srs-search-box  .rh-tag {
+              padding: 6px 18px;
+              background: black;
+              border-radius: 30px;
+              color: white;
+              font-size: 20px;
+              font-family: "Inter", sans-sherif;
+              font-weight: 400;
+              line-height: 1.4;
+              white-space: nowrap;
+              border: none;
+              cursor: po"Inter", sans-sherif;
+              transition: all 0.2s ease-in-out;
+              }
+
+              .srs-search-box .rh-tag:hover {
+              background: #262626;
+              transform: translateY(-1px);
+              }
+
+             .srs-search-box  .rh-tag:active {
+              transform: translateY(0);
+              }
+
+              /* Predictive Search Results Styling */
+             .srs-search-box  .predictive-search-results {
+              position: absolute;
+              top: 100%;
+              left: 0;
+              right: 0;
+              background: white;
+              border-radius: 0 0 8px 8px;
+              box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+              z-index: 10;
+              display: none;
+              margin-top: 4px;
+              }
+
+             .srs-search-box  .predictive-search-results.is-active {
+              display: block;
+              }
+
+              .srs-search-box .predictive-search-item {
+              display: block;
+              padding: 12px 16px;
+              text-decoration: none;
+              color: #262626;
+              transition: background-color 0.2s ease;
+              }
+
+             .srs-search-box  .predictive-search-item:hover {
+              background-color: #f5f5f5;
+              }
+
+            .srs-search-box   .predictive-search-item-content {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              }
+
+             .srs-search-box  .predictive-search-item-title {
+              font-size: 16px;
+              font-weight: 400;
+              }
+
+               .predictive-search-item-price {
+              font-size: 14px;
+              color: #666;
+              }
+
+              @media screen and (max-width: 768px) {
+
+
+               .srs-search-box {
+                  padding: 32px 20px;
+              }
+
+              .srs-search-box .rh-search-tags {
+                  gap: 12px;
+              }
+
+             .srs-search-box  .rh-tag {
+                  font-size: 16px;
+                  padding: 6px 14px;
+              }
+              }
+
+              @media screen and (max-width: 480px) {
+
+
+             .srs-search-box  .srs-search-box {
+                  padding: 24px 16px;
+              }
+              }
+
+              /* Search Form Styles */
+             .srs-search-box  .search-modal__form {
+              width: 100%;
+              position: relative;
+              max-width: none;
+              }
+
+            .srs-search-box   .field {
+              position: relative;
+              width: 100%;
+              display: flex;
+              align-items: center;
+              background: white;
+              border-radius: 12px;
+              padding: 0 0 0 44px;
+              border: 0;
+              transition: all 0.3s ease;
+              box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+              overflow: hidden;
+              height: 56px;
+              }
+            .srs-search-box   .field:after {
+              box-shadow: none;
+              }
+
+            .srs-search-box   .field:focus-within {
+              border-color: #6C47FF;
+              box-shadow: 0 4px 12px rgba(108, 71, 255, 0.08);
+              transform: translateY(-1px);
+              }
+
+            .srs-search-box   .search__input.field__input {
+              width: 100%;
+              border: none;
+              outline: none;
+              font-size: 20px;
+              font-family: "Inter", sans-sherif;
+              font-weight: 500;
+              line-height: 1.4;
+              color: #262626;
+              background: transparent;
+              padding: 0;
+              letter-spacing: -0.01em;
+              height: 100%;
+              }
+
+             .srs-search-box  .search__input.field__input::placeholder {
+              color: #8C8C8C;
+              opacity: 1;
+              font-weight: 400;
+              }
+              .srs-search-box .search__input.field__input:focus {
+              box-shadow: none;
+              }
+
+             .srs-search-box  .field__label {
+              position: absolute;
+              left: -9999px;
+              width: 1px;
+              height: 1px;
+              overflow: hidden;
+              }
+
+             .srs-search-box  .field__button {
+              background-color: transparent !important;
+              border: none;
+              padding: 0 20px;
+              cursor: pointer;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              height: 100%;
+              box-shadow: none !important;
+              border-radius: 0;
+              transition: background 0.2s;
+              left: 0;
+              right: auto;
+              }
+
+            .srs-search-box   .field__button:hover {
+              background: #F5F5F5;
+              }
+
+            .srs-search-box   .field__button:active {
+              background: #E0E0E0;
+              }
+
+             .srs-search-box  .field__button.hidden {
+              display: none;
+              }
+
+             .srs-search-box  .icon {
+              width: 24px;
+              height: 24px;
+              transition: all 0.2s ease;
+              }
+
+             .srs-search-box  .icon-search {
+              color: #262626;
+              }
+
+             .srs-search-box  .icon-close {
+              color: #666;
+              }
+
+              /* Predictive Search Styles */
+             .srs-search-box  .predictive-search {
+              position: absolute;
+              top: calc(100% + 8px);
+              left: 0;
+              right: 0;
+              background: white;
+              border-radius: 12px;
+              box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+              z-index: 10;
+              display: none;
+              border: 1px solid #F5F5F5;
+              overflow: hidden;
+              }
+
+             .srs-search-box  .predictive-search.is-active {
+              display: block;
+              animation: slideDown 0.3s ease;
+              }
+
+              @keyframes slideDown {
+              from {
+                  opacity: 0;
+                  transform: translateY(-10px);
+              }
+              to {
+                  opacity: 1;
+                  transform: translateY(0);
+              }
+              }
+
+             .srs-search-box  .predictive-search__loading-state {
+              padding: 24px;
+              text-align: center;
+              background: #FAFAFA;
+              }
+
+            .srs-search-box   .spinner {
+              width: 32px;
+              height: 32px;
+              animation: rotate 2s linear infinite;
+              }
+
+           .srs-search-box    .path {
+              stroke: #262626;
+              stroke-linecap: round;
+              animation: dash 1.5s ease-in-out infinite;
+              }
+
+            .srs-search-box   .predictive-search-item {
+              display: block;
+              padding: 16px 20px;
+              text-decoration: none;
+              color: #262626;
+              transition: all 0.2s ease;
+              border-bottom: 1px solid #F5F5F5;
+              }
+
+            .srs-search-box   .predictive-search-item:last-child {
+              border-bottom: none;
+              }
+
+             .srs-search-box  .predictive-search-item:hover {
+              background-color: #FAFAFA;
+              transform: translateX(4px);
+              }
+
+             .srs-search-box  .predictive-search-item-content {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              gap: 16px;
+              }
+
+            .srs-search-box   .predictive-search-item-title {
+              font-size: 16px;
+              font-weight: 500;
+              color: #262626;
+              }
+
+            .srs-search-box   .predictive-search-item-price {
+              font-size: 14px;
+              font-weight: 500;
+              color: #666;
+              white-space: nowrap;
+              }
+
+             .srs-search-box  .predictive-search__no-results,
+              .srs-search-box .predictive-search__error {
+              padding: 24px;
+              text-align: center;
+              color: #666;
+              font-size: 16px;
+              background: #FAFAFA;
+              }
+
+             .srs-search-box  .visually-hidden {
+              position: absolute;
+              width: 1px;
+              height: 1px;
+              padding: 0;
+              margin: -1px;
+              overflow: hidden;
+              clip: rect(0, 0, 0, 0);
+              white-space: nowrap;
+              border: 0;
+              }
+
+              @media screen and (max-width: 768px) {
+              .srs-search-box .field {
+                  padding: 10px 16px 10px 44px;
+              }
+
+              .srs-search-box .search__input.field__input {
+                  font-size: 18px;
+              }
+
+             .srs-search-box  .icon {
+                  width: 20px;
+                  height: 20px;
+              }
+
+             .srs-search-box  .predictive-search-item {
+                  padding: 14px 16px;
+              }
+
+              .srs-search-box .predictive-search-item-title {
+                  font-size: 15px;
+              }
+              }
+
+              @media screen and (max-width: 480px) {
+              .srs-search-box .field {
+                  padding: 8px 14px;
+              }
+
+              .srs-search-box .search__input.field__input {
+                  font-size: 16px;
+              }
+
+             .srs-search-box  .icon {
+                  width: 18px;
+                  height: 18px;
+              }
+              }
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const searchForm = document.querySelector('.search-modal__form');
+  const searchInput = searchForm.querySelector('.search__input');
+  const resetButton = searchForm.querySelector('.reset__button');
+  const predictiveSearch = searchForm.querySelector('.predictive-search');
+  const searchStatus = searchForm.querySelector('.predictive-search-status');
+  
+  if (searchForm && searchInput) {
+    let searchTimeout;
+    
+    // Show/hide reset button
+    searchInput.addEventListener('input', function() {
+      resetButton.classList.toggle('hidden', !this.value);
+    });
+    
+    // Reset search
+    resetButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      searchInput.value = '';
+      searchInput.focus();
+      resetButton.classList.add('hidden');
+      predictiveSearch.classList.remove('is-active');
+    });
+    
+    // Handle search input
+    searchInput.addEventListener('input', function() {
+      clearTimeout(searchTimeout);
+      const searchTerm = this.value;
+      
+      if (searchTerm.length > 2) {
+        predictiveSearch.classList.add('is-active');
+        searchStatus.textContent = 'Searching...';
+        
+        searchTimeout = setTimeout(() => {
+          fetch(`/search/suggest.json?q=${encodeURIComponent(searchTerm)}&resources[type]=product`)
+            .then(response => response.json())
+            .then(data => {
+              const products = data.resources.results.products;
+              
+              if (products && products.length > 0) {
+                predictiveSearch.innerHTML = products.map(product => `
+                  <a href="${product.url}" class="predictive-search-item">
+                    <div class="predictive-search-item-content">
+                      <div class="predictive-search-item-title">${product.title}</div>
+                      <div class="predictive-search-item-price">${product.price}</div>
+                    </div>
+                  </a>
+                `).join('');
+                searchStatus.textContent = `${products.length} results found`;
+              } else {
+                predictiveSearch.innerHTML = '<div class="predictive-search__no-results">No results found</div>';
+                searchStatus.textContent = 'No results found';
+              }
+            })
+            .catch(error => {
+              console.error('Search error:', error);
+              predictiveSearch.innerHTML = '<div class="predictive-search__error">Error loading results</div>';
+              searchStatus.textContent = 'Error loading results';
+            });
+        }, 300);
+      } else {
+        predictiveSearch.classList.remove('is-active');
+        searchStatus.textContent = '';
+      }
+    });
+    
+    // Handle search tag clicks
+    document.querySelectorAll('.rh-tag').forEach(tag => {
+      tag.addEventListener('click', function() {
+        const searchTerm = this.getAttribute('data-search');
+        searchInput.value = searchTerm;
+        resetButton.classList.remove('hidden');
+        searchInput.form.submit();
+      });
+    });
+    
+    // Close predictive search when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!searchForm.contains(e.target)) {
+        predictiveSearch.classList.remove('is-active');
+      }
+    });
+  }
+});
+</script>

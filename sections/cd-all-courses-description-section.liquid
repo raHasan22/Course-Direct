@@ -1,0 +1,137 @@
+{% schema %}
+{
+  "name": "Description Section",
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "description_text",
+      "label": "Description Text",
+      "default": "<p>It's easy for the hustle and bustle of life to get in the way of our personal development. Our online courses can help you take back control - so you can gain that skill you've always dreamed about, on your terms.</p><p>Whether you're looking for a <strong>Microsoft Excel course</strong> to give you the edge, or you'd like to develop your project management skills with a <strong>PRINCE2 project management course</strong>, we've got you covered. Online administration courses and <strong>HR training courses</strong> are also available at the click of a button, meaning you can develop your career prospects at your own pace.</p><p>Small budget? Then it's worth checking out our wide range of <strong>free online courses</strong> too.</p>"
+    }
+  ],
+  "presets": [
+    {
+      "name": "CD All Courses Description Section",
+      "category": "All Courses"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  .all-description-section {
+    padding: 20px;
+    width: 100%;
+  }
+
+  .description-container {
+    max-width: 1540px;
+    margin: 0 auto;
+  }
+
+  .description-content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .description-title {
+    color: black;
+    font-size: 36px;
+    font-family: Inter, sans-serif;
+    font-weight: 400;
+    line-height: 52px;
+  }
+
+  .description-text {
+    color: #262626;
+    font-size: 20px;
+    font-family: Inter, sans-serif;
+    font-weight: 400;
+    line-height: 28px;
+  }
+
+  .description-text-bold {
+    font-weight: 500;
+    text-decoration: underline;
+  }
+  .description-text a{
+    color: #262626;
+    text-decoration: underline;
+  }
+
+  /* Responsive styles */
+  @media screen and (max-width: 1600px) {
+    .description-container {
+      max-width: 1200px;
+    }
+  }
+
+  @media screen and (max-width: 1200px) {
+    .description-container {
+      max-width: 960px;
+    }
+
+    .description-title {
+      font-size: 32px;
+      line-height: 46px;
+    }
+
+    .description-text {
+      font-size: 18px;
+      line-height: 26px;
+    }
+  }
+
+  @media screen and (max-width: 992px) {
+    .description-container {
+      max-width: 720px;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .description-container {
+      max-width: 540px;
+    }
+
+    .description-title {
+      font-size: 28px;
+      line-height: 40px;
+    }
+
+    .description-text {
+      font-size: 16px;
+      line-height: 24px;
+    }
+  }
+
+  @media screen and (max-width: 576px) {
+    .description-container {
+      max-width: 100%;
+      padding: 0 15px;
+    }
+
+    .description-title {
+      font-size: 24px;
+      line-height: 34px;
+    }
+
+    .description-text {
+      font-size: 15px;
+      line-height: 22px;
+    }
+  }
+</style>
+
+<section class="all-description-section">
+  <div class="description-container">
+    <div class="description-content">
+      <div class="description-title">
+        {{ collections.all.products.size | number_with_delimiter }} Online courses (E-learning training)
+      </div>
+      <div class="description-text">
+        {{ section.settings.description_text }}
+      </div>
+    </div>
+  </div>
+</section>
